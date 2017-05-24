@@ -1,0 +1,92 @@
+Data Pipeline
+-speed up development
+-cohesive framework
+-user friendly
+
+operations of pipelines
+-validate
+-lookup
+-calculate
+-filter
+-aggregate
+
+
+user specific operations
+-convert data to common format
+-prepare for analysis
+-migrate data between different databases
+-share process logic across different apps
+-consume large XML,CSV,JSON
+-replace batch jobs with realtime data
+
+
+collecting data from millions of users without process delays
+-store large collection of daya array
+	mongoDB, Radis, Amazon, Dynamic
+	google bigtable
+
+	
+data transformations
+XML
+CSV			can implement using a distributed system
+JSON
+
+AWS-Amazon web service
+aws.amazon.com
+
+-web based data pipeline
+-allows to automate and ransform data
+-data driven workflow task dependent successful completion of previous tasks 
+-pipeline definition (file format) : format syntax is similar to JSON file format
+-task runner polls task performs them
+
+
+Data Formats
+
+CSV:  (Comma seperated values)
+-great for flat : represented in a single line.
+-log data, collection of sensor data
+-easily importe dinto excel
+-easily imported into a databases
+-easy to parse programatically
+-easy sequential acces
+-if the file is large, split the file into smaller files
+
+
+cons:
+-no standarization
+-not structured
+-data can always be different in structure, ect
+-lack of metadata
+
+
+
+XML: (Xtensible markup language)
+
+-use for structured data
+-not necisarily follow object oriented style format like CSV
+
+
+
+JSON: (Java script object notation)
+-an object, a valid javascript
+-best for document interoperability
+-consist of a specification
+-there are parsers for many different languages
+-format is closer to orinal state of data-easy to store in databases
+
+dissavantages:
+
+-verbose
+-takes aditional storage may cause bandwidth problems
+
+Download the cvs database
+http://www.seanlahman.com/baseball-archive/statistics
+
+
+==============
+write a program to wrangle players.csv file
+-print player count
+-print youngest player
+-print the country with most players
+

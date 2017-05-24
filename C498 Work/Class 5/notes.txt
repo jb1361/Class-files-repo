@@ -1,0 +1,27 @@
+why relational db
+-straight forward to extract aggregate data using complex filter(queries)
+-scales well
+-ensures data is consistently formatted
+
+
+To be relational db is should pass the ACID test
+-Atomicity (no partial insertions)
+-Complicity (maintain valid state from one transaction to another)
+-Isolation (handle multiple transaction without conflicts at the same time)
+-Durability (retains the last known correct state of data)
+
+
+
+Aadhaar data (csv file)
+-assigns a 12 digit number unique to every citizen
+-contents
+	State
+	district
+	subdistrict
+	gender
+	age
+	
+	
+	
+	
+	

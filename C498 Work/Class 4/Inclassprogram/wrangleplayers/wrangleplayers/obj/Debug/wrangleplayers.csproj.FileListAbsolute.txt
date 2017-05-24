@@ -1,0 +1,6 @@
+C:\Users\justi\Desktop\C498 Work\Class 4\Inclassprogram\wrangleplayers\wrangleplayers\bin\Debug\wrangleplayers.exe.config
+C:\Users\justi\Desktop\C498 Work\Class 4\Inclassprogram\wrangleplayers\wrangleplayers\obj\Debug\wrangleplayers.csprojResolveAssemblyReference.cache
+C:\Users\justi\Desktop\C498 Work\Class 4\Inclassprogram\wrangleplayers\wrangleplayers\bin\Debug\wrangleplayers.exe
+C:\Users\justi\Desktop\C498 Work\Class 4\Inclassprogram\wrangleplayers\wrangleplayers\bin\Debug\wrangleplayers.pdb
+C:\Users\justi\Desktop\C498 Work\Class 4\Inclassprogram\wrangleplayers\wrangleplayers\obj\Debug\wrangleplayers.exe
+C:\Users\justi\Desktop\C498 Work\Class 4\Inclassprogram\wrangleplayers\wrangleplayers\obj\Debug\wrangleplayers.pdb

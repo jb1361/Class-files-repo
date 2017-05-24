@@ -1,0 +1,46 @@
+what if we need data from a website like twitter?
+	-webcrawers are a bit complicated
+
+some webservices like twitter,yelp,zillow,last.fm provide an API
+	to extract data 
+	
+	-most of APIs use REST API
+	-REST: Representational state transfer
+REST uses http, which is stateless
+
+Most REST API's transfer that state as a JSON file
+
+
+use
+www.last.fm/api
+
+http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=keyhere&artist=Rihanna&album=Lound&format=json
+
+key=4005c05d541d9a056136d5450be12883
+
+
+http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=4005c05d541d9a056136d5450be12883&artist=Rihanna&album=Lound&format=json
+
+
+Sanity checking Data
+-bad or missing values
+
+why missing?
+-human error
+-system error
+-equipment failure
+-service outage
+
+
+determone
+-does the data make sense
+-is there a problem with data
+-does the data have an expected format
+
+issues cause data bias -> cause false conclusions
+
+if the missing values are distributed at random
+	what do we do?
+	
+
+
