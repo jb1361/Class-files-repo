@@ -1,0 +1,85 @@
+Imputahan :
+assume we don't have much data
+so removing data partial deletion may not be an option
+-we can approximate or estimate missing data
+
+imputation technique
+mear substitution: substitute the mean of the observed values for that of the missing values
+*Regression: predicted value obtained by regressing the missing variable or other variable
+Hot deck: randomly chosen value from an individual who has similar values on other variables
+Cold deck: Systematically chosen value from an individual who has similar values on other variables
+statistic regression: the predicted value from a regression + a random residual value
+
+
+Disadvantages:
+-may induce biases 
+- "    " inaccuracies
+-under estimate standard error
+         themselves estimated, values have correspondingly random error
+
+
+===================================
+import pandas as pd
+import bumpy as np
+
+df = pd.DataFrame(np.random.randn(5,3), index = ['a','c','e','f','h'], columns = ['one', 'two','three'])
+df2 = df.reindex(['a','b','c','d','e','f','g','h'])
+print(df2)
+print(pd.isnull(df2['one']))
+print(df2['two'].notnull())
+df2 = df2.fillna(0)
+print(df2)
+dff = pd.DataFrame(np.random.randn(10,3), columns = list('ABC'))
+print(off)
+dff.iloc[3:5,0] = np.nan
+dff.iloc[4:6,1] = np.nan
+dff.iloc[5:8,2] = np.nan
+print(dff)
+dff = dff.fillna(dff.mean())
+print(dff)
+dff = dff.fillna(dff.mean()['B': 'C'])
+print(dff)
+
+================================
+
+Interpolate
+-Constructing new data points within the range of a discrete set of known data points
+linear interpolation 
+two points: (Xa,Ya) and (Xb,Yb)
+interpolate y = Ya + (Yb-Ya)* (X-Xa)/(Xb-Xa) at (x,y)
+
+
+===================================
+df3 = pd.DataFrame({'A':[1,2.1,np.nan,4.7,5.6,6.8], 'B': [0.25,np.nan,np.nan,4,12.2,14.4]})
+print(df3)
+
+df3 = df3.interpolate()
+print(df3)
+===================================
+
+
+polynomial interpolation
+
+replace the linear function in linear interpolation with a polynomial 
+
+p(x) = ((x-x1)(x-x2)....(x-xn)/(X0-X1)(X0-X2)....(X0-Xn)) * y0 + a bunch more 
+called a vandermod matrix deration 
+
+==========================
+import scypy
+df4 = pd.DataFrame({'A':[1,2.1,np.nan,4.7,5.6,6.8], 'B': [0.25,np.nan,np.nan,4,12.2,14.4]})
+print(df4)
+
+df4 = df4.interpolate(method = 'polynomial', order = 2)
+print(df4)
+============================
+
+
+
+In class assignment
+
+use master.csv
+and impute height, weight using mean
+and interpolate height , weight using linear second, third degree interpolation
+show the mean before and after each technique
+
