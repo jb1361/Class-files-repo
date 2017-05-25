@@ -45,7 +45,7 @@ public class GABase{
     public static double crossOverRate = 0.6;     
        
     /** number of individuals in a population, default is 150 */
-    public static int popSize = 500;    
+    public static int popSize = 5;
     
     public static double mutationProbability = 1.0/length;
     

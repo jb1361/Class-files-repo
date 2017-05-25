@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DIGIT_RECOGNITION">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/DIGIT_RECOGNITION.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

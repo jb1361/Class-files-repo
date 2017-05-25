@@ -33,7 +33,7 @@ public class RunMain{
 
   
 	String line = new String();
-	String fileName = "C:/DIGIT_RECOGNITION/src/train.txt";//ClassLoader.getSystemClassLoader().getResource("test.txt").getPath(); 
+	String fileName = "C:/Users/justi/Desktop/Class files repo/Class-files-repo/C498 Work/DataFiles/DIGIT_RECOGNITION2/src/train.txt";//ClassLoader.getSystemClassLoader().getResource("test.txt").getPath();
 	try {
 	    BufferedReader infile = new BufferedReader( new FileReader(fileName));	
             line = infile.readLine();
@@ -84,8 +84,8 @@ public class RunMain{
       {
             
             //PrintWriter outfile = new PrintWriter(new BufferedWriter(new FileWriter("C:/DIGIT_RECOGNITION/src/results.txt")));
-            PrintWriter bestworstoutfile = new PrintWriter(new BufferedWriter(new FileWriter("C:/DIGIT_RECOGNITION/src/best_worst.txt")));
-            PrintWriter history = new PrintWriter(new BufferedWriter(new FileWriter("C:/DIGIT_RECOGNITION/src/history.txt")));
+            PrintWriter bestworstoutfile = new PrintWriter(new BufferedWriter(new FileWriter("C:/Users/justi/Desktop/Class files repo/Class-files-repo/C498 Work/DataFiles/DIGIT_RECOGNITION2/src/best_worst.txt")));
+            PrintWriter history = new PrintWriter(new BufferedWriter(new FileWriter("C:/Users/justi/Desktop/Class files repo/Class-files-repo/C498 Work/DataFiles/DIGIT_RECOGNITION2/src/history.txt")));
             
            // history.write(Forest.randSeed + " " + Target.targetSeed + "\n");
 	    readFile();
