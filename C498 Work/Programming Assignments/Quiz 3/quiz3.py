@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import scipy.stats as sp
 df = pd.DataFrame(pd.read_csv('master.csv'))
 print(pd.isnull(df['height']))
 height_df = pd.DataFrame(df['height'])
@@ -25,3 +25,4 @@ print(l_hand)
 r_hand =  baseball_df.loc[baseball_df['handedness'] == 'R']
 print(r_hand)
 
+welchettest = sp.ttest_ind(l_hand,r_hand,equal_var = False)
