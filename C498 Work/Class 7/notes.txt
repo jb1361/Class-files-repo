@@ -20,7 +20,7 @@ Disadvantages:
 
 ===================================
 import pandas as pd
-import bumpy as np
+import numpy as np
 
 df = pd.DataFrame(np.random.randn(5,3), index = ['a','c','e','f','h'], columns = ['one', 'two','three'])
 df2 = df.reindex(['a','b','c','d','e','f','g','h'])
