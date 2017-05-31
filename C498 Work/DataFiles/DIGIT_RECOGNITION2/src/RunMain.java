@@ -148,7 +148,7 @@ public class RunMain{
 			ga.recombination();
 			ga.gaussianMutation();
 			ga.reinitData();
-			
+
 			//outfile.flush();
 			bestworstoutfile.flush();
 			history.flush();

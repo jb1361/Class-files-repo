@@ -1,0 +1,42 @@
+Product worth regression
+
+using current data try to answer even hansabout
+future -- regression
+
+can use regression in supervised learning
+
+ ex: we can write an equation that takes a bunch of info: heinght, weight, DOB, batting avg, and predict the # of home runs
+
+
+Take all input attributes and # of lifetime homeruns then build an accurate equation to predicgt lifetine # of home runs for any player
+
+Assume we have a # of data points, I through M
+
+I	2	3	4	M
+Y	Y	Y	Y	Y
+x1
+x2
+x3
+xn
+
+Y- lifetime # of home runs
+x1....xn: height, weight, DOB, batting avg
+1 through M : different players
+
+height
+X1,01 01-weight of the input (something that will have a higher effect ont he outcome should be weighed higher)
+
+the best solution is the one that is going to minimize the differences acrss all data points between the predicted y and observed Y
+
+we need to find 0s that produce the best predictions: least error
+
+we can come up with a description for the total error of the model
+
+we can get a 0 error
+
+we can get a 0 error even if mode is very wrong
+rather than adding all terms, add the square of the error 
+
+cost function
+
+J(0) = sumofi= M(Ypred-Yobs)^2

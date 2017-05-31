@@ -9,6 +9,8 @@
 
 package ga;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.Random;
 import java.io.*;
 
@@ -45,7 +47,7 @@ public class GABase{
     public static double crossOverRate = 0.6;     
        
     /** number of individuals in a population, default is 150 */
-    public static int popSize = 500;
+    public static int popSize = 5;
     
     public static double mutationProbability = 1.0/length;
     
@@ -186,7 +188,7 @@ public class GABase{
     
     /** set the fitenss of individual at index with the given value */ 
     public void setFitness(int index, double value){
-	
+
 	fitness[index] = value;
     }
     
@@ -281,6 +283,7 @@ public class GABase{
 	for (int i = 0; i < length; ++i)
 	    {
 		population[0][i] = best[i];
+		//	System.out.println(population[0][i]);
 	    }
     }
     
