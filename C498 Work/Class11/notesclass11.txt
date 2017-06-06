@@ -1,0 +1,50 @@
+-model determinen the coefficient
+
+how do we know if the model is good
+-data could be nonlinear
+-may be the attributes we trained our model on have little or no being on our output variable
+
+evaluate the effiveness of the model using coefficient determination to quantify the mode R^2
+
+R^2 is a number that indicates the proportion of the variance in the dependent 
+variable that is predictible from the independent variable
+
+
+
+
+sst = ((data-np.mean(data))**2).sum()
+ssr = ((predictions - data)**2).sum()
+sq = 1-(ssr/sst)
+
+closer R^2 (r_sq) is to 1 the better the model
+closer R^2 (r_sq) is to 0 the poorer the model
+
+
+
+
+K-MEANS CLUSTERING
+
+-classifier algorithm
+
+input: k, set of points X1,.....Xn  
+k is the number of clusters
+place the centroid C1,....Ck at random locations
+points in high dimensional vector space
+
+Iterate through the data set until convergance
+-for each point X1:
+	find the nearest centroid Cj
+	assign the point Xi to cluster Cj of minimumDistance, (Xi,Cj)
+														^----> euclidian distance, Manhatten distance
+
+														
+for each cluster j = 1....k
+	new centroid Cj = mean of all points Xi assigned to cluster j in previous step
+	
+
+
+
+
+
+
+

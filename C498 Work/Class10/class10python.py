@@ -29,12 +29,15 @@ features = baseball_stats_df[['weight', 'height']]
 features = features.apply(lambda x: x.str.strip() if isinstance(x, object) else x).replace('', np.nan)
 features[['height', 'weight']]=   features[['height', 'weight']].convert_objects(convert_numeric=True)
 features = features.fillna(features.mean())
+features = (features - features.mean())/features.std()
 print(features)
 values = baseball_stats_df['HR'] 
+values =(values - values.mean())/values.std()
 print(values)
 theta = np.random.normal(0.0,1.0,size = 2)
 print(theta)
-
+alpha = 0.05
+num_interations = 1000
 
 def compute_cost(features,values,theta):	
 	m = len(values)
@@ -49,16 +52,15 @@ def compute_cost(features,values,theta):
 	return cost
 
 
-alpha = 0.1
-num_interations = 20
+
 def gradual_descent(features,values,theta,alpha,num_interations):
 	m = len(values)
 	cost_history = []
 	for i in range(num_interations):
 		predicted_values = np.dot(features,theta)
-		#predicted_values = features.apply(lambda x: np.dot(x, theta),axis = 1)
 		theta = theta - (alpha/m * np.dot(predicted_values - values, features))
 		final_cost = compute_cost(features,values,theta)
+		print('iteration: ' + str(i))
 	return theta,pd.Series(final_cost,cost_history)
 
 

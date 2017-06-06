@@ -1,0 +1,6 @@
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C498 Work\Programming Assignments\Class11assignment\MLalgorithm2\MLalgorithm2\bin\Debug\MLalgorithm2.exe.config
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C498 Work\Programming Assignments\Class11assignment\MLalgorithm2\MLalgorithm2\obj\Debug\MLalgorithm2.csprojResolveAssemblyReference.cache
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C498 Work\Programming Assignments\Class11assignment\MLalgorithm2\MLalgorithm2\bin\Debug\MLalgorithm2.exe
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C498 Work\Programming Assignments\Class11assignment\MLalgorithm2\MLalgorithm2\bin\Debug\MLalgorithm2.pdb
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C498 Work\Programming Assignments\Class11assignment\MLalgorithm2\MLalgorithm2\obj\Debug\MLalgorithm2.exe
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C498 Work\Programming Assignments\Class11assignment\MLalgorithm2\MLalgorithm2\obj\Debug\MLalgorithm2.pdb
