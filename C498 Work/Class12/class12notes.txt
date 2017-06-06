@@ -1,0 +1,34 @@
+Hierarchical clustering analysis(Hca)
+
+given a set of n items to be clustered, and an N * N
+matrix, the process of clustering is 
+
+1) start by assigning each item to its own clustere (initial assignment)
+	N items generate N clusters
+		*each cluster contains 1 item
+		*the distance between the clusters equal the distance between the items they contains
+		
+2) find the closest(most similar) pair of clusters merge them into a single cluster
+
+3)compute the distance between the new cluster and each of the old clusters
+
+4)repeat steps 2 and 3 untill all items are clustered into a single cluster of size new
+
+
+
+
+###next quiz is over this algorithm
+
+principal compound analysis
+-linear transformation of data
+-goal is to identify patterns in data
+-allow us to detect correlations between variables
+
+
+PCA Steps:
+
+1) transform on N*d matrix X into an N*K matrix Y
+2) compute mean for every dimension of the matrix x(d-dimensional mean vector)
+3) compute covariance matrix of the matrix x (d x d matrix)
+4) calculate the eigenvector of the covariance matrix
+5) select m eigenvectors that coresponds to the largest m eigenvalues to be the new basis
