@@ -1,0 +1,59 @@
+going over hadoop:
+
+	common utilities
+	java archives to start hadoop
+	all source codes/documentation
+	contribution xp
+	
+	hadoop dfs
+		provide throughput access to applications
+		similar to unix file system
+		
+		datanode - hdfs actualy stores data
+		hadoop yarn: framework for job scheduling and resource mgt
+		hadoop mapreduce : yarn based system for parallel processing of large datasets
+		mahout: a scalable machine learning and data mining library
+		
+		
+		install hadoop
+		
+		https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCLuster.html
+		
+		
+		https://wiki.apache.org/hadoop/Hadoop2OnWindows
+		
+	
+
+	
+Mapreduce
+	2 sub components
+	-api for writing mapreduce workflows in Java
+	
+	-barie premise
+		1. Map tasks perform transformation
+		2. Reduce tasks perform aggregation
+		
+		Things that happen inbetween
+			-partitioning
+			-sorting
+			
+			
+	the output to a map and reduce task is always(key, value) pair
+		input to reduce is (key,iterable[value])
+		
+		
+		
+		
+		stuff on final
+		
+		
+	k means lcustering 
+	statistical models 
+	regression gradient descent
+	sql stuff
+	pandas
+	dataframes
+	json files
+	csv files
+	databases
+	
