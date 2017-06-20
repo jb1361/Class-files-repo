@@ -23,8 +23,8 @@
 #
 import pandas as pd
 import numpy as np
-baseball_stats_df = pd.read_csv('baseball_stats.csv')
 
+baseball_stats_df = pd.read_csv('baseball_stats.csv')
 features = baseball_stats_df[['weight', 'height']]
 features = features.apply(lambda x: x.str.strip() if isinstance(x, object) else x).replace('', np.nan)
 features[['height', 'weight']]=   features[['height', 'weight']].convert_objects(convert_numeric=True)
