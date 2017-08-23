@@ -1,14 +1,25 @@
 
-#include <ioStream>
+#include "stdafx.h"
+#include <IoStream>
+#include <fstream>
 using namespace std;
 
-//we can get rid of this and move the entire sq method above our main (sorta like how python does it)
-int sq(int);
 
+char infilename[13];
 
-int main() {
-	for (int i = 0; i <= 10; i++){cout << sq(i) << endl;}
-	return 0;
+void main() {
+	std::cout << "Enter file name:";
+	cin >> infilename;
+	ifstream infile(infilename, ios::in);
+	if (infile.fail()) {
+		cerr << "Input failed" << endl;
+		exit(1);
+	}
+	int x;
+	double y;
+	char ch;
+	while (infile >> x >> y >> ch) {
+		cout << x << y << ch << endl;
+	}
+
 }
-
-int sq(int count) { return count * count; }
