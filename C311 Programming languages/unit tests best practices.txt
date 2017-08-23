@@ -1,0 +1,10 @@
+-Being consistent unity tests should always be the same such as not having random numbers
+-no dependent tests and should only be a pass or fail as a result
+-tests should only test one scenario (one behavior, can have multiple methods)
+ (multiple behaviors but one method should only be one method)
+ -keep them simple(no logic and no loops)
+ -do not do erreor catching unless there is a expected exception then you throw it
+ -have informative assertion messages (have them output values like expected/actual)
+	it will improve documentation of the code
+-dont make methods in your code that are used only by tests
+

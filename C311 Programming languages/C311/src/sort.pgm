@@ -1,0 +1,40 @@
++0000000 (00)   Constant 00
++0000000 (01)   i
++0000000 (02)   j
++0000000 (03)   min
++0000000 (04)   n
++0000000 (05)   temp1
++0000000 (06)   temp2
++0000000 (07)   A
++9999999        End of Initial Data
+-9000000 (00) Nop                         (-9000000 turns on trace )
++8000004 (01) Read n
++8000005 (02)   Read temp1
+-6050701 (03)   A[i] = temp1
++7010402 (04)   increment i, if i<n goto 2
++0000001 (05)   i=0
++0010003 (06)   min=i
++0010002 (07)      j=i
++6070205 (08)        temp1=A[j]
++6070306 (09)        temp2=A[min]
+-5060512 (10)        if A[min] < A[j] goto 12
++0020003 (11)            min=j
++7020408 (12)      increment j, if j<n goto 8
++6070305 (13)   temp1=A[min]
++6070106 (14)   temp2=A[i]
+-6050701 (15)   A[i]=temp1
+-6060703 (16)   A[min]=temp2
++7010406 (17)   increment i, if i<n goto 6
++0000001 (18)   i=0
++6070105 (19)   temp1=A[i]
+-8050000 (20)   print temp1
++7010419 (21)   increment i, if i<n goto 19
++9000000 (22) Stop
++9999999      End of program
++0000005      n
++0000028      Data Values to sort
++0000020
++0000021
++0000025
++0000024
++9999999     End of data

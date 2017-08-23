@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE train [
+<!ELEMENT train (E+,((B,B)*,P,(P?),(P?),(P?),(D))*,((B|S),(B|S))*,C)+>
+<!ELEMENT E EMPTY>
+<!ELEMENT P EMPTY>
+<!ELEMENT D EMPTY>
+<!ELEMENT B EMPTY>
+<!ELEMENT S EMPTY>
+<!ELEMENT C EMPTY>
+]>
+<train>
+  <E/>
+	<B/> 
+	<B/>   
+	<P/>
+	<D/>
+	<E/>  
+	<P/>
+	<D/>
+	<E/>
+	<B/>
+    <B/>
+	<P/>   
+	<D/>
+	<E/>
+	<P/>
+    <D/> 
+    <B/>
+    <S/>
+    <C/>
+	<C/>
+	<C/>
+	<C/>
+	<E/>
+	<P/>
+	<D/>
+	<B/>
+	<S/>
+	<C/>
+	
+</train>

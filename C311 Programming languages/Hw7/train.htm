@@ -1,0 +1,196 @@
+<SCRIPT LANGUAGE="JavaScript">
+var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+try {
+    xmlDoc.load("EC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EPDC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EPDSBC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EEEPPDBBPDBBSSC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EPDPPDPPPDPPPPDC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EEEEBBBBBBBBBBBBC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EEBB.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EBBBC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EPPPPPDBBC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EPPBBC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EBBDC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("ESBPDC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+} 
+try {
+    xmlDoc.load("EBBPDBSCEPPDCEPPDC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+try {
+    xmlDoc.load("EBBPDEPDBSCEPPDCC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+
+try {
+    xmlDoc.load("EBBPDEPDEBBPDEPDBSCCCCEPDBSC.xml");
+      document.write("<pre>");
+      traverse(xmlDoc.documentElement,"");
+      document.write("</pre>");
+}
+catch(e) {
+    document.write(
+       "URL "+xmlDoc.parseError.url+" Line "+xmlDoc.parseError.line+
+       " position "+xmlDoc.parseError.linepos+" "+
+       xmlDoc.parseError.srcText + " " + xmlDoc.parseError.reason);
+}
+
+
+function traverse(node,indent) {
+  var i, children, type = node.nodeTypeString;
+  if (type == "element") {  
+      document.write("<br>" + indent + node.nodeName);
+      children = node.childNodes;
+      if (children != null)  
+           for (i=0; i<children.length; i++)
+                traverse (children.item(i), indent + "|    ");  
+  }
+}
+</SCRIPT>
