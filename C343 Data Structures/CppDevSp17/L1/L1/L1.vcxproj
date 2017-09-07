@@ -88,6 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\justi\Desktop\Class files repo\Class-files-repo\C343 Data Structures\CppDevSp17\components\include;C:\Users\justi\Desktop\Class files repo\Class-files-repo\C343 Data Structures\CppDevSp17\wrapper\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,6 +117,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\justi\Desktop\Class files repo\Class-files-repo\C343 Data Structures\CppDevSp17\components\include;C:\Users\justi\Desktop\Class files repo\Class-files-repo\C343 Data Structures\CppDevSp17\wrapper\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,6 +151,10 @@
     <ClCompile Include="..\..\wrapper\class\IntWrapper.cpp" />
     <ClCompile Include="..\..\wrapper\class\LongWrapper.cpp" />
     <ClCompile Include="..\..\wrapper\class\Text.cpp" />
+    <ClCompile Include="..\driver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\createInstance.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
