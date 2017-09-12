@@ -378,3 +378,5 @@ __pycache__/
 # should be stored in the .pubxml.user file.
 
 # End of https://www.gitignore.io/api/c++,visualstudio
+/Tutoring Projects/202 pgm assignment 1/assignment 1/nbproject/private/
+/Tutoring Projects/202 pgm assignment 1/assignment 1/build/
