@@ -259,7 +259,7 @@ void doPaintData(HDC hdc, AirportSequence& s) {
 		Integer yLoc, xLoc;
 		Integer lineHeight;
 		xLoc = 10;
-		yLoc = -20 + (i*(20));
+		yLoc = -10 + (i*(20));
 		SIZE text_Size;
 		GetTextExtentPoint32(hdc, t, t.size(), &text_Size);
 		lineHeight = text_Size.cy;
