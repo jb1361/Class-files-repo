@@ -156,6 +156,7 @@
     <ClCompile Include="driver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\components\include\SortingMachine\SortingMachine2.hpp" />
     <ClInclude Include="IntegerSequence.h" />
     <ClInclude Include="IntegerSorter.h" />
   </ItemGroup>

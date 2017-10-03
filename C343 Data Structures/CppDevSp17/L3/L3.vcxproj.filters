@@ -50,5 +50,8 @@
     <ClInclude Include="IntegerSorter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\components\include\SortingMachine\SortingMachine2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

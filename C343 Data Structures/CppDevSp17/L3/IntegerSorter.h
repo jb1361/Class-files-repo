@@ -24,7 +24,7 @@ public:
 //
 
 #ifdef NDEBUG
-typedef SortingMachine1<IntegerSequence, IntegerComparer> IntegerSorter;
+typedef SortingMachine2<Integer, IntegerComparer> IntegerSorter;
 #else
 #include "SortingMachine\SortingMachineChecking.hpp"
 typedef SortingMachineChecking1<SortingMachine1, IntegerSequence, IntegerComparer> IntegerSorter;
