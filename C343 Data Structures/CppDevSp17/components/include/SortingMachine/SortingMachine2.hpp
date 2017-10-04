@@ -117,20 +117,7 @@ void SortingMachine2<T, TCallback>::split(QueueOfT& q, QueueOfT& q1, QueueOfT& q
 //!          floor(|#q|/2) <= |q1| <= ceiling(|#q|/2) and
 //!          floor(|#q|/2) <= |q2| <= ceiling(|#q|/2)
 {
-	T x1;
-	for (int i = 0; i <= floor(q.length()/2); i++)
-	{
-		q.dequeue(x1);
-		q1.enqueue(x1);
-	}
-	wcout << q << endl;
-	for (int i = 0; i <= q.length(); i++)
-	{
-		q.dequeue(x1);
-		q2.enqueue(x1);
-	}
-	wcout << q1 << endl;
-	wcout << q2 << endl;
+	
 } // split
 
   //----------------------------------------------------------------
@@ -141,32 +128,8 @@ void SortingMachine2<T, TCallback>::merge(QueueOfT& q, QueueOfT& q1, QueueOfT& q
 //! clears q1, q2
 //! ensures: sorted(q) and perms(q, #q1 * #q2)
 {
-	T x1, x2;
-	if (q1.length() > 0 && q2.length() > 0) {
-		q1.dequeue(x1);
-		q2.dequeue(x2);
-		if (x1 > x2) {
-			q.enqueue(x2);
-			q.enqueue(x1);
-		}
-		else if (x2 > x1) {
-			q.enqueue(x1);
-			q.enqueue(x2);
-		}
-		else {
-			q.enqueue(x1);
-			q.enqueue(x2);
-		}
-	}
-	else if(q1.length() == 0) {
-		q2.dequeue(x1);
-		q.enqueue(x1);
-	}
-	else if(q2.length() == 0){
-		q1.dequeue(x1);
-		q.enqueue(x1);
+
 	
-	}
 } // merge
 
   //----------------------------------------------------------------
@@ -179,12 +142,20 @@ void SortingMachine2<T, TCallback>::mergeSort(QueueOfT& q)
 {
 	QueueOfT q1;
 	QueueOfT q2;
-	if (q.length() > 0) {
-		split(q, q1, q2);
-		mergeSort(q);
-	}
-	merge(q,q1,q2);
-	
+	Integer len = q.length();
+	split(q, q1, q2);	
+	merge(q, q1, q2);
+	/*
+	If r > l
+		1. Find the middle point to divide the array into two halves :
+	middle m = (l + r) / 2
+		2. Call mergeSort for first half :
+	Call mergeSort(arr, l, m)
+		3. Call mergeSort for second half :
+	Call mergeSort(arr, m + 1, r)
+		4. Merge the two halves sorted in step 2 and 3 :
+		Call merge(arr, l, m, r)
+		*/
 } // mergeSort
 
 //----------------------------------------------------------------
