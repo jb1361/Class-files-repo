@@ -1,7 +1,7 @@
 #pragma once
 #include "wrapper.h"
 #include "IntegerSequence.h"
-#include "SortingMachine\SortingMachine1.hpp"
+#include "SortingMachine\SortingMachine2.hpp"
 
 //----------------------------------
 //
@@ -27,5 +27,5 @@ public:
 typedef SortingMachine2<Integer, IntegerComparer> IntegerSorter;
 #else
 #include "SortingMachine\SortingMachineChecking.hpp"
-typedef SortingMachineChecking1<SortingMachine1, IntegerSequence, IntegerComparer> IntegerSorter;
+typedef SortingMachineChecking1<SortingMachine2, Integer, IntegerComparer> IntegerSorter;
 #endif

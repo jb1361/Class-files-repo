@@ -7,27 +7,26 @@
 #include "IntegerSorter.h"
 
 void loadData(IntegerSequence& s) {
-	for (int k = 0; k <= 50; k++) {
+	for (int k = 0; k <= 10; k++) {
 		Integer y = rand() % 10000;
 		s.add(0, y);
-	} // loadData
-}
+	} 
+}// loadData
   //------------------------------------------------------------
 
 void sortData(IntegerSequence& s) {
 	IntegerSorter integerSorter;
-
 	for (int k = 0, z = s.length(); k < z; k++) {
-		IntegerSequence r;
+		Integer r;
 
-		s.remove(0, r);
+		s.remove(0,r);
 		integerSorter.add(r);
 	} // end for
 
 	integerSorter.changeToExtractionMode();
 
 	for (int k = 0, z = integerSorter.size(); k < z; k++) {
-		IntegerSequence r;
+		Integer r;
 
 		integerSorter.removeFirst(r);
 		s.add(s.length(), r);
@@ -50,7 +49,7 @@ int main(int argc, char* argv[])
 	wcout << "Sorted integers" << endl;
 	wcout << eSequence << endl;
 
-	system("pause");
+	//system("pause");
 
 	return 0;
 } // main    
