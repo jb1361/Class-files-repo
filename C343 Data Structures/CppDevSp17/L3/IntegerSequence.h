@@ -7,7 +7,7 @@
 
 
 #ifdef NDEBUG
-typedef Sequence1<Integer,Integer> IntegerSequence;
+typedef Sequence1<Integer> IntegerSequence;
 #else
 #include "Sequence\SequenceChecking.hpp"
 typedef SequenceChecking1<Sequence1, Integer> IntegerSequence;

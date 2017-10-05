@@ -7,7 +7,7 @@
 #include "IntegerSorter.h"
 
 void loadData(IntegerSequence& s) {
-	for (int k = 0; k <= 10; k++) {
+	for (int k = 0; k < 50; k++) {
 		Integer y = rand() % 10000;
 		s.add(0, y);
 	} 
