@@ -1,0 +1,239 @@
+------ Run test started ------
+UT01ConstructorV1: Map1();
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT02ClearV1: m1.clear();
+	incoming: m1 = (0,[<>,<>,<>,<>,<>])
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT02ClearV2: m1.clear();
+	incoming: m1 = (1,[<>,<>,<("CDG",390)>,<>,<>])
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT03TransferFromV1: m1.transferFrom(m2);
+	incoming: m1 = (0,[<>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+m2 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT03TransferFromV2: m1.transferFrom(m2);
+	incoming: m1 = (1,[<>,<>,<("MAD",2001)>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+m2 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT03TransferFromV3: m1.transferFrom(m2);
+	incoming: m1 = (0,[<>,<>,<>,<>,<>]) and m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+	outgoing: m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+m2 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT03TransferFromV4: m1.transferFrom(m2);
+	incoming: m1 = (1,[<>,<>,<("CDG",390)>,<>,<>]) and m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+	outgoing: m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+m2 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT04AssignmentV1: m1 = m2;
+	incoming: m1 = (0,[<>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+m2 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT04AssignmentV2: m1 = m2;
+	incoming: m1 = (1,[<>,<>,<("MAD",2001)>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+m2 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT04AssignmentV3: m1 = m2;
+	incoming: m1 = (0,[<>,<>,<>,<>,<>]) and m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+	outgoing: m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>]) and m2 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT04AssignmentV4: m1 = m2;
+	incoming: m1 = (1,[<>,<>,<("CDG",390)>,<>,<>]) and m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+	outgoing: m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>]) and m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT04AssignmentV5: m1 = m2 = m3;
+	incoming: m1 = (0,[<>,<>,<>,<>,<>])
+	incoming: m2 = (0,[<>,<>,<>,<>,<>])
+	incoming: m3 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+	outgoing: m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+	outgoing: m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+	outgoing: m3 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+m2 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+m3 = (1,[<("UIO",7874)>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT05AddV1: m1.add(key, value);
+	incoming: m1 = (0,[<>,<>,<>,<>,<>])
+	incoming: key = "SDF"
+	incoming: value = 501
+	outgoing: m1 = (1,[<>,<>,<>,<("SDF",501)>,<>])
+	outgoing: key = ""
+	outgoing: value = 0
+*** Debugging Output Section:
+m1 = (1,[<>,<>,<>,<("SDF",501)>,<>])
+*** End Debugging Output Section
+
+
+UT05AddV2: m1.add(key, value);
+	incoming: m1 = (0,[<>,<>,<>,<("SDF",501)>,<>])
+	incoming: key = "SDF"
+	incoming: value = 501
+	outgoing: m1 = (2,[<>,<>,<>,<("SDF",501),("DEN",5430)>,<>])
+	outgoing: key = ""
+	outgoing: value = 0
+*** Debugging Output Section:
+m1 = (2,[<>,<>,<>,<("SDF",501),("DEN",5430)>,<>])
+*** End Debugging Output Section
+
+
+UT05AddV3: m1.add(key, value);
+	incoming: m1 = (5,[<("UIO",7874)>,<("LIM",112)>,<("CUZ",10860)>,<("DEN",5430),("SDF",501)>,<>])
+	incoming: key = "SDF"
+	incoming: value = 501
+	outgoing: m1 = (6,[<("UIO",7874)>,<("LIM",112)>,<("CUZ",10860)>,<("DEN",5430),("SDF",501)>,<("ORD",668)>])
+	outgoing: key = ""
+	outgoing: value = 0
+*** Debugging Output Section:
+m1 = (6,[<("UIO",7874)>,<("LIM",112)>,<("CUZ",10860)>,<("DEN",5430),("SDF",501)>,<("ORD",668)>])
+*** End Debugging Output Section
+
+
+UT06RemoveV1: m1.remove(key, keyFromMap, valueFromMap);
+	incoming: m1 = (1,[<>,<>,<>,<>,<("ORD",668)>])
+	incoming: key = "ORD"
+	incoming: keyFromMap = ""
+	incoming: valueFromMap = 0
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>])
+	outgoing: key = "ORD"
+	outgoing: keyFromMap = "ORD
+	outgoing: valueFromMap = 668
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT06RemoveV2: m1.remove(key, keyFromMap, valueFromMap);
+	incoming: m1 = (2,[<>,<>,<>,<("SDF",501),("DEN",5430)>,<>])
+	incoming: key = "SDF"
+	incoming: keyFromMap = ""
+	incoming: valueFromMap = 0
+	outgoing: m1 = (1,[<>,<>,<>,<("SDF",501)>,<>])
+	outgoing: key = "DEN"
+	outgoing: keyFromMap = "DEN
+	outgoing: valueFromMap = 5430
+*** Debugging Output Section:
+m1 = (1,[<>,<>,<>,<("SDF",501)>,<>])
+*** End Debugging Output Section
+
+
+UT07ValueV1: m1.value(key);
+	incoming: m1 = (2,[<>,<>,<>,<>,<("ORL",82),("ORD",668)>])
+	outgoing: m1 = (2,[<>,<>,<>,<>,<("ORD",668),("ORL",82)>])
+*** Debugging Output Section:
+m1 = (2,[<>,<>,<>,<>,<("ORD",668),("ORL",82)>])
+*** End Debugging Output Section
+
+
+UT08RemoveAnyV1: m1.removeAny(key, value);
+	incoming: m1 = (1,[<>,<("LAX",125)>,<>,<>,<>])
+	incoming: key = ""
+	incoming: value = 0
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>])
+	outgoing: key = "LAX"
+	outgoing: value = 125
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT08RemoveAnyV2: m1.removeAny(key, value);
+	incoming: m1 = (2,[<>,<>,<>,<("DEN",5430),("SDF",501)>,<>])
+	incoming: key = ""
+	incoming: value = 0
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>])
+	outgoing: key = "LAX"
+	outgoing: value = 125
+*** Debugging Output Section:
+m1 = (1,[<>,<>,<>,<("SDF",501)>,<>])
+*** End Debugging Output Section
+
+
+UT08HasKeyV1: m1.hashKey(key);
+	incoming: m1 = (0,[<>,<>,<>,<>,<>])
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT08HasKeyV2: m1.hashKey(key);
+	incoming: m1 = (2,[<>,<>,<("MCO",96),("CUZ",10860)>,<>,<>])
+	outgoing: m1 = (2,[<>,<>,<("CUZ",10860),("MCO",96)>,<>,<>])
+*** Debugging Output Section:
+m1 = (2,[<>,<>,<("CUZ",10860),("MCO",96)>,<>,<>])
+*** End Debugging Output Section
+
+
+UT09SizeV1: m1.size();
+	incoming: m1 = (0,[<>,<>,<>,<>,<>])
+	outgoing: m1 = (0,[<>,<>,<>,<>,<>])
+*** Debugging Output Section:
+m1 = (0,[<>,<>,<>,<>,<>])
+*** End Debugging Output Section
+
+
+UT09SizeV1: m1.size();
+	incoming: m1 = (5,[<("UIO",7874)>,<("LIM",112)>,<("CUZ",10860)>,<("DEN",5430),("SDF",501)>,<>])
+	outgoing: m1 = (5,[<("UIO",7874)>,<("LIM",112)>,<("CUZ",10860)>,<("DEN",5430),("SDF",501)>,<>])
+*** Debugging Output Section:
+m1 = (5,[<("UIO",7874)>,<("LIM",112)>,<("CUZ",10860)>,<("DEN",5430),("SDF",501)>,<>])
+*** End Debugging Output Section
+
+
+========== Run test finished: 24 run (0:00:00.3644229) ==========
