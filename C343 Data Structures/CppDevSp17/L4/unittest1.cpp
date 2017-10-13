@@ -352,24 +352,10 @@ namespace L4Sol
 
 			k1 = "ORD";
 
-			Integer accessV = m1.value(k1);
 
+			Integer accessV = m1.value(k1);		
 			toText(m1, x1);
-
-			{
-				// Extra Debugging Output Section
-				// Send debugging information to Visual Studio's Output window
-				// Must do this before 1st call to Assert because a failed Assert stops execution of unit test
-				// If Assert(s) below fail, use this output to see actual values of variables
-
-				Logger::WriteMessage(L"*** Debugging Output Section:");
-
-				Text outputMsg = "m1 = ";
-				outputMsg.append(x1);
-				Logger::WriteMessage(outputMsg);
-				Logger::WriteMessage(L"*** End Debugging Output Section");
-			} // End Extra Debugging Output Section
-
+		
 			  // Verify restores parameter mode: self 
 			Assert::IsTrue(
 				x1 == "(2,[<>,<>,<>,<>,<(\"ORD\",668),(\"ORL\",82)>])",
@@ -432,6 +418,11 @@ namespace L4Sol
 				Text outputMsg = "m1 = ";
 				outputMsg.append(x1);
 				Logger::WriteMessage(outputMsg);
+
+				//toText(v, x1);
+				//Logger::WriteMessage(x1);
+				//toText(k, x1);
+				//Logger::WriteMessage(x1);
 				Logger::WriteMessage(L"*** End Debugging Output Section");
 			} // End Extra Debugging Output Section
 
@@ -497,6 +488,28 @@ namespace L4Sol
 			// Verify ensures: hasKey = false
 			Assert::IsTrue(inMap == false, L"hasKey = false");
 		} // UT08HasKeyV1
+
+		TEST_METHOD(UT08HasKeyV2)
+		{
+			TextToIntegerMap m1;
+			Text x1;
+			Text k;
+			Boolean inMap;
+			Integer v;
+			k = "LAX";
+			v = 125;
+			m1.add(k, v);
+
+			// Execute operation: hasKey
+			k = "LAX";
+			inMap = m1.hasKey(k);
+
+			toText(m1, x1);
+			Logger::WriteMessage(x1);
+			// Verify ensures: hasKey = false
+			Assert::IsTrue(inMap == true);
+		} // UT08HasKeyV1
+
 
 		  // -----------------------------------------------------------------------------------
 		  // size

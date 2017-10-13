@@ -130,9 +130,9 @@ private: // representation
 private: // internal representation
 
 	enum hashTableBounds {
-		 lower = 0,
-		 upper = 4,
-		 arraySize
+		lower = 0,
+		upper = 4,
+		arraySize = 5
 	};
 	
 	typedef Queue1<MapPairRecord> QueueOfMapPair;
@@ -180,13 +180,8 @@ Map2<K, V, KCompare>::~Map2()
 template <class K, class V, class KCompare>
 void Map2<K, V, KCompare>::transferFrom(Map2& source)
 {
-	// TODO: finish me
-	// This is a "call through" situation
-	// If you are not sure what to do here then
-	//    reread Week #4's Implementation #1 for Layering a Component instructional materials 
-	//    and specifically look at the notes for transferFrom
-	map.transferFrom(source);
-	mapSize = 0;
+	map.transferFrom(source.map);
+	mapSize.transferFrom(source.mapSize);
 } // transferFrom
 
   //-----------------------------------------------------------------------
@@ -196,6 +191,7 @@ Map2<K, V, KCompare>& Map2<K, V, KCompare>::operator = (Map2& rhs)
 {
 	map = rhs.map;
 	mapSize = rhs.mapSize;
+	return *this;
 } // operator =
 
   //-----------------------------------------------------------------------
@@ -204,7 +200,7 @@ template <class K, class V, class KCompare>
 void Map2<K, V, KCompare>::clear(void)
 {
 	map.clear();
-	mapSize = 0;
+	mapSize.clear();
 }	// clear
 
 	//-----------------------------------------------------------------------
@@ -225,22 +221,24 @@ void Map2<K, V, KCompare>::add(K& key, V& value)
 template <class K, class V, class KCompare>
 void Map2<K, V, KCompare>::remove(K& key, K& keyFromMap, V& valueFromMap)
 {
-	// TODO: finish me
 
-	// Reread Week #7's "Map - Hashing Implementation - Using StaticArray and Queue" instructional material
-	// This is a linear search of the bucket for the (keyFromMap, valueFromMap) pair using parameter key
-	// You must call the call back operation KCompare::areEqual to compare two key values
 	Integer bucket = KCompare::hashCode(key) % hashTableBounds::arraySize;
-	for (int i = 0; i < mapSize; i++)
-	{
+	MapPairRecord CurrentQ;
 
-		keyInMap = map[i];
-		keyHash = KCompare::hashCode(key) % hashTableBounds::arraySize;
-		if (KCompare::areEqual(bucket, keyHash)) {
-			keyFromMap = keyInMap;
-			valueFromMap = map.items;
+	for (int i = 0; i < map[bucket].length(); i++)
+	{
+		
+		map[bucket].dequeue(CurrentQ);
+		if (KCompare::areEqual(key, CurrentQ.keyItem)) {
+			keyFromMap = CurrentQ.keyItem;
+			valueFromMap = CurrentQ.valueItem;
+		}else
+		{
+			map[bucket].enqueue(CurrentQ);
 		}
+		
 	}
+	mapSize--;
 }	// remove
 
 	//-----------------------------------------------------------------------
@@ -248,18 +246,24 @@ void Map2<K, V, KCompare>::remove(K& key, K& keyFromMap, V& valueFromMap)
 template <class K, class V, class KCompare>
 V& Map2<K, V, KCompare>::value(K& key)
 {
-	// TODO: finish me
+	Integer bucket = KCompare::hashCode(key) % hashTableBounds::arraySize;
+	MapPairRecord CurrentQ;
+	V *value = new V;
+	for (int i = 0; i < map[bucket].length(); i++)
+	{
 
-	// Functions must have a return statement to be implemented correctly
+		map[bucket].dequeue(CurrentQ);
+		if (KCompare::areEqual(key, CurrentQ.keyItem)) {
+			*value = CurrentQ.valueItem;
+			map[bucket].enqueue(CurrentQ);
+		}
+		else
+		{
+			map[bucket].enqueue(CurrentQ);
+		}
 
-	// Reread Week #7's "Map - Hashing Implementation - Using StaticArray and Queue" instructional material
-	// This is a linear search of the bucket for the matching (key, value) pair 
-	// in the incoming hash table using parameter key
-	// You must call the call back operation KCompare::areEqual to compare two key values
-
-	// Reread Week #4's Implementation #1 for Layering a Component instructional materials 
-	// for how to return a V& type value
-
+	}
+	return *value;
 }  // value
 
    //-----------------------------------------------------------------------
@@ -267,14 +271,15 @@ V& Map2<K, V, KCompare>::value(K& key)
 template <class K, class V, class KCompare>
 void Map2<K, V, KCompare>::removeAny(K& key, V& value)
 {
-	// TODO: finish me
-
-	// Reread Week #7's "Map - Hashing Implementation - Using StaticArray and Queue" instructional material
-	// This is not a seach based on a 'key' value
-	// removeAny must just find any (key, value) pair in the incoming hash table and 
-	// produce those values back to the caller through the key and value parameters
-	
-
+	MapPairRecord CurrentQ;
+	Integer i = 0;
+	while (CurrentQ.keyItem == "") {
+		map[i].dequeue(CurrentQ);
+		i++;
+	}
+	key = CurrentQ.keyItem;
+	value = CurrentQ.valueItem;
+	mapSize--;
 }	// removeAny
 
 	//-----------------------------------------------------------------------
@@ -282,17 +287,25 @@ void Map2<K, V, KCompare>::removeAny(K& key, V& value)
 template <class K, class V, class KCompare>
 Boolean Map2<K, V, KCompare>::hasKey(K& key)
 {
-	// TODO: finish me
+	Integer bucket = KCompare::hashCode(key) % hashTableBounds::arraySize;
+	MapPairRecord CurrentQ;
+	Boolean b = false;
 
-	// Functions must have a return statement to be implemented correctly
+	for (int i = 0; i < map[bucket].length(); i++)
+	{
 
-	// Reread Week #7's "Map - Hashing Implementation - Using StaticArray and Queue" instructional material
-	// This is a linear search of the bucket for a matching (key, value) pair 
-	// in the incoming hash table using parameter key
-	// If a matching (key, value) pair is found, then return true, otherwise return false
+		map[bucket].dequeue(CurrentQ);
+		if (KCompare::areEqual(key, CurrentQ.keyItem)) {
+			b = true;
+			map[bucket].enqueue(CurrentQ);
+		}
+		else
+		{
+			map[bucket].enqueue(CurrentQ);
+		}
 
-	// You must call the call back operation KCompare::areEqual to compare two key values
-
+	}
+	return b;
 }	// hasKey
 
 	//-----------------------------------------------------------------------
@@ -300,11 +313,7 @@ Boolean Map2<K, V, KCompare>::hasKey(K& key)
 template <class K, class V, class KCompare>
 Integer Map2<K, V, KCompare>::size(void)
 {
-	// TODO: finish me
-
-	// Functions must have a return statement to be implemented correctly
-	// Utilize the mapSize data member here
-
+	return mapSize;
 }	// size
 
 	//-----------------------------------------------------------------------
