@@ -19,9 +19,10 @@ call Crlf
 
 
 ; Push the name on the stack.
-	mov ecx, nameSize
-	mov esi,0
-	
+	mov esi,0	mov ecx, nameSize
+
+	;for future reference we are pushing this string in reverse order onto the stack (eg 'John')
+	;n would be the zero index hence why we moved zero into esi
 L1:	movzx eax,aName[esi]	
 	push eax	
 	inc esi
