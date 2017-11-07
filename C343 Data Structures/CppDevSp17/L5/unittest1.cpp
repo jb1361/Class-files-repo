@@ -19,20 +19,19 @@ namespace L5Sol
 		//! replaces self
 		//! ensures: self = <>
 		// -----------------------------------------------------------------------------------
-
+		
 		TEST_METHOD(UT01ConstructorV1)
 		{
 			IntegerSequence s1;
 			Text x1;
-
+			Integer k;
+			// Test set up
 			Logger::WriteMessage(L"UT01ConstructorV1: Sequence1();");
 			Logger::WriteMessage(L"\toutgoing: s1 = <>");
-
 			// Verify ensures: self = <>
 			toText(s1, x1);
 			Assert::IsTrue(x1 == "<>", L"s1 = <>");
 		} // UT01ConstructorV1
-
 		  // -----------------------------------------------------------------------------------
 		  // clear
 		  // -----------------------------------------------------------------------------------
@@ -677,10 +676,11 @@ namespace L5Sol
 
 			Logger::WriteMessage(L"UT01ConstructorV1: Sequence1();");
 			Logger::WriteMessage(L"\toutgoing: s1 = <>");
-
 			// Verify ensures: self = <>
+
 			toText(s1, x1);
 			Logger::WriteMessage(x1);
+			Assert::IsTrue(x1 == "<>", L"s1 = <>");
 		} // UT01ConstructorV1
 
 

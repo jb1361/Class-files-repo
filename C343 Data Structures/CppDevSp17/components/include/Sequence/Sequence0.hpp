@@ -78,11 +78,12 @@ public: // standard Operations
 	//! restores s
 
 private: // representation
-
-	// TODO: declare NodeRecord here, replace the following line with the full declaration
-	class NodeRecord;
-
-	// TODO: declare 'head' data member here
+	class NodeRecord{
+		public:
+			T value;
+			NodeRecord* next;
+		};
+	NodeRecord* head;
 
 private: // local Operations
 	void displayRep(wostream &os);
@@ -119,9 +120,13 @@ void Sequence0<T>::displayRep(wostream &os)
 	// Use data member 'head' to obtain the address of the first node of the linked list
 	// For example, to display the address in head use the following:
 	//    os << head;
-
-	// After implementing, delete the following line
-	os << "displayRep not yet implemented";
+	
+	NodeRecord* p;
+	p = head;
+	while (p != NULL) {
+		os << p << p->value << p->next;
+		p = p->next;
+	}
 
 } // displayRep
 
