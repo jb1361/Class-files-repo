@@ -223,6 +223,22 @@ void Sequence0<T>::clear (void)
 template <class T>
 void Sequence0<T>::add (Integer pos, T& x)
 {
+	NodeRecord* p;
+	p = head;
+	Integer i;
+	i = 0;
+	while (i < pos) {
+		p = p->next;
+	}
+	
+	NodeRecord* h = p->next;
+	NodeRecord* temp = new NodeRecord;
+	temp->value = x;
+	p->next = temp;
+	p = p->next;
+	p->next = h;
+	
+	
 	//TODO: add
 	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
 	// add works similar to Queue's enqueue, except enqueue always adds new node at the end of the linked list
