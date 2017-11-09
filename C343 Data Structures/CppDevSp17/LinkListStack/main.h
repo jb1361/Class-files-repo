@@ -1,5 +1,4 @@
 #pragma once
-using namespace std;
-#include "Stack1.cpp"
+#include "main.cpp"
 
 
