@@ -874,17 +874,20 @@ namespace L5Sol
 
 			Logger::WriteMessage(L"UT05AddV2: s1.add(j, k);");
 			Logger::WriteMessage(L"\tincoming: s1 = <15> and j = 0 and k = 25");
-			Logger::WriteMessage(L"\toutgoing: s1 = <25,15> and j = 0 and k = 0");
+			Logger::WriteMessage(L"\toutgoing: s1 = <25,3,10,15> and j = 0 and k = 0");
 
 			// Test set up
 			j = 0;
 			k = 15;
 			s1.add(j, k);
-
+			k = 10;
+			s1.add(j, k);
 			// Execute operation: add
 			k = 25;
 			s1.add(j, k);
-
+			k = 3;
+			j = 1;
+			s1.add(j, k);
 			// Verify ensures: self = #self[0, pos) * <#x> * #self[pos, |#self|)
 			toText(s1, x1);
 			Logger::WriteMessage(x1);
@@ -932,7 +935,7 @@ namespace L5Sol
 
 			Logger::WriteMessage(L"UT06RemoveV2: s1.remove(j, k);");
 			Logger::WriteMessage(L"\tincoming: s1 = <11,33,55,77,99> and j = 4 and k = 0");
-			Logger::WriteMessage(L"\toutgoing: s1 = <11,33,55,77> and j = 4 and k = 99");
+			Logger::WriteMessage(L"\toutgoing: s1 = <11,33,55,99> and j = 4 and k = 99");
 
 			// Test set up
 			j = 0;
@@ -948,7 +951,7 @@ namespace L5Sol
 			s1.add(j, k);
 
 			// Execute operation: remove
-			j = 4;
+			j = 3;
 			s1.remove(j, k);
 
 			// Verify ensures: self = #self[0, pos) * #self[pos+1, |#self|)
@@ -1013,12 +1016,12 @@ namespace L5Sol
 			s1.add(j, k);
 			k = 11;
 			s1.add(j, k);
-
+			toText(s1, x1);
+			Logger::WriteMessage(x1);
 			// Execute operation: replaceEntry
 			j = 4;
 			k = 8;
-			toText(s1, x1);
-			Logger::WriteMessage(x1);
+			
 			s1.replaceEntry(j, k);
 
 			// Verify ensures: self = #self[0, pos) * #self[pos+1, |#self|)
@@ -1076,9 +1079,9 @@ namespace L5Sol
 			s1.add(j, k);
 			k = 11;
 			s1.add(j, k);
-
+			j = 4;
 			// Verify restores parameter mode: restores self
-			toText(s1, x1);
+			toText(s1.entry(j), x1);
 			Logger::WriteMessage(x1);
 		} // UT08EntryV2
 
@@ -1238,10 +1241,12 @@ namespace L5Sol
 			// Test set up
 			k = 95;
 			s1.add(0, k);
-
+			toText(s1.length(), x1);
+			Logger::WriteMessage(x1);
 			// Verify restores parameter mode: restores self
 			toText(s1, x1);
 			Logger::WriteMessage(x1);
+			
 		} // UT11LengthV2
 
 #endif

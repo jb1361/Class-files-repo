@@ -193,8 +193,6 @@ void Sequence0<T>::transferFrom(Sequence0& source)
 template <class T>
 Sequence0<T>& Sequence0<T>::operator = (Sequence0& rhs)
 {
-	//TODO: operator =
-	// Utilize private operations reclaimAllNodes and copyNodes 
 	reclaimAllNodes(head);
 	copyNodes(head, rhs.head);
 } // operator =
@@ -204,8 +202,6 @@ Sequence0<T>& Sequence0<T>::operator = (Sequence0& rhs)
 template <class T>
 void Sequence0<T>::clear (void)
 {
-	//TODO: clear
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
 	reclaimAllNodes(head);
 	head = NULL;
 }	// clear
@@ -222,17 +218,28 @@ void Sequence0<T>::add (Integer pos, T& x)
 	if (head == NULL) head = newNode;
 	else {
 		//go to node at pos
-		NodeRecord* p;
-		p = head;
-		Integer i;
-		i = 0;
-		while (i < pos) {
-			p = p->next;
+		NodeRecord* t;
+		t = head;
+		Integer len = 0;
+		//getitng the length
+		while (t != NULL) {
+			t = t->next;
+			len++;
 		}
-		//store address of next node
-		NodeRecord* h = p->next;
-		p->next = newNode;
+		
+		NodeRecord* p = head;
+		Integer i = 0;
+		pos = len - pos;
+		
+		while (i < pos-1) {
+			p = p->next;
+			i++;
+		}
+		NodeRecord* h;
+		h = p->next;
 		newNode->next = h;
+		p->next = newNode;
+		
 
 	}//end else
 }	// add
@@ -242,21 +249,34 @@ void Sequence0<T>::add (Integer pos, T& x)
 template <class T>
 void Sequence0<T>::remove (Integer pos, T& x)
 {
-	//TODO: remove
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-	// remove works similar to Queue's dequeue, except dequeue always removes the existing node from the front of the linked list
-	NodeRecord* p;
-	p = head;
-	Integer i;
-	i = 0;
-	while (i < pos-1) {
-		p = p->next;
+	NodeRecord* t;
+	t = head;
+	Integer len = 0;
+	//getitng the length
+	while (t != NULL) {
+		t = t->next;
+		len++;
 	}
-	NodeRecord* p2 = p;
-	p2 = p->next;
-	x.transferFrom(p2->value);
-	p = p2->next;
-	delete p2;
+	NodeRecord* p = head;
+	NodeRecord* newNode = new NodeRecord;
+	newNode->next = NULL;
+	Integer i = 0;
+	pos = (len - pos) - 1;
+	while (i < pos) {
+		if ((pos - i) == 1) newNode = p;
+		p = p->next;
+		i++;
+	}
+	if (i == 0) {
+		x.transferFrom(head->value);
+		head = head->next;
+		delete p;
+	}
+	else {
+		x.transferFrom(p->value);
+		p = p->next;
+		newNode->next = p;
+	}
 }	// remove
 
 //-----------------------------------------------------------------------
@@ -264,12 +284,21 @@ void Sequence0<T>::remove (Integer pos, T& x)
 template <class T>
 void Sequence0<T>::replaceEntry (Integer pos, T& x)
 {
+	NodeRecord* t;
+	t = head;
+	Integer len = 0;
+	//getitng the length
+	while (t != NULL) {
+		t = t->next;
+		len++;
+	}
 	NodeRecord* p;
 	p = head;
-	Integer i;
-	i = 0;
-	while (i < pos - 1) {
+	Integer i = 0;
+	pos = (len - pos) - 1;
+	while (i < pos) {
 		p = p->next;
+		i++;
 	}
 	T temp;
 
@@ -283,12 +312,21 @@ void Sequence0<T>::replaceEntry (Integer pos, T& x)
 template <class T>
 T& Sequence0<T>::entry (Integer pos)
 {
+	NodeRecord* t;
+	t = head;
+	Integer len = 0;
+	//getitng the length
+	while (t != NULL) {
+		t = t->next;
+		len++;
+	}
 	NodeRecord* p;
 	p = head;
-	Integer i;
-	i = 0;
-	while (i < pos - 1) {
+	Integer i = 0;
+	pos = (len - pos) - 1;
+	while (i < pos) {
 		p = p->next;
+		i++;
 	}
 	return p->value;
 }	// entry
@@ -324,10 +362,15 @@ void Sequence0<T>::split (Integer pos, Sequence0& receivingS)
 template <class T>
 Integer Sequence0<T>::length (void)
 {
-	//TODO: length
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-	// Reference "Walking an Entire List" from Week #10's Instructional Materials
-
+	NodeRecord* p;
+	p = head;
+	Integer i;
+	i = 0;
+	while (p != NULL) {
+		p = p->next;
+		i++;
+	}
+	return i;
 }	// length
 
 //-----------------------------------------------------------------------
