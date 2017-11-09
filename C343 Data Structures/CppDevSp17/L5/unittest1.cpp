@@ -24,7 +24,6 @@ namespace L5Sol
 		{
 			IntegerSequence s1;
 			Text x1;
-
 			Logger::WriteMessage(L"UT01ConstructorV1: Sequence1();");
 			Logger::WriteMessage(L"\toutgoing: s1 = <>");
 
@@ -69,7 +68,7 @@ namespace L5Sol
 			// Test set up
 			k = 33;
 			s1.add(0, k);
-
+	
 			// Execute operation: clear
 			s1.clear();
 
@@ -719,7 +718,7 @@ namespace L5Sol
 			// Test set up
 			k = 33;
 			s1.add(0, k);
-
+			
 			// Execute operation: clear
 			s1.clear();
 
@@ -984,6 +983,7 @@ namespace L5Sol
 
 			// Execute operation: replaceEntry
 			k = 8;
+
 			s1.replaceEntry(j, k);
 
 			// Verify ensures: self = #self[0, pos) * <#x> * #self[pos+1, |#self|)
@@ -1017,6 +1017,8 @@ namespace L5Sol
 			// Execute operation: replaceEntry
 			j = 4;
 			k = 8;
+			toText(s1, x1);
+			Logger::WriteMessage(x1);
 			s1.replaceEntry(j, k);
 
 			// Verify ensures: self = #self[0, pos) * #self[pos+1, |#self|)

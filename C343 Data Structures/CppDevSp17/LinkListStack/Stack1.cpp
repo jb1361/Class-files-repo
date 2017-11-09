@@ -23,21 +23,24 @@ void Stack1::push(int x) {
 		}
 		p->next = nextNode;
 	}
-	length++;
+	len++;
 	
 
 }
 int Stack1::pop() {
 	int val = top->value;
 	top = top->next;
-	length--;
+	len--;
 	return val;
 }
 
-void Stack1::printTop() {
-	cout << top->value << endl;
+int Stack1::peek() {
+	return top->value;
 }
 
+void Stack1::replaceTop(int x) {
+	top->value = x;
+}
 void Stack1::printStack() {
 	NodeRecord* p = new NodeRecord;
 	p = top;
@@ -46,8 +49,8 @@ void Stack1::printStack() {
 		p = p->next;
 	}	
 }
-int Stack1::Length() {
-	return length;
+int Stack1::length() {
+	return len;
 }
 
 

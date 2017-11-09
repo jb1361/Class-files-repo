@@ -107,24 +107,13 @@ private: // disallowed Sequence0 Operations
 template <class T>
 void Sequence0<T>::displayRep(wostream &os)
 //! ensures: displays the linked list like L5SolD.exe does
-{
-	//TODO: displayRep - using iteration, make it work like L5SolD.exe
-	// Reference "Walking an Entire List" from Week #10's Instructional Materials
-
-	// Notice:
-	// displayRep is called by operator << when in Debug configuration (see below)
-
-	// Write a loop to walk the linked list and display the following 3 items for each node:
-	//    node's address, value field, next field
-	//    for example:   os << p->value << p->next;
-	// Use data member 'head' to obtain the address of the first node of the linked list
-	// For example, to display the address in head use the following:
-	//    os << head;
-	
-	NodeRecord* p;
+{	
+	NodeRecord* p = new NodeRecord;
 	p = head;
 	while (p != NULL) {
-		os << p << p->value << p->next;
+		os << "Address: " << p;
+		os << " Value: " << p->value;
+		os << " Next Address: " << p->next << endl;
 		p = p->next;
 	}
 
@@ -139,11 +128,10 @@ void Sequence0<T>::reclaimAllNodes (NodeRecord* h)
 	//          starting with the node addressed by h
 	//          Must use iteration, not recursion
 {
-	//TODO: reclaimAllNodes using iteration
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-	// Reference "Walking an Entire List" from Week #10's Instructional Materials
-
-
+	if (h != NULL) {
+		reclaimAllNodes(h->next);
+		delete (h);
+	}
 } // reclaimAllNodes
 
 //-----------------------------------------------------------------------
@@ -158,9 +146,15 @@ void Sequence0<T>::copyNodes(NodeRecord*& toP, NodeRecord* fromP)
 //          Use the assignment operator to copy the value found in the node's value field
 //          Must use iteration, not recursion
 {
-	//TODO: copyNodes using iteration
-	// Reference "Walking to the Last Node and Stopping" from Week #10's Instructional Materials
+	if (fromP == NULL) {
+		toP = NULL;
+	}
+	else {
+		toP = new NodeRecord;
 
+		toP->value = fromP->value;
+		copyNodes(toP->next, fromP->next);
+	} // end if
 } // copyNodes
 
  
@@ -172,9 +166,7 @@ template <class T>
 Sequence0<T>::Sequence0 ()
 	// assume: Dead(head)
 {
-	//TODO: Sequence0 - default constructor
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-
+	head = NULL;
 }	// Sequence0
 
 //-----------------------------------------------------------------------
@@ -183,9 +175,7 @@ template <class T>
 Sequence0<T>::~Sequence0 ()
 	// assume: Alive(head)
 {
-	//TODO: ~Sequence0 - destructor
-	// Utilize private operation reclaimAllNodes 
-
+	reclaimAllNodes(head);
 }	// ~Sequence0
 
 //-----------------------------------------------------------------------
@@ -193,9 +183,9 @@ Sequence0<T>::~Sequence0 ()
 template <class T>
 void Sequence0<T>::transferFrom(Sequence0& source)
 {
-	//TODO: transferFrom
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-
+	reclaimAllNodes(head);
+	head = source.head;
+	source.head = NULL;
 } // transferFrom
 
 //-----------------------------------------------------------------------
@@ -205,7 +195,8 @@ Sequence0<T>& Sequence0<T>::operator = (Sequence0& rhs)
 {
 	//TODO: operator =
 	// Utilize private operations reclaimAllNodes and copyNodes 
-
+	reclaimAllNodes(head);
+	copyNodes(head, rhs.head);
 } // operator =
 
 //-----------------------------------------------------------------------
@@ -215,7 +206,8 @@ void Sequence0<T>::clear (void)
 {
 	//TODO: clear
 	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-
+	reclaimAllNodes(head);
+	head = NULL;
 }	// clear
 
 //-----------------------------------------------------------------------
@@ -223,26 +215,26 @@ void Sequence0<T>::clear (void)
 template <class T>
 void Sequence0<T>::add (Integer pos, T& x)
 {
-	NodeRecord* p;
-	p = head;
-	Integer i;
-	i = 0;
-	while (i < pos) {
-		p = p->next;
-	}
-	
-	NodeRecord* h = p->next;
-	NodeRecord* temp = new NodeRecord;
-	temp->value = x;
-	p->next = temp;
-	p = p->next;
-	p->next = h;
-	
-	
-	//TODO: add
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-	// add works similar to Queue's enqueue, except enqueue always adds new node at the end of the linked list
+	NodeRecord* newNode = new NodeRecord;
+	newNode->value.transferFrom(x);
+	newNode->next = NULL;
 
+	if (head == NULL) head = newNode;
+	else {
+		//go to node at pos
+		NodeRecord* p;
+		p = head;
+		Integer i;
+		i = 0;
+		while (i < pos) {
+			p = p->next;
+		}
+		//store address of next node
+		NodeRecord* h = p->next;
+		p->next = newNode;
+		newNode->next = h;
+
+	}//end else
 }	// add
 
 //-----------------------------------------------------------------------
@@ -253,7 +245,18 @@ void Sequence0<T>::remove (Integer pos, T& x)
 	//TODO: remove
 	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
 	// remove works similar to Queue's dequeue, except dequeue always removes the existing node from the front of the linked list
-
+	NodeRecord* p;
+	p = head;
+	Integer i;
+	i = 0;
+	while (i < pos-1) {
+		p = p->next;
+	}
+	NodeRecord* p2 = p;
+	p2 = p->next;
+	x.transferFrom(p2->value);
+	p = p2->next;
+	delete p2;
 }	// remove
 
 //-----------------------------------------------------------------------
@@ -261,10 +264,18 @@ void Sequence0<T>::remove (Integer pos, T& x)
 template <class T>
 void Sequence0<T>::replaceEntry (Integer pos, T& x)
 {
-	//TODO: replaceEntry
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-	// replaceEntry works similar to Queue's replaceFront, except replaceFront always works with the first node of the linked list
+	NodeRecord* p;
+	p = head;
+	Integer i;
+	i = 0;
+	while (i < pos - 1) {
+		p = p->next;
+	}
+	T temp;
 
+	temp.transferFrom(p->value);
+	p->value.transferFrom(x);
+	x.transferFrom(temp);
 }	// replaceEntry
 
 //-----------------------------------------------------------------------
@@ -272,10 +283,14 @@ void Sequence0<T>::replaceEntry (Integer pos, T& x)
 template <class T>
 T& Sequence0<T>::entry (Integer pos)
 {
-	//TODO: entry
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-	// replaceEntry works similar to Queue's entry, except entry always accesses the first node of the linked list
-
+	NodeRecord* p;
+	p = head;
+	Integer i;
+	i = 0;
+	while (i < pos - 1) {
+		p = p->next;
+	}
+	return p->value;
 }	// entry
 
 //-----------------------------------------------------------------------

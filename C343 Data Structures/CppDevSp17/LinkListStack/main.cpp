@@ -7,7 +7,10 @@ int main() {
 	stack.push(5);
 	stack.push(10);
 	stack.push(50);
-	cout << "Stack Length: " << stack.Length() << endl;
+	cout << "peek: " << stack.peek() << endl;
+	stack.replaceTop(3);
+	cout << "peek after replaceTop: " << stack.peek() << endl;
+	cout << "Stack Length: " << stack.length() << endl;
 	cout << "Stack before pop: " << endl;
 	stack.printStack();
 	cout << "pop value: " << stack.pop() << endl;

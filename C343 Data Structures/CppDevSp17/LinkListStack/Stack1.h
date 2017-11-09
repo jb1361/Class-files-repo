@@ -8,15 +8,15 @@ private:
 		int value;
 		NodeRecord* next;
 	};
-	int length = 0;
+	int len = 0;
 public:
 	Stack1();
 	~Stack1();
-	
 	NodeRecord* top = new NodeRecord;
 	void push(int x);
 	int pop();
-	void printTop();
+	int peek();
 	void printStack();
-	int Length();
+	int length();
+	void replaceTop(int x);
 };
