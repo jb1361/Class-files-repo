@@ -336,12 +336,19 @@ T& Sequence0<T>::entry (Integer pos)
 template <class T>
 void Sequence0<T>::append (Sequence0& sToAppend)
 {
-	//TODO: append
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-	// Run L5SolD.exe and have it append two sequences:
-	//    Use the display operation before and after to see how the internal representation of both sequences change
-	//    You have to pay close attention to the addresses of the nodes and where they end up
+	NodeRecord* p;
+	if (head == NULL) {
+		head = sToAppend.head;	
+	}
+	else {
+		p = head;
+		while (p->next != NULL) {
+			p = p->next;
+		}
+		p->next = sToAppend.head;
 
+	}
+	sToAppend.head = NULL;
 }	// append
 
 //-----------------------------------------------------------------------
@@ -349,11 +356,26 @@ void Sequence0<T>::append (Sequence0& sToAppend)
 template <class T>
 void Sequence0<T>::split (Integer pos, Sequence0& receivingS)
 {
-	//TODO: append
-	// Reference "Implementing a Component Using Nodes & Pointers" from Week #10's Instructional Materials
-	// Run L5SolD.exe and have it split a sequence:
-	//    Use the display operation before and after to see how the internal representation of both sequences change
-	//    You have to pay close attention to the addresses of the nodes and where they end up
+	NodeRecord* t;
+	t = head;
+	Integer len = 0;
+	//getitng the length
+	while (t != NULL) {
+		t = t->next;
+		len++;
+	}
+	NodeRecord* p;
+	p = head;
+	Integer i = 0;
+	
+	pos = (len - pos);
+	while (i < pos) {
+		receivingS.add(0,p->value);
+		p = p->next;
+		head = p;
+		i++;
+	}
+
 
 }	// split
 
