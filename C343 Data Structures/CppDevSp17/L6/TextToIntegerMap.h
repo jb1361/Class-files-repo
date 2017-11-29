@@ -1,6 +1,6 @@
 #pragma once
 #include "Wrapper.h"
-#include "Map\Map3"
+#include "Map\Map3.hpp"
 
 class TextComparer
 {

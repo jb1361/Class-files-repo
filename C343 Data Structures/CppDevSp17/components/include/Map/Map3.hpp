@@ -40,6 +40,7 @@ public: // standard Operations
 	//! replaces self
 	//! ensures: self = { }
 	~Map3();
+
 	void clear(void);
 
 	void transferFrom(Map3& source);
@@ -149,7 +150,12 @@ Integer Map3<K, V, KCompare>::countNodes (TreeNodeRecord* p)
 	// requires: Alive(p)  or  NULL(p)
 	//  ensures: countNodes() = number of nodes in the tree rooted at 'p' 
 {
-	//TODO: finish countNodes
+	Integer i = 0;
+	if (p != NULL) {
+		i++;
+		i = i + countNodes(p->leftSubtree) + countNodes(p->rightSubtree);
+	}
+	return i;
 } // countNodes
 
 //-----------------------------------------------------------------------
@@ -159,7 +165,15 @@ void Map3<K, V, KCompare>::deleteNodes (TreeNodeRecord* p)
 	// requires: Alive(p)  or  NULL(p)
 	//  ensures: all nodes in tree rooted at 'p' are deleted
 {
-	//TODO: finish deleteNodes
+	//this keep producing a memory access error due to trying to access the left and right pointers
+	//that for some reason are not becoming null for some reason
+	if (p != NULL) {
+		deleteNodes(p->leftSubtree);
+		deleteNodes(p->rightSubtree);
+		delete p;
+		//p = NULL;
+	}
+	
 } // deleteNodes
 
 template <class K, class V, class KCompare>
@@ -169,7 +183,13 @@ void Map3<K, V, KCompare>::copyTree (TreeNodeRecord* fromP, TreeNodeRecord*& toP
 	//       performs a deep copy of the tree rooted at fromP  and 
 	//       toP holds the root of a tree that is the exact duplicate of the tree rooted at fromP
 {
-	//TODO: finish copyTree
+	if (toP != NULL) {
+		if (fromP == NULL) fromP = new TreeNodeRecord;
+		fromP->keyItem = toP->keyItem;
+		fromP->valueItem = toP->valueItem;
+		copyTree(fromP->leftSubtree, toP->leftSubtree);
+		copyTree(fromP->rightSubtree, toP->rightSubtree);	
+	}
 } // copyTree
 
 //-----------------------------------------------------------------------
@@ -182,7 +202,18 @@ Boolean Map3<K, V, KCompare>::inTree (TreeNodeRecord*& p, K& k)
 	//           inTree() = true iff there exists a node with pointer 'x' in the tree rooted at 'p' 
 	//           where x->keyItem == k
 {
-	//TODO: finish inTree recursive version
+	if (p != NULL) {
+		if (p->keyItem != k) {
+			p = p->leftSubtree;
+			inTree(p, k);
+		}else return true;
+		if (p->keyItem != k) {
+			p = p->rightSubtree;
+			inTree(p, k);
+		}else return true;
+		//doesnt work atm fix it
+	}
+	return false;
 } // inTree
 
 //-----------------------------------------------------------------------
@@ -194,7 +225,23 @@ void Map3<K, V, KCompare>::insertInTree (TreeNodeRecord*& p, K& k, V& v)
 	//  ensures: the outgoing tree rooted at 'p' = the incoming tree rooted at 'p' with a new node
 	//           containing k and v added at the frontier of the tree
 {
-	//TODO: finish insertInTree
+	if (p == NULL) {
+		// base case - insert node into tree
+		p = new TreeNodeRecord;
+		p->keyItem.transferFrom(k);
+		p->valueItem.transferFrom(v);
+		p->leftSubtree = NULL;
+		p->rightSubtree = NULL;
+	}
+	else {
+		// Notice the call to areOrdered callback function to guide the navigation.
+		if (KCompare::areOrdered(k, p->keyItem)) {
+			insertInTree(p->leftSubtree, k, v);
+		}
+		else {
+			insertInTree(p->rightSubtree, k, v);
+		} // end if
+	} // end if
 } // insertInTree
 
 //-----------------------------------------------------------------------
@@ -208,7 +255,11 @@ void Map3<K, V, KCompare>::removeLargestFromTree (TreeNodeRecord*& p, TreeNodeRe
 	//       the tree rooted at 'p' possesses the binary search tree property
 
 {
-	//TODO: finish removeLargestFromTree
+	if (p != NULL) {
+		largest = p;
+		removeLargestFromTree(p->rightSubtree, largest);
+	}
+	deleteNodes(largest);
 } // removeLargestFromTree
 
 //-----------------------------------------------------------------------
@@ -245,7 +296,14 @@ V& Map3<K, V, KCompare>::treeAccessor (TreeNodeRecord*& p, K& k)
 	//       x->keyItem == k
 	//  ensures: treeAccessor() = &x->valueItem   and   the tree rooted at 'p' has not been changed
 {
-	//TODO: finish treeAccessor
+	if (p != NULL) {
+		if (p->keyItem != k) {
+			treeAccessor(p->leftSubtree, k);
+			treeAccessor(p->rightSubtree, k);
+		}
+		else return p->valueItem;
+
+	}
 } // treeAccessor
 
 //-----------------------------------------------------------------------
@@ -257,7 +315,7 @@ V& Map3<K, V, KCompare>::treeAccessor (TreeNodeRecord*& p, K& k)
 template <class K, class V, class KCompare>
 Map3<K, V, KCompare>::Map3 ()
 {
-	//TODO: finish constructor
+	root = NULL;
 }	// Map3
 
 //-----------------------------------------------------------------------
@@ -265,7 +323,7 @@ Map3<K, V, KCompare>::Map3 ()
 template <class K, class V, class KCompare>
 Map3<K, V, KCompare>::~Map3 ()
 {
-	//TODO: finish destructor
+	deleteNodes(root);
 }	// ~Map3
 
 //-----------------------------------------------------------------------
@@ -273,7 +331,8 @@ Map3<K, V, KCompare>::~Map3 ()
 template <class K, class V, class KCompare>
 void Map3<K, V, KCompare>::transferFrom (Map3& source)
 {
-	//TODO: finish transferFrom
+	
+	deleteNodes(source.root);
 }	// transferFrom
 
 //-----------------------------------------------------------------------
@@ -281,7 +340,11 @@ void Map3<K, V, KCompare>::transferFrom (Map3& source)
 template <class K, class V, class KCompare>
 Map3<K, V, KCompare>& Map3<K, V, KCompare>::operator = (Map3& rhs)
 {
-	//TODO: finish operator =
+	//transferFrom(*this);
+	deleteNodes(root);
+	copyTree(root, rhs.root);
+	return* this;
+	
 } // operator =
 
 //-----------------------------------------------------------------------
@@ -289,7 +352,7 @@ Map3<K, V, KCompare>& Map3<K, V, KCompare>::operator = (Map3& rhs)
 template <class K, class V, class KCompare>
 void Map3<K, V, KCompare>::clear (void)
 {
-	//TODO: finish clear
+	deleteNodes(root);
 }	// clear
 
 //-----------------------------------------------------------------------
@@ -297,7 +360,7 @@ void Map3<K, V, KCompare>::clear (void)
 template <class K, class V, class KCompare>
 void Map3<K, V, KCompare>::add (K& k, V& v)
 {
-	//TODO: finish add
+	insertInTree(root, k, v);
 }	// add
 
 //-----------------------------------------------------------------------
@@ -305,7 +368,8 @@ void Map3<K, V, KCompare>::add (K& k, V& v)
 template <class K, class V, class KCompare>
 void Map3<K, V, KCompare>::remove (K& k, K& dCopy, V& v)
 {
-	//TODO: finish remove
+	TreeNodeRecord* p = new TreeNodeRecord;
+	extractFromTree(root,k,p);
 }	// remove
 
 //-----------------------------------------------------------------------
@@ -313,7 +377,7 @@ void Map3<K, V, KCompare>::remove (K& k, K& dCopy, V& v)
 template <class K, class V, class KCompare>
 V& Map3<K, V, KCompare>::value (K& k)
 {
-	//TODO: finish value
+	treeAccessor(root,k);
 }  // value
 
 //-----------------------------------------------------------------------
@@ -321,7 +385,8 @@ V& Map3<K, V, KCompare>::value (K& k)
 template <class K, class V, class KCompare>
 void Map3<K, V, KCompare>::removeAny (K& k, V& v)
 {
-	//TODO: finish removeAny
+	TreeNodeRecord* largest = new TreeNodeRecord;
+	removeLargestFromTree(root,largest);
 }	// removeAny
 
 //-----------------------------------------------------------------------
@@ -329,7 +394,7 @@ void Map3<K, V, KCompare>::removeAny (K& k, V& v)
 template <class K, class V, class KCompare>
 Boolean Map3<K, V, KCompare>::hasKey (K& k)
 {
-	//TODO: finish hasKey
+	return inTree(root,k);
 }	// hasKey
 
 //-----------------------------------------------------------------------
@@ -337,7 +402,7 @@ Boolean Map3<K, V, KCompare>::hasKey (K& k)
 template <class K, class V, class KCompare>
 Integer Map3<K, V, KCompare>::size (void)
 {
-	//TODO: finish size
+	return countNodes(root);
 }	// size
 
 //-----------------------------------------------------------------------

@@ -237,6 +237,8 @@ namespace L6
 				outputMsg.append(x1);
 				Logger::WriteMessage(outputMsg);
 				Logger::WriteMessage(L"*** End Debugging Output Section");
+
+
 			} // End Extra Debugging Output Section
 
 			// Verify ensures: self = #self union {(#key, #value)}
