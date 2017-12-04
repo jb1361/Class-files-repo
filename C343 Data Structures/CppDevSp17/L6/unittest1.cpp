@@ -189,7 +189,53 @@ namespace L6
 			// Verify restores parameter mode: restores rhs
 			Assert::IsTrue(x2 == "E", L"m2 = E");
 		} // UT04AssignmentV2
-		
+		TEST_METHOD(UT04AssignmentV3)
+		{
+			TextToIntegerMap m1, m2;
+			Text x1, x2;
+			Text k;
+			Integer v;
+
+			Logger::WriteMessage(L"UT04AssignmentV2: m1 = m2;");
+			Logger::WriteMessage(L"\tincoming: m1 = E and m2 = (E,\"MAD\",E)");
+			Logger::WriteMessage(L"\toutgoing: m1 = (E,\"MAD\",E) and m2 = (E,\"MAD\",E)");
+
+			// Test set up
+			// Airport: MAD   Altitude: 2001
+			k = "MAD";
+			v = 2001;
+			m2.add(k, v);
+
+			// Execute operation: operator =
+			m1 = m2;
+
+			toText(m1, x1);
+			toText(m2, x2);
+
+			{
+				// Extra Debugging Output Section
+				// Send debugging information to Visual Studio's Output window
+				// Must do this before 1st call to Assert because a failed Assert stops execution of unit test
+				// If Assert(s) below fail, use this output to see actual values of variables
+
+				Logger::WriteMessage(L"*** Debugging Output Section:");
+
+				Text outputMsg = "m1 = ";
+				outputMsg.append(x1);
+				Logger::WriteMessage(outputMsg);
+
+				outputMsg = "m2 = ";
+				outputMsg.append(x2);
+				Logger::WriteMessage(outputMsg);
+				Logger::WriteMessage(L"*** End Debugging Output Section");
+			} // End Extra Debugging Output Section
+
+			  // Verify ensures: self = rhs
+			Assert::IsTrue(x1 == x2, L"m1 = m2");
+
+			// Verify restores parameter mode: restores rhs
+			//Assert::IsTrue(x2 == x1, L"m2 = E");
+		} // UT04AssignmentV2
 		  // -----------------------------------------------------------------------------------
 		  // add
 		  // -----------------------------------------------------------------------------------
@@ -802,7 +848,8 @@ namespace L6
 			k = "LAX";
 			v = 125;
 			m1.add(k, v);
-
+			k = "LAX";
+			v = 125;
 			// Execute operation: removeAny
 
 			m1.removeAny(k, v);
