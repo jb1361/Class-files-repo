@@ -1,0 +1,8 @@
+//wchar_t* temp;
+//fileName.copyToCString(temp);
+//wstring ws(temp);
+//string s(ws.begin(), ws.end());
+//const char* c = s.c_str();
+//std::string stemp = std::string(s.begin(), s.end());
+//LPCSTR sw = stemp.c_str();
+//reinterpret_cast<LCPSTR> (fileName);
