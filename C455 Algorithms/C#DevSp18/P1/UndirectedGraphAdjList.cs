@@ -101,7 +101,7 @@ namespace P1
             {
                 if (edge.v1 == v1 && edge.v2 == v2) edges.Remove(removeEdge);  
             }
-        
+            
         } // RemoveEdge
 
         public int RemoveAnyIncidentEdge(int v1)
@@ -186,8 +186,8 @@ namespace P1
             
             String vert = string.Join(",", vertices);
             String edge = string.Join(",", edges);
-            sb.Append("{" + vert + "},");
-            sb.Append("{" + edge + "}");
+            sb.Append("({" + vert + "},");
+            sb.Append("{" + edge + "})");
             return sb.ToString();
         } // ToString
 
