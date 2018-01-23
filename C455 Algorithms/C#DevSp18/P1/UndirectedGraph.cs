@@ -54,7 +54,7 @@ namespace P1
         }
         public bool IsEdge(int v1,int v2)
         {
-            return true;
+            return g1.IsEdge(v1, v2);
         }
         public override string ToString()
         {

@@ -171,8 +171,28 @@ namespace P1
         // requires true
         // ensures IsEdge = {v1, v2} is in self.edges
         {
-            // Finish me
-
+            Edge removeEdge = new Edge(v1, v2);
+            foreach (var edge in edges)
+            {
+                Console.WriteLine("=========");
+                Console.WriteLine(edge.v1);
+                Console.WriteLine(v1);
+                if (edge.v1 == v1) Console.WriteLine("Match");
+                Console.WriteLine("v2: " + edge.v2);
+                Console.WriteLine("v2: " + v2);
+                if (edge.v2 == v2) Console.WriteLine("v2 Match");
+                Console.WriteLine("=========");
+                Console.WriteLine();
+               
+                if (edge.v1 == v1 && edge.v2 == v2)
+                {
+                   
+                    
+                    return true;
+                }
+                
+            }
+            return false;
             // Note: the following return is incorrect, and must be fixed
             // It is here so that the compiler will not barf because
             // of no return statement being present
@@ -183,7 +203,6 @@ namespace P1
         {
        
             StringBuilder sb = new StringBuilder();   
-            
             String vert = string.Join(",", vertices);
             String edge = string.Join(",", edges);
             sb.Append("({" + vert + "},");
