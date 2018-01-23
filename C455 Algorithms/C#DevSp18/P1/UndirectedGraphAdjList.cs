@@ -174,9 +174,11 @@ namespace P1
             Edge removeEdge = new Edge(v1, v2);
             foreach (var edge in edges)
             {
+
+                //need to add cases for the reverse since an edge is just two points so it doesnt matter which way it goes.
                 Console.WriteLine("=========");
-                Console.WriteLine(edge.v1);
-                Console.WriteLine(v1);
+                Console.WriteLine("v1: " + edge.v1);
+                Console.WriteLine("v1: " + v1);
                 if (edge.v1 == v1) Console.WriteLine("Match");
                 Console.WriteLine("v2: " + edge.v2);
                 Console.WriteLine("v2: " + v2);
