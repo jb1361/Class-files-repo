@@ -168,7 +168,7 @@ void TraceDone(void)
 
 const char * AppName(void)
 {
-    static stdstr_f ApplicationName("Project64 %s", "test");
+    static stdstr_f ApplicationName("Project64 %s", "SM64AI");
     return ApplicationName.c_str();
 }
 
@@ -248,7 +248,8 @@ bool AppInit(CNotification * Notify, const char * BaseDirectory, int argc, char 
         //Create the plugin container
         WriteTrace(TraceAppInit, TraceInfo, "Create Plugins");
         g_Plugins = new CPlugins(Directory_Plugin, false);
-
+		
+		//g_Plugins = new CPlugins(Directory_Plugin, false);
         g_Lang = new CLanguage();
         g_Lang->LoadCurrentStrings();
         g_Notify->AppInitDone();

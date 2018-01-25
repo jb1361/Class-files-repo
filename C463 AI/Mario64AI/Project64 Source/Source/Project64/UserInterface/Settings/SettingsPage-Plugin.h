@@ -40,7 +40,7 @@ public:
     void             ApplySettings(bool UpdateScreen);
     bool             EnableReset(void);
     void             ResetPage(void);
-
+	void SetPlugin(string p);
 private:
     void GfxPluginAbout(UINT /*Code*/, int /*id*/, HWND /*ctl*/) { ShowAboutButton(GFX_LIST); }
     void AudioPluginAbout(UINT /*Code*/, int /*id*/, HWND /*ctl*/) { ShowAboutButton(AUDIO_LIST); }
@@ -62,7 +62,7 @@ private:
     void UpdatePageSettings(void);
     void ApplyComboBoxes(void);
     bool ResetComboBox(CModifiedComboBox & ComboBox, SettingID Type);
-	void SetPlugin(string p);
+	
     CPartialGroupBox m_GfxGroup, m_AudioGroup, m_ControlGroup, m_RspGroup;
     CPluginList      m_PluginList;
 };

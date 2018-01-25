@@ -3,24 +3,39 @@
 #include "Multilanguage\LanguageSelector.h"
 #include "Settings/UISettings.h"
 
+#include <Project64-core/Plugins/PluginClass.h>
+
 int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /*lpszArgs*/, int /*nWinMode*/)
 {
-	//CoInitialize(NULL);
-	//AppInit(&Notify(), CPath(CPath::MODULE_DIRECTORY), __argc, __argv);
-	//CLanguageSelector().
-	//WriteTrace(TraceUserInterface, TraceDebug, "Create Main Window");
-	//CMainGui MainWindow(true, stdstr_f("Project64 %s", "test").c_str()), HiddenWindow(false);
-	//CN64System::RunFileImage("C:/Users/justi/Desktop/Class files repo/Class-files-repo/C463 AI/Mario64AI/Super Mario 64 (USA).z64");
-	
+	CoInitialize(NULL);
+	AppInit(&Notify(), CPath(CPath::MODULE_DIRECTORY), __argc, __argv);
+	CLanguageSelector().Set("English");
+	WriteTrace(TraceUserInterface, TraceDebug, "Create Main Window");
+	CMainGui MainWindow(true, stdstr_f("Project64 %s", "SM64AI").c_str()), HiddenWindow(false);
+	CMainMenu MainMenu(&MainWindow);
+	CDebuggerUI Debugger;
+	g_Debugger = &Debugger;
+	g_Plugins->SetRenderWindows(&MainWindow, &HiddenWindow);
+	Notify().SetMainWindow(&MainWindow);
+	WriteTrace(TraceUserInterface, TraceDebug, "Show Main Window");
+	MainWindow.Show(true);
+	try
+	{
+		CN64System::RunFileImage("C:/Users/justi/Desktop/Class files repo/Class-files-repo/C463 AI/Mario64AI/Super Mario 64 (USA).z64");
+	}
+	catch (...)
+		{
+			WriteTrace(TraceUserInterface, TraceError, "Exception caught (File: \"%s\" Line: %d)", __FILE__, __LINE__);
+			MessageBox(NULL, stdstr_f("Exception caught\nFile: %s\nLine: %d", __FILE__, __LINE__).c_str(), "Exception", MB_OK);
+		}
+		
+	/*
     try
     {
         CoInitialize(NULL);
         AppInit(&Notify(), CPath(CPath::MODULE_DIRECTORY), __argc, __argv);
 		CLanguageSelector().Set("English");
-		//const CPluginList::PLUGIN * Plugin = *PluginPtr;
-		
-		//g_Settings->SaveString(cb_iter->first, Plugin->FileName.c_str());
-	//	g_Settings->SetSetting(Cmd_RomFile)
+
        // if (!g_Lang->IsLanguageLoaded())
       //  {
           //  CLanguageSelector().Select();
@@ -28,7 +43,6 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
 
         //Create the main window with Menu
         WriteTrace(TraceUserInterface, TraceDebug, "Create Main Window");
-       // CMainGui MainWindow(true, stdstr_f("Project64 %s", VER_FILE_VERSION_STR).c_str()), HiddenWindow(false);
 		CMainGui MainWindow(true, stdstr_f("Project64 %s", "test").c_str()), HiddenWindow(false);
         CMainMenu MainMenu(&MainWindow);
         CDebuggerUI Debugger;
@@ -102,8 +116,22 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
         WriteTrace(TraceUserInterface, TraceError, "Exception caught (File: \"%s\" Line: %d)", __FILE__, __LINE__);
         MessageBox(NULL, stdstr_f("Exception caught\nFile: %s\nLine: %d", __FILE__, __LINE__).c_str(), "Exception", MB_OK);
     }
-	
+	*/
+	//Process Messages till program is closed
+	WriteTrace(TraceUserInterface, TraceDebug, "Entering Message Loop");
+	MainWindow.ProcessAllMessages();
+	WriteTrace(TraceUserInterface, TraceDebug, "Message Loop Finished");
+
+	if (g_BaseSystem)
+	{
+		g_BaseSystem->CloseCpu();
+		delete g_BaseSystem;
+		g_BaseSystem = NULL;
+	}
+	WriteTrace(TraceUserInterface, TraceDebug, "System Closed");
+
     AppCleanup();
     CoUninitialize();
+	
     return true;
 }
