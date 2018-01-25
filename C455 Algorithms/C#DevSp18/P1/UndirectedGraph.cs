@@ -8,14 +8,50 @@ namespace P1
 {
     class UndirectedGraph
     {
-        UndirectedGraphAdjList g1 = new UndirectedGraphAdjList();
-        UndirectedGraphAdjMatrix g2 = new UndirectedGraphAdjMatrix();
-        
-        public class Edge
-        {
+        UndirectedGraphAdjList g2 = new UndirectedGraphAdjList();
+        UndirectedGraphAdjMatrix g1 = new UndirectedGraphAdjMatrix();
 
-        }
-        
+        public class Edge
+        // Note:
+        // This class is finished for you
+        // No work required here
+        {
+            // Edge is finite set of integer
+            //   exemplar e
+            //   constraint |e| = 2
+
+            public int v1;
+            public int v2;
+
+            public Edge()
+            // updates self
+            // ensures self = {0,0}
+            {
+                v1 = 0;
+                v2 = 0;
+            } // Edge
+
+            public Edge(int v1, int v2)
+            // updates self
+            // ensures self = {v1,v2}
+            {
+                this.v1 = v1;
+                this.v2 = v2;
+            } // Edge
+
+            public void clear()
+            // clears self
+            {
+                v1 = 0;
+                v2 = 0;
+            } // clear
+            public override string ToString()
+            {
+                StringBuilder sb = new StringBuilder("{" + v1 + "," + v2 + "}");
+                return sb.ToString();
+            } // ToString
+        } // Edge
+
         public void SetNumberOfVertices(int n)
         {
             g1.SetNumberOfVertices(n);
@@ -32,7 +68,7 @@ namespace P1
         }
         public int RemoveAnyIncidentEdge(int v1)
         {
-            return 0;
+            return g1.RemoveAnyIncidentEdge(v1);
         }
         public void clear()
         {
@@ -50,12 +86,21 @@ namespace P1
         }
         public int Degree(int v1)
         {
-            return 0;
+            return g1.Degree(v1);
         }
         public bool IsEdge(int v1,int v2)
         {
             return g1.IsEdge(v1, v2);
         }
+        public Edge RemoveAnyEdge()
+        {
+            UndirectedGraphAdjMatrix.Edge e = g1.RemoveAnyEdge();
+            Edge ee = new Edge(e.v1, e.v2);
+            return ee;
+        }
+
+
+
         public override string ToString()
         {
             return g1.ToString();

@@ -95,13 +95,12 @@ namespace P1
         // ensures self.vertices = #self.vertices  and
         //         self.edges = #self.edges - {{v1, v2}}
         {
-           
-            Edge removeEdge = new Edge(v1, v2);
-            foreach (var edge in edges)
+            int index = 0;
+            while (index <= edges.Count-1)
             {
-                if (edge.v1 == v1 && edge.v2 == v2) edges.Remove(removeEdge);  
-            }
-            
+                if (edges[index].v1 == v1 && edges[index].v2 == v2) edges.RemoveAt(index);
+                else index++;
+            }           
         } // RemoveEdge
 
         public int RemoveAnyIncidentEdge(int v1)
@@ -114,12 +113,18 @@ namespace P1
         //         {v1, RemoveAnyIncidentEdge} is in #self.edges and
         //         self.edges = #self.edges - {{v1, RemoveAnyIncidentEdge}}
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
-            return 0;
+            int index = 0;
+            while (index <= edges.Count - 1)
+            {
+                if (edges[index].v1 == v1)
+                {
+                    int r = edges[index].v2;
+                    edges.RemoveAt(index);
+                    return r;
+                }
+                else index++;
+            }
+            return -1;
         } // RemoveAnyIncidentEdge
 
         public Edge RemoveAnyEdge()
@@ -129,12 +134,9 @@ namespace P1
         //         RemoveAnyEdge is in #self.edges  and
         //         self.edges = #self.edges - {RemoveAnyEdge}
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
-            return new Edge(0, 0);
+            Edge e = new Edge(edges[0].v1, edges[0].v2);
+            edges.RemoveAt(0);
+            return e;
         } // RemoveAnyEdge
 
         public int NumberOfVertices()
@@ -158,12 +160,12 @@ namespace P1
         // requires true
         // ensures Degree = |{v2: integer where ({v, v2} is in self.edges) (v2)}|
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
-            return 0;
+            int deg = 0;
+            foreach (var edge in edges)
+            {
+                if (edge.v2 == v || edge.v1 == v) deg++;
+            }
+            return deg;
         } // Degree
 
         public bool IsEdge(int v1, int v2)
@@ -174,36 +176,14 @@ namespace P1
             Edge removeEdge = new Edge(v1, v2);
             foreach (var edge in edges)
             {
-
-                //need to add cases for the reverse since an edge is just two points so it doesnt matter which way it goes.
-                Console.WriteLine("=========");
-                Console.WriteLine("v1: " + edge.v1);
-                Console.WriteLine("v1: " + v1);
-                if (edge.v1 == v1) Console.WriteLine("Match");
-                Console.WriteLine("v2: " + edge.v2);
-                Console.WriteLine("v2: " + v2);
-                if (edge.v2 == v2) Console.WriteLine("v2 Match");
-                Console.WriteLine("=========");
-                Console.WriteLine();
-               
-                if (edge.v1 == v1 && edge.v2 == v2)
-                {
-                   
-                    
-                    return true;
-                }
-                
+                if (edge.v1 == v1 && edge.v2 == v2) return true;
+                else if (edge.v1 == v2 && edge.v2 == v1) return true;
             }
-            return false;
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
             return false;
         } // IsEdge
 
         public override string ToString()
-        {
-       
+        {  
             StringBuilder sb = new StringBuilder();   
             String vert = string.Join(",", vertices);
             String edge = string.Join(",", edges);

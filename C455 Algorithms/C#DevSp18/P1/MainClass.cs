@@ -149,21 +149,12 @@ namespace P1
             g1.AddEdge(2, 3);
             g1.AddEdge(2, 5);
             g1.AddEdge(2, 6);
-
+            Console.WriteLine("g1 = " + g1.ToString());
+           
             for (int k = 0, z = g1.NumberOfEdges(); k < z; k++)
             {
-               // UndirectedGraph.Edge e = g1.RemoveAnyEdge();
-               // Console.WriteLine("edge #" + (k + 1) + " removed is: " + e.ToString());
-
-
-                // Must output 3 lines, similar to the following. 
-                // What will be different is the order in which the edges come out.
-                // Since RemoveAnyEdge gets to choose which edge to remove when
-                //   it gets called, these edges might come out in a different order
-                //   than what is shown below.
-                // edge #1 removed is: {2,3}
-                // edge #2 removed is: {2,5}
-                // edge #3 removed is: {2,6}
+                UndirectedGraph.Edge e = g1.RemoveAnyEdge();
+                Console.WriteLine("edge #" + (k + 1) + " removed is: " + e.ToString());
             } // end for
         } // main
     } // MainClass

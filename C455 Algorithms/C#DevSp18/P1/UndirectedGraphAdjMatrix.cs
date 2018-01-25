@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 namespace P1
 {
@@ -46,32 +47,22 @@ namespace P1
             } // ToString
         } // Edge
 
-
-
-        // UndirectedGraph is modeled by (
-        //      vertices: finite set of integer
-        //      edges: set of Edge
-        //   )
-        // exemplar self 
-
-
-        // Finish me:
-        // Place the internal data structure declarations here
         int[] vertices;
-        int[] edges;
-
+        List<Edge> edges;
 
         public UndirectedGraphAdjMatrix()
         // updates self
         // ensures self.vertices = {}  and  self.edges = { }
         {
-           
+            vertices = new int[0];
+            edges = new List<Edge>();
         } // UndirectedGraphAdjMatrix
 
-        public void clear ()
+        public void clear()
         // clears self
         {
-            // Finish me
+            vertices = new int[0];
+            edges.Clear();
         } // clear
 
         public void SetNumberOfVertices(int nv)
@@ -80,7 +71,8 @@ namespace P1
         // ensures self.vertices = {v: integer where (0 <= v < nv) (v)} and
         //         self.edges = {}
         {
-            // Finish me
+            vertices = new int[nv];
+            for (int i = 0; i < nv; i++) vertices[i] = i;
         } // SetNumberOfVertices
 
         public void AddEdge(int v1, int v2)
@@ -91,7 +83,8 @@ namespace P1
         // ensures self.vertices = #self.vertices  and
         //         self.edges = #self.edges union {{v1, v2}}
         {
-            // Finish me
+            Edge newEdge = new Edge(v1, v2);
+            edges.Add(newEdge);
         } // AddEdge
 
         public void RemoveEdge(int v1, int v2)
@@ -103,7 +96,12 @@ namespace P1
         // ensures self.vertices = #self.vertices  and
         //         self.edges = #self.edges - {{v1, v2}}
         {
-            // Finish me
+            int index = 0;
+            while (index <= edges.Count - 1)
+            {
+                if (edges[index].v1 == v1 && edges[index].v2 == v2) edges.RemoveAt(index);
+                else index++;
+            }
         } // RemoveEdge
 
         public int RemoveAnyIncidentEdge(int v1)
@@ -116,12 +114,18 @@ namespace P1
         //         {v1, RemoveAnyIncidentEdge} is in #self.edges and
         //         self.edges = #self.edges - {{v1, RemoveAnyIncidentEdge}}
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
-            return 0;
+            int index = 0;
+            while (index <= edges.Count - 1)
+            {
+                if (edges[index].v1 == v1)
+                {
+                    int r = edges[index].v2;
+                    edges.RemoveAt(index);
+                    return r;
+                }
+                else index++;
+            }
+            return -1;
         } // RemoveAnyIncidentEdge
 
         public Edge RemoveAnyEdge()
@@ -131,12 +135,9 @@ namespace P1
         //         RemoveAnyEdge is in #self.edges  and
         //         self.edges = #self.edges - {RemoveAnyEdge}
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
-            return new Edge(0, 0);
+            Edge e = new Edge(edges[0].v1, edges[0].v2);
+            edges.RemoveAt(0);
+            return e;
         } // RemoveAnyEdge
 
         public int NumberOfVertices()
@@ -144,12 +145,7 @@ namespace P1
         // requires true
         // ensures NumberOfVertices = |self.vertices|
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
-            return 0;
+            return vertices.Length;
         } // NumberOfVertices
 
         public int NumberOfEdges()
@@ -157,12 +153,7 @@ namespace P1
         // requires true
         // ensures NumberOfEdges = |self.edges|
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
-            return 0;
+            return edges.Count;
         } // NumberOfEdges
 
         public int Degree(int v)
@@ -170,12 +161,12 @@ namespace P1
         // requires true
         // ensures Degree = |{v2: integer where ({v, v2} is in self.edges) (v2)}|
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
-            return 0;
+            int deg = 0;
+            foreach (var edge in edges)
+            {
+                if (edge.v2 == v || edge.v1 == v) deg++;
+            }
+            return deg;
         } // Degree
 
         public bool IsEdge(int v1, int v2)
@@ -183,19 +174,22 @@ namespace P1
         // requires true
         // ensures IsEdge = {v1, v2} is in self.edges
         {
-            // Finish me
-
-            // Note: the following return is incorrect, and must be fixed
-            // It is here so that the compiler will not barf because
-            // of no return statement being present
+            Edge removeEdge = new Edge(v1, v2);
+            foreach (var edge in edges)
+            {
+                if (edge.v1 == v1 && edge.v2 == v2) return true;
+                else if (edge.v1 == v2 && edge.v2 == v1) return true;
+            }
             return false;
         } // IsEdge
 
         public override string ToString()
         {
-            // Finish me
-
-            StringBuilder sb = new StringBuilder(" ... Finish Me ...");
+            StringBuilder sb = new StringBuilder();
+            String vert = string.Join(",", vertices);
+            String edge = string.Join(",", edges);
+            sb.Append("({" + vert + "},");
+            sb.Append("{" + edge + "})");
             return sb.ToString();
         } // ToString
 
