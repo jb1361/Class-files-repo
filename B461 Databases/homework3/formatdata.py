@@ -1,34 +1,33 @@
 import pandas as pd
 import json
 import xml
-
+import csv
 
 
 
 inp = str(input())
+
 
 jsonfile = open('parsedjsoncsv.json', 'w')
 jsonfile.write('{"Tweets": ')
 jsonfile.close()
 
 def open_csv():
-	df = pd.DataFrame(pd.read_csv(inp))
-	out = df.to_json(orient='records')
-	j = json.dumps(out,indent = 4)
-		
+	csvf = open(inp, encoding="utf8")
 	jsonfile = open('parsedjsoncsv.json', 'a')
-	jsonfile.write(j)
+	fields = ('Tweet','ID','QuotedID','RetweetedHandle','RetweetedName','RetweetedText','Retweets','Source','Text','UserHandle','UserName')
+	reader = csv.DictReader(csvf, fields)
+	out = json.dumps([row for row in reader])
+	parsed_json = json.loads(out)
+	for element in parsed_json:
+		element['ID'] = int(element['ID'])
+		element['QuotedID'] = int(element['QuotedID'])
+		element['Retweets'] = int(element['Retweets'])    
+		del element['Tweet']
+	out = json.dumps([row for row in parsed_json])		
+	jsonfile.write(out)
 	jsonfile.close()
-	
-	#csvf = open(inp, encoding="utf8")
-	#jsonfile = open('parsedjsoncsv.json', 'w')
-	#fields = ('ID','QuotedID','RetweetedHandle','RetweetedName','RetweetedText','Retweets','Source','Text','UserHandle','UserName')
-	#reader = csv.DictReader(csvf, fields)
-	#for i in reader:
-		#json.dump(i, jsonfile,indent = 4,separators=(',', ': '))
-		
-	#	jsonfile.write(',')
-	#	jsonfile.write('\n')
+	print(out)
 	
 def open_xml():
 	return 0
