@@ -1,7 +1,7 @@
 @echo off
-set /p file="Enter Commit Message: "
+set /p message="Enter Commit Message: "
 git pull
 git add --all
-git commit -m " %file% "
+git commit -m " %message% "
 git push
 pause
