@@ -23,6 +23,22 @@ namespace P2
 
         void DFS(UndirectedGraphLL G)
         {
+         
+
+            /*
+             	for each vertex u ∈ G.V
+ 	   // WHITE - not discovered
+   // GRAY  - discovered and being processed
+   // BLACK - discovered and finished
+2	   u.color = WHITE
+3	   u.Π = NIL
+4	time = 0
+ 	// Perform depth first search
+5	for each vertex u ∈ G.V
+6	    if u.color == WHITE
+7	       DFS-Visit (G, u)
+*/
+
 
         }
 
