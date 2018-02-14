@@ -1,0 +1,47 @@
+{
+  "name": "louisville-geek-enfold-child",
+  "version": "1.0.0",
+  "description": "Enfold Child framework. This is the base framework for all enfold child themes",
+  "main": "gulpfile.js",
+  "scripts": {
+    "typings-install": "cd assets/ts/src && typings install",
+    "postinstall": "npm run typings-install && npm run bower-install",
+    "bower-install": "cd assets && bower install",
+    "watch": "gulp watch",
+    "build-production": "gulp build-production",
+    "build": "gulp build",
+    "ts-lint": "tslint --type-check -c assets/ts/src/tslint.json --project assets/ts/src/tsconfig.json",
+    "php-lint": "gulp php-lint"
+  },
+  "author": "Jason Gallavin",
+  "license": "Lousville-Geek-License",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.2.2",
+    "bower": "^1.8.0",
+    "css-loader": "^0.28.4",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^3.4.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-shell": "^0.6.3",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-webpack": "^1.5.0",
+    "http-server": "^0.10.0",
+    "source-map-loader": "^0.2.1",
+    "style-loader": "^0.18.2",
+    "ts-loader": "^2.0.3",
+    "tslint": "^5.1.0",
+    "tslint-eslint-rules": "^4.0.0",
+    "typescript": "^2.4.2",
+    "typings": "^2.1.1",
+    "uglify-js": "^2.8.22",
+    "uglifyjs-webpack-plugin": "^0.4.3",
+    "webpack": "^3.4.1"
+  },
+  "dependencies": {
+    "@types/jquery": "^1.10.31",
+    "@types/react": "^15.6.1",
+    "@types/react-dom": "^15.5.2"
+  }
+}

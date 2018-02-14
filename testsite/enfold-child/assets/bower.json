@@ -1,0 +1,21 @@
+{
+  "name": "enfold-child",
+  "homepage": "https://github.com/louisvillegeek/enfold-child-starter",
+  "authors": [
+    "Jason Gallavin <jasong@lougeek.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.6.1"
+  }
+}
