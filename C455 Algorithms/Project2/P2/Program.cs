@@ -26,24 +26,50 @@ namespace P2
             Console.WriteLine(G);
 
             Console.WriteLine();
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("Graph g1 after data loaded from data file:");
             LoadGraphData();
             Console.WriteLine(G);
-            DFS(G);
-            foreach (var item in dfsarray)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine(G);
-        }
 
-              
-        void DFS(UndirectedGraphLL G)
-        {            
+            Console.WriteLine();
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("Cormen's depth first search array after initialization:");
+
+            Console.WriteLine("DFS Array = [");
             dfsarray = new DFSRecord[G.NumberOfVertices()];
             for (int i = 0; i < dfsarray.Length; i++)
             {
                 dfsarray[i] = new DFSRecord(i);
+                Console.WriteLine(i + ": " + dfsarray[i]);
+            }           
+            Console.WriteLine("]");
+
+            DFS(G);
+            Console.WriteLine();
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("Graph g1 after Cormen's DFS executed:");
+            Console.WriteLine(G);
+
+            Console.WriteLine();
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("Cormen's depth first search array after DFS executed:");
+            Console.WriteLine("DFS Array = [");
+            for (int i = 0; i < dfsarray.Length; i++)
+            {               
+                Console.WriteLine(i + ": " + dfsarray[i]);
             }
+            Console.WriteLine("]");
+
+        }
+
+
+        void DFS(UndirectedGraphLL G)
+        {            
+          //  dfsarray = new DFSRecord[G.NumberOfVertices()];
+          //  for (int i = 0; i < dfsarray.Length; i++)
+          //  {
+           //     dfsarray[i] = new DFSRecord(i);
+           // }
             time = 0;
             foreach (var u in dfsarray)
             {
