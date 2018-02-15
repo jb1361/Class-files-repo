@@ -14,47 +14,74 @@ namespace P2
             Program pgm = new Program();
             pgm.run();
         }
+
+        int time;
+        DFSRecord[] dfsarray;
+        UndirectedGraphLL G = new UndirectedGraphLL();
+
         public void run()
-        {
-            UndirectedGraphLL G; //= new UndirectedGraphLL();
-            G = LoadGraphData();
+        {         
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("Graph g1 after initialization:");
+            Console.WriteLine(G);
+
+            Console.WriteLine();
+            LoadGraphData();
+            Console.WriteLine(G);
+            DFS(G);
+            foreach (var item in dfsarray)
+            {
+                Console.WriteLine(item);
+            }
             Console.WriteLine(G);
         }
 
+              
         void DFS(UndirectedGraphLL G)
-        {
-           // DFSArray;
-
-            /*
-             	for each vertex u ∈ G.V
- 	   // WHITE - not discovered
-   // GRAY  - discovered and being processed
-   // BLACK - discovered and finished
-2	   u.color = WHITE
-3	   u.Π = NIL
-4	time = 0
- 	// Perform depth first search
-5	for each vertex u ∈ G.V
-6	    if u.color == WHITE
-7	       DFS-Visit (G, u)
-*/
-
-
+        {            
+            dfsarray = new DFSRecord[G.NumberOfVertices()];
+            for (int i = 0; i < dfsarray.Length; i++)
+            {
+                dfsarray[i] = new DFSRecord(i);
+            }
+            time = 0;
+            foreach (var u in dfsarray)
+            {
+               
+                if (u.color == VertextColor.white)
+                {   
+                    DFS_Visit(G, u);
+                }  
+            }                            
         }
 
-        void DFS_Visit(UndirectedGraphLL G, VertextColor U)
-        {
-
+        void DFS_Visit(UndirectedGraphLL G, DFSRecord u)
+        {           
+            time = time + 1;
+            u.discoveryTime = time;
+            u.color = VertextColor.gray;          
+            foreach (var v in dfsarray)
+            {
+                if (G.IsEdge(u.vertice, v.vertice))                
+                {
+                    G.RemoveEdge(u.vertice, v.vertice);
+                    if (v.color == VertextColor.white)
+                    {                        
+                        v.predecessor = u.vertice;
+                        DFS_Visit(G, v);
+                    }
+                    G.AddEdge(u.vertice, v.vertice);
+                }                
+            }               
+                u.color = VertextColor.black;
+                time = time + 1;
+                u.finishingTime = time;           
         }
-        UndirectedGraphLL LoadGraphData()
+        public void LoadGraphData()
         {
-
-            UndirectedGraphLL G = new UndirectedGraphLL();
-
             //Get Project Path
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            path = path + "/G1.txt";
-            Console.WriteLine(path);
+            path = path + "/G1.txt";         
             System.Text.StringBuilder inp = new System.Text.StringBuilder();
             //Read input into stringbuilder.
             using (System.IO.StreamReader file = new System.IO.StreamReader(path))
@@ -86,19 +113,15 @@ namespace P2
             int i1 = 0;
             int i2 = 2;
             for (int i = 0; i < sLen/2; i++)
-            {
-               
+            {             
                 int v1;
                 int v2;
                 Int32.TryParse(parsed[i1].ToString(), out v1);
                 Int32.TryParse(parsed[i2].ToString(), out v2);
                 G.AddEdge(v1, v2);
                 i1 = i1 + 4;
-                i2 = i2 + 4;
-                
+                i2 = i2 + 4;                
             }
-
-            return G;
         }
     }
 }

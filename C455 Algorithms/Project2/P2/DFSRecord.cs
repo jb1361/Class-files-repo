@@ -21,17 +21,18 @@ namespace P2
         //      predecessor: int
         //   )
         // exemplar self 
-
+        public int vertice;
         public VertextColor color;
         public int discoveryTime;
         public int finishingTime;
         public int predecessor;
         private const int NIL = -1;
 
-        public DFSRecord()
+        public DFSRecord(int v)
         // updates self
         // ensures self = (white, 0, 0, NIL)
         {
+            vertice = v;
             color = VertextColor.white;
             discoveryTime = 0;
             finishingTime = 0;
@@ -42,6 +43,7 @@ namespace P2
         // updates self
         // ensures self = (white, 0, 0, NIL)
         {
+            vertice = 0;
             color = VertextColor.white;
             discoveryTime = 0;
             finishingTime = 0;
@@ -53,7 +55,8 @@ namespace P2
             StringBuilder predecessorString = new StringBuilder((predecessor == NIL) ? "NIL" : "" + predecessor);
             
             StringBuilder sb = 
-                new StringBuilder("(" + color + "," + 
+                new StringBuilder("(" //+ vertice + ","
+                                  + color + "," + 
                                   discoveryTime + "," + 
                                   finishingTime + "," + 
                                   predecessorString.ToString() 
