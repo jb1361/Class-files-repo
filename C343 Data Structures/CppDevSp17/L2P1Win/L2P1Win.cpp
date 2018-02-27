@@ -23,8 +23,6 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 
 void doPaintData(HDC hdc, AirportSequence& s);
-
-
 void doInputAirportDataFromFile(AirportSequence& s, Text& filename);
 //! replaces s
 //! restores filename
