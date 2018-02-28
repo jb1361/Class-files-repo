@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 /*
  * Name: 
@@ -41,6 +42,7 @@ namespace P3
             }
             file.Close();          
             g.SetNumberOfVertices(largest+1);
+            Console.WriteLine(g);
         } // loadGraphData
 
         // -----------------------------------------------------------------------
@@ -65,7 +67,37 @@ namespace P3
         // in the format shown in the sample output
         // Sample output is at the bottom of Program.cs
         {
-            // Finish me
+            StringBuilder sb = new StringBuilder("({");
+            foreach (var item in vertexLabels)
+            {
+                sb.Append(item.Value + ",");
+                //sb.Append
+               
+            }
+            sb.Length--;
+            sb.Append("},{");           
+            int x = g.NumberOfEdges();
+            while(x > 0)
+            {
+                UndirectedGraphLL.Edge edge;
+                edge = g.RemoveAnyEdge();
+                StringBuilder vert1 = new StringBuilder("{");
+                StringBuilder vert2 = new StringBuilder(",");
+                foreach (var item in vertexLabels)
+                {
+                    if (edge.v1 == item.Key) vert1.Append(item.Value);
+                    if (edge.v2 == item.Key) vert2.Append(item.Value + "}");
+                }
+                sb.Append(vert1);
+                sb.Append(vert2);
+                sb.Append(",");
+                g.AddEdge(edge.v1, edge.v2);
+                
+                x--;
+            }
+            sb.Length--;
+            sb.Append("})");
+            Console.WriteLine(sb);
         } // DisplayGraphUsingLabels
 
     }
