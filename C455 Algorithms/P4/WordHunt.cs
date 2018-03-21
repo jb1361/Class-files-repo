@@ -7,11 +7,12 @@ namespace P4
     public class WordHunt
     {
         public WordHunt()
-        {
+        {           
         }
 
         public void DfsVisit(int[,] graphRep, int u, int wordLengthMax, StringBuilder wordSoFar, VertexMap vertexLabels)
         {
+            
             // With the regular DFS Visit a recursive call is made if the color of the vertex is white
             // Here we have no colors, so what is the base case?
 
@@ -21,7 +22,18 @@ namespace P4
             // When at base case
             //   Output the wordSoFar using WriteLine and ToString on wordSoFar
             //   The output word will have length = wordLengthMax
-
+            if(wordSoFar.Length == wordLengthMax)
+            {
+                string output = wordSoFar.ToString();
+                Console.WriteLine(output);
+            }
+            else if (wordSoFar.Length < wordLengthMax)
+            {
+                foreach (var item in graphRep)
+                {
+                    
+                }
+            }
             // When not at base case
             //   Use parameter u to obtain the character 'x' in graph that is associated with u
             //   Add character 'x' to the end of wordSoFar
@@ -49,7 +61,10 @@ namespace P4
             // Create for loop that calls DfsVisit with each vertex in the vertex set
             // This will be very similar to Cormen's DFS, except DfsVisit must be called with all vertices
             // And there is no coloring, no keeping track of discovery time, or finish time, or predecessors
-
+            foreach (var item in graphRep)
+            {
+                DfsVisit(graphRep, numberOfVertices, wordLengthMax, wordSoFar, vertexLabels);
+            }
 
             // Not allowed:
             //    Changing the signature of this operation

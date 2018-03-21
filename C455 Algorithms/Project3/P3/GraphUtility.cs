@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 /*
- * Name: 
+ * Name: Justin Butler
  */
 
 // Note: the name "VertexMap" is used in some of the operation headers below
