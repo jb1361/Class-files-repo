@@ -61,15 +61,21 @@ namespace P4
             // Create for loop that calls DfsVisit with each vertex in the vertex set
             // This will be very similar to Cormen's DFS, except DfsVisit must be called with all vertices
             // And there is no coloring, no keeping track of discovery time, or finish time, or predecessors
-            foreach (var item in graphRep)
+            for (int row = 0; row < numberOfVertices; row++)
             {
-                DfsVisit(graphRep, numberOfVertices, wordLengthMax, wordSoFar, vertexLabels);
+                for (int col = row; col < numberOfVertices; col++)
+                {
+                    if (graphRep[row, col] == 1)
+                    {
+                        
+                    }
+                }
             }
 
-            // Not allowed:
-            //    Changing the signature of this operation
-            //    Using globally declared variables
-            //    Using class-level declared variables
+                        // Not allowed:
+                        //    Changing the signature of this operation
+                        //    Using globally declared variables
+                        //    Using class-level declared variables
         } // DFS_WordHunt
     }
 }
