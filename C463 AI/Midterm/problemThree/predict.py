@@ -7,7 +7,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
 data = pd.DataFrame(pd.read_csv('titanic_data.csv'))
-data = data.fillna(0)
+data = data.interpolate()
 
 Pclass = data['Pclass']
 sex = data['Sex']
@@ -16,14 +16,17 @@ fare = data['Fare']
 survived = data['Survived']
 
 
+percent = data[0: math.floor(len(data) * .70)]
+
+
 
 #setting up training and testing data
-Pclass_train = Pclass[0:math.floor(len(Pclass)/2)]
-Pclass_test = Pclass[(math.floor(len(Pclass)/2)+1):len(Pclass)]
+Pclass_train = Pclass[0:math.floor(len(data) * .70)]
+Pclass_test = Pclass[(math.floor(len(data) * .70)+1):len(Pclass)]
 Pclass_test = Pclass_test.reset_index(drop = True)
 
-sex_train = sex[0:math.floor(len(Pclass)/2)]
-sex_test = sex[(math.floor(len(Pclass)/2)+1):len(Pclass)]
+sex_train = sex[0:math.floor(len(data) * .70)]
+sex_test = sex[(math.floor(len(data) * .70)+1):len(Pclass)]
 sex_test = sex_test.reset_index(drop = True)
 
 for i,s in enumerate(sex_train):
@@ -38,16 +41,16 @@ for i,s in enumerate(sex_test):
 	else:
 		sex_test[i] = 0
 	
-age_train = age[0:math.floor(len(Pclass)/2)]
-age_test = age[(math.floor(len(Pclass)/2)+1):len(Pclass)]
+age_train = age[0:math.floor(len(data) * .70)]
+age_test = age[(math.floor(len(data) * .70)+1):len(Pclass)]
 age_test = age_test.reset_index(drop = True)
 
-fare_train = fare[0:math.floor(len(Pclass)/2)]
-fare_test = fare[(math.floor(len(Pclass)/2)+1):len(Pclass)]
+fare_train = fare[0:math.floor(len(data) * .70)]
+fare_test = fare[(math.floor(len(data) * .70)+1):len(Pclass)]
 fare_test = fare_test.reset_index(drop = True)
 
-survived_train = survived[0:math.floor(len(Pclass)/2)]
-survived_test = survived[(math.floor(len(Pclass)/2)+1):len(Pclass)]
+survived_train = survived[0:math.floor(len(data) * .70)]
+survived_test = survived[(math.floor(len(data) * .70)+1):len(Pclass)]
 survived_test = survived_test.reset_index(drop = True)
 
 
@@ -103,7 +106,7 @@ features_array = training_data
 #===================================================================================================
 
 #get values
-values_array = survived_test
+values_array = survived_train
 #===================================================================================================
 
 m = len(values_array)
