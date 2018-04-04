@@ -1,3 +1,9 @@
+
+# File: predict.py
+# Authors: Ben Heil and Justin Butler
+# Since: 3/29/18
+# made with sklearn and a gradient descent algorithm
+
 import csv
 import pandas as pd
 import numpy as np
