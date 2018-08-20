@@ -30,8 +30,8 @@ class HW10
              Console.WriteLine(x.reduce((a,b) => a+b, 0));
 
         Console.WriteLine("\n\nTODO: x.map2((a,b) => a+b);");
-        //      t = x.map2((a, b) => a + b, x);
-        //      t.apply(element => Console.WriteLine(element));
+              t = x.map2((a, b) => a + b, x);
+              t.apply(element => Console.WriteLine(element));
 
         Console.WriteLine("\n\nx");
         x.apply(element => Console.WriteLine(element));
@@ -164,11 +164,17 @@ class MyList<T>
         if (this == NIL) return NIL;
         else return tl().map(f).cons(f(hd()));
     }
-
+    public MyList<T> map2(Func<T, T, T> p, MyList<T> x)
+    {
+        if (this == NIL) return x;
+        else return tl().map2(p, x.tl()).cons(p(this.hd(),x.hd()));
+    }
     public T reduce(Func<T,T,T> f, T b)
     {
         if (this == NIL) return b;
         else return f(hd(), tl().reduce(f, b));
 
     }
+
+  
 }

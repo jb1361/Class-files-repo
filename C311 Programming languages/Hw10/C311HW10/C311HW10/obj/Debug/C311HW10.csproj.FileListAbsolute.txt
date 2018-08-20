@@ -4,3 +4,10 @@ C:\Users\justi\Desktop\311 Projects\Hw10\C311HW10\C311HW10\bin\Debug\C311HW10.pd
 C:\Users\justi\Desktop\311 Projects\Hw10\C311HW10\C311HW10\obj\Debug\C311HW10.csprojResolveAssemblyReference.cache
 C:\Users\justi\Desktop\311 Projects\Hw10\C311HW10\C311HW10\obj\Debug\C311HW10.exe
 C:\Users\justi\Desktop\311 Projects\Hw10\C311HW10\C311HW10\obj\Debug\C311HW10.pdb
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C311 Programming languages\Hw10\C311HW10\C311HW10\obj\Debug\C311HW10.csprojResolveAssemblyReference.cache
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C311 Programming languages\Hw10\C311HW10\C311HW10\obj\Debug\C311HW10.csproj.CoreCompileInputs.cache
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C311 Programming languages\Hw10\C311HW10\C311HW10\obj\Debug\C311HW10.exe
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C311 Programming languages\Hw10\C311HW10\C311HW10\obj\Debug\C311HW10.pdb
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C311 Programming languages\Hw10\C311HW10\C311HW10\bin\Debug\C311HW10.exe.config
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C311 Programming languages\Hw10\C311HW10\C311HW10\bin\Debug\C311HW10.exe
+C:\Users\justi\Desktop\Class files repo\Class-files-repo\C311 Programming languages\Hw10\C311HW10\C311HW10\bin\Debug\C311HW10.pdb
