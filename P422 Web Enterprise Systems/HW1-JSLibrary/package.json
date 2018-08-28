@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/jasmine/bin/jasmine.js",
-    "watch": "npm-watch"
   },
   "keywords": [
     "Passwords",
@@ -17,5 +16,8 @@
   "devDependencies": {
     "jasmine": "^3.2.0",
     "node-sass": "^4.9.3"
+  },
+  "dependencies": {
+    "eslint": "^5.4.0"
   }
 }
