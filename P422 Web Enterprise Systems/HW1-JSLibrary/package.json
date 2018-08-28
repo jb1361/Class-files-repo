@@ -1,0 +1,21 @@
+{
+  "name": "not-a-password-manager",
+  "version": "1.0.0",
+  "description": "Absolutely does not manage passwords.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/jasmine/bin/jasmine.js",
+    "watch": "npm-watch"
+  },
+  "keywords": [
+    "Passwords",
+    "not",
+    "managed"
+  ],
+  "author": "Justin Butler",
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^3.2.0",
+    "node-sass": "^4.9.3"
+  }
+}
