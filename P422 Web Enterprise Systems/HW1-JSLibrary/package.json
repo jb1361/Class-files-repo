@@ -4,7 +4,9 @@
   "description": "Absolutely does not manage passwords.",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/jasmine/bin/jasmine.js",
+    "start": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
+    "test": "node node_modules/jasmine/bin/jasmine.js"
   },
   "keywords": [
     "Passwords",
@@ -14,10 +16,11 @@
   "author": "Justin Butler",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^10.9.3",
     "jasmine": "^3.2.0",
-    "node-sass": "^4.9.3"
-  },
-  "dependencies": {
-    "eslint": "^5.4.0"
+    "nodemon": "^1.18.4",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
   }
 }
