@@ -1,4 +1,5 @@
 import 'jasmine';
+import {Bloom} from '../lib/Bloom';
 import {PswChecker} from '../lib/pwchecker';
 
 describe('Password Checker', () => {
@@ -40,3 +41,16 @@ describe('Password Checker', () => {
         expect(test).toBeGreaterThanOrEqual(8);
     });
 });
+
+describe('Bloom filter', () => {
+    const bloom = new Bloom('password');
+    it('password found in bloom filter pass', () => {
+        const test = bloom.check('password');
+        expect(test).toBe(true);
+    });
+    it('password above eight characters fail', () => {
+        const test = bloom.check('password1');
+        expect(test).toBe(false);
+    });
+});
+

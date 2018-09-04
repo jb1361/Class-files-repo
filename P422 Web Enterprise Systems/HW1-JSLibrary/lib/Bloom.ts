@@ -7,13 +7,12 @@ export class Bloom {
 
     constructor(sz: string) {
         this.bitset = [];
-        this.length = 0;
+        this.length = 200;
         this.createHash(sz);
         // You should initialize sz entries in bitset to false here
     }
 
     public createHash(val: string) {
-        this.length += 2;
         const Hash1 = this.hash1();
         const Hash2 = this.hash2();
         this.record(this.getHashVal(Hash1, val));
