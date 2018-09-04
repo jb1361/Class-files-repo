@@ -11,10 +11,12 @@ export class PswChecker {
         }
         return false;
     }
-    public containsSpecialCharacter(x: string) {
-        x = x.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '');
-        console.log('test: ', x);
-        return (x.length > 0);
+    // public containsSpecialCharacter(x: string) {
+    //     x = x.toLowerCase().replace(/[a-zA-Z0-9]+/g, '');
+    //     return (x.length > 0);
+    // }
+    public containsSpecialCharacter = (x: string) => {
+        return x.toLowerCase().replace(/[a-zA-Z0-9]+/g, '').length > 0;
     }
 }
 

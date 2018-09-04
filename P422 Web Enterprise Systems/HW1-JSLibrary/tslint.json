@@ -1,6 +1,7 @@
 {
     "extends": "tslint:recommended",
     "rules": {
+		"no-console": false,
         "max-line-length": {
             "options": [120]
         },
@@ -14,6 +15,7 @@
 		"quotemark": [true, "single", "jsx-double"]
     },
     "jsRules": {
+		"no-console": false,
         "max-line-length": {
             "options": [120]
         }
