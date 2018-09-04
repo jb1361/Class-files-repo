@@ -16,6 +16,7 @@
   "author": "Justin Butler",
   "license": "MIT",
   "devDependencies": {
+    "@types/jasmine": "^2.8.8",
     "@types/node": "^10.9.3",
     "jasmine": "^3.2.0",
     "nodemon": "^1.18.4",

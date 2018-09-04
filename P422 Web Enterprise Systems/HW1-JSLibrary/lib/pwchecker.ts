@@ -3,23 +3,19 @@ export class PswChecker {
         return x.length > 8;
     }
     public containsNumber(x: string) {
-        return /\d/.test(x);
+        return x.replace(/[^0-9]/g, '').length > 0;
     }
     public containsUppercase(x: string) {
-        for (let i = 0; i < x.length; i++) {
-            if (x[i] === x[i].toUpperCase()) return true;
-        }
-        return false;
+        return x.replace(/[^A-Z]/g, '').length > 0;
     }
-    // public containsSpecialCharacter(x: string) {
-    //     x = x.toLowerCase().replace(/[a-zA-Z0-9]+/g, '');
-    //     return (x.length > 0);
-    // }
-    public containsSpecialCharacter = (x: string) => {
+    public containsSpecialCharacter(x: string) {
         return x.toLowerCase().replace(/[a-zA-Z0-9]+/g, '').length > 0;
+    }
+    public passwordRating(x: string) {
+        const specialCharacters = x.toLowerCase().replace(/[a-zA-Z0-9]+/g, '').length;
+        const capitalLetters = x.replace(/[^A-Z]/g, '').length;
+        const numbers = x.replace(/[^0-9]/g, '').length;
+        return (specialCharacters + capitalLetters + numbers);
     }
 }
 
-// String.prototype.cleanup = function() {
-//     return this.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
-// }
