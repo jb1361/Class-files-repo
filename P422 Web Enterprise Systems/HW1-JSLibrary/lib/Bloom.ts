@@ -25,9 +25,7 @@ export class Bloom {
         const Hash2 = this.hash2();
         const num = this.getHashVal(Hash1, val);
         const num2 = this.getHashVal(Hash2, val);
-        if (this.bitset[num % this.bitsetLength()] === true && this.bitset[num2 % this.bitsetLength()] === true) return true;
-        else return false;
-
+        return this.bitset[num % this.bitsetLength()] === true && this.bitset[num2 % this.bitsetLength()] === true;
     }
     public bitsetLength(): number {
         return this.length;
