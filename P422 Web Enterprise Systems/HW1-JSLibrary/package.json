@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build:live",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
-    "test": "node node_modules/jasmine/bin/jasmine.js"
+    "test": "ts-node node_modules/jasmine/bin/jasmine"
   },
   "keywords": [
     "Passwords",
