@@ -18,4 +18,3 @@ export class PswChecker {
         return (specialCharacters + capitalLetters + numbers);
     }
 }
-
