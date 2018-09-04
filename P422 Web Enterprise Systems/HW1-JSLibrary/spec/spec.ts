@@ -52,5 +52,54 @@ describe('Bloom filter', () => {
         const test = bloom.check('password1');
         expect(test).toBe(false);
     });
+    bloom.createHash('PasswordTest2');
+    it('password number 2 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest2');
+        expect(test).toBe(true);
+    });
+    bloom.createHash('PasswordTest3');
+    bloom.createHash('PasswordTest4');
+    bloom.createHash('PasswordTest5');
+    bloom.createHash('PasswordTest6');
+    bloom.createHash('PasswordTest7');
+    bloom.createHash('PasswordTest8');
+    bloom.createHash('PasswordTest9');
+    bloom.createHash('PasswordTest10');
+    it('password number 3 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest3');
+        expect(test).toBe(true);
+    });
+    it('password number 4 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest4');
+        expect(test).toBe(true);
+    });
+    it('password number 5 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest5');
+        expect(test).toBe(true);
+    });
+    it('password number 6 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest6');
+        expect(test).toBe(true);
+    });
+    it('password number 7 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest7');
+        expect(test).toBe(true);
+    });
+    it('password number 8 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest8');
+        expect(test).toBe(true);
+    });
+    it('password number 9 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest9');
+        expect(test).toBe(true);
+    });
+    it('password number 10 found in bloom filter pass', () => {
+        const test = bloom.check('PasswordTest10');
+        expect(test).toBe(true);
+    });
+    it('password number 11 found in bloom filter fail', () => {
+        const test = bloom.check('Passwordsdgedfhtgfjh#$%#%');
+        expect(test).toBe(false);
+    });
 });
 
