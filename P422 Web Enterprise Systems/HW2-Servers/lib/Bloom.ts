@@ -5,10 +5,10 @@ export class Bloom {
     private crypto = require('crypto');
     private length: number;
 
-    constructor(sz: string) {
+    constructor() {
         this.bitset = [];
         this.length = 200;
-        this.createHash(sz);
+        // this.createHash(sz);
         // You should initialize sz entries in bitset to false here
     }
 

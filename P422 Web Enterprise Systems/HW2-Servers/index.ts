@@ -1,19 +1,27 @@
-// import {Bloom} from './lib/Bloom';
-// import {PswChecker} from './lib/pwchecker';
-// const checker = new PswChecker();
+import * as bodyParser from 'body-parser';
+import express from 'express';
+import { Routes } from './lib/routes/routes';
 
+class Main {
 
- import express = require('express');
- const router = ('./routes');
- const app = express();
+    public app: express.Application;
+    public routePrv: Routes = new Routes();
 
-// const config = require('./config');
+    constructor() {
+        this.app = express();
+        this.config();
+        this.routePrv.routes(this.app);
+        this.app.listen(4200, () => {
+            console.log(`listening on port 4200`);
+        });
+    }
 
+    private config(): void {
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: false }));
+        // serving static files 
+        this.app.use(express.static('public'));
+    }
+}
 
-app.use('/', express.static('client/src'));
-router.route(app);
-
-
-app.listen(4200, function () {
-    console.log(`listening on port 4200`);
-});
+export default new Main().app;
