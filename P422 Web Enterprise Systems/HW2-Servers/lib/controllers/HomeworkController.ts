@@ -18,4 +18,10 @@ export class HomeWorkController {
     public addBloom(password: JSON) {
         this.bloomFilter.createHash(JSON.stringify(password));
     }
+    public checkIfUsed(userName: JSON) {
+        this.bloomFilter.check(JSON.stringify(userName));
+    }
+    public checkPassToBloom(userName: JSON) {
+        this.bloomFilter.check(JSON.stringify(userName));
+    }
 }

@@ -24,5 +24,17 @@ export class Routes {
             this.homeworkController.addBloom(req.body);
             res.status(200);
         });
+        app.route('/v1/passwords/users/:userName/previous').post((req: Request, res: Response) => {
+            if (this.homeworkController.checkIfUsed(req.body)) res.json('used: true');
+            else res.json(false);
+        });
+        app.route('/v1/passwords/users/:userName/previous').put((req: Request, res: Response) => {
+            this.homeworkController.checkPassToBloom(req.body);
+            res.status(200);
+        });
+        app.route('/static/').get((req: Request, res: Response) => {
+            res.sendFile('totallyswfvideo.mp4', {root: '../HW2-Servers/files/'});
+        });
     }
+
 }

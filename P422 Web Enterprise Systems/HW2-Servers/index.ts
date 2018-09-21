@@ -21,6 +21,7 @@ class Main {
         this.app.use(bodyParser.urlencoded({ extended: false }));
         // serving static files 
         this.app.use(express.static('public'));
+        this.app.use(express.static('static'));
     }
 }
 
