@@ -75,4 +75,9 @@ router.route('/users/:userId')
 			});
 	});
 
+router.route('/v1/assignments/')	
+	.get(function(err, user) {
+		return res.json("test route");
+	});
+	
 module.exports = router;
