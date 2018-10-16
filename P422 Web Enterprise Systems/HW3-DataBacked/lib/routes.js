@@ -80,38 +80,48 @@ router.route('/assignments/')
 	.get(function(req, res) {
 		if(req.param('class')) {
             Assignments.find({className: req.param('class')},function(err, assignments) {
-                if(!err) res.status(200).json(assignments);
-                else res.status(500).json(err);
+                if(err) res.status(500).json(err);
+                else if (assignments.length === 0) return res.status(204).json('No Assignment found.');
+                else res.status(200).json(assignments);
             });
         }
         else {
         	Assignments.find({},function(err, assignments) {
         		if(!err) res.status(200).json(assignments);
+                else if (assignments.length === 0) return res.status(204).json('No Assignment found.');
         		else res.status(500).json(err);
 			});
 		}
-	});
-router.route('/assignments/:className/:assignmentName/')
-    .post(function(req, res) {
-		Assignments.create({
-			className: req.params['className'],
-			assignmentName: req.params['assignmentName'],
-            description: "Mock assignment.",
-            points: 100,
-            fileTypes: ["none","docx","zip","pdf"],
-            dueDate: "7/22/2008 12:11:04 PM",
-            openDate: "7/22/2008 12:11:04 PM",
-            closedDate: "7/22/2008 12:11:04 PM",
-		},function (err) {
-            return res.status(500).json(err);
-        });
-		return res.status(200).json('Assignment Created');
 	})
+	.post(function(req, res) {
+		var data = req.body;
+        Assignments.create({
+            className: data.className,
+            assignmentName: data.assignmentName,
+            description: data.description,
+            points: data.points,
+            fileType: data.fileTypes,
+            dueDate: data.dueDate,
+            openDate: data.openDate,
+            closedDate: data.closedDate
+        },function (err) {
+            if(err) return res.status(400).json(err);
+            else return res.status(201).json('Assignment Created');
+        });
+    });
+router.route('/assignments/:className/:assignmentName/')
+	.get(function (req, res) {
+        Assignments.find({className: req.params['className'], assignmentName: req.params['assignmentName']},function(err,assignment) {
+            if(err) return res.status(400).json(err);
+            else if (assignment.length === 0) return res.status(204).json('No Assignment found.');
+            else return res.status(200).json(assignment);
+        });
+    })
 	.delete(function (req, res) {
 		Assignments.deleteOne({className: req.params['className'], assignmentName: req.params['assignmentName']},function(err) {
-			return res.status(500).json(err);
+			if(err) return res.status(400).json(err);
+			else return res.status(200).json('Assignment Deleted');
 		});
-		return res.status(200).json('Assignment Deleted');
 	});
 
 module.exports = router;

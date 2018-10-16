@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var mongoose = require('mongoose');
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/v1', require('./lib/routes'));
 
 function connectToMongo(url, db, cb) {
@@ -28,6 +28,13 @@ connectToMongo('mongodb://localhost:27017', 'assignments', function(err, client)
 		console.log(err);
 		return;
 	}
+	mongoose.connect('mongodb://localhost:27017/assignments',function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        else console.log('Mongoose Connected');
+	});
 	app.locals.db = client;
 	app.listen(8080, function() {
 		console.log('Listening on 8080');

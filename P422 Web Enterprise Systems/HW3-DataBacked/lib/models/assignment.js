@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 
 // Schema Attributes:
 const assignmentSchema = new Schema({
-    assignmentName: String,
-    className: String,
+    assignmentName: {type: String, required: true},
+    className: {type: String, required: true},
     description: String,
-    points: Number,
+    points: {type: Number, required: true, min : 1},
     fileTypes: ['none','docx','zip','pdf'],
-    dueDate: Date,
-    openDate: Date,
-    closedDate: Date
+    dueDate: {type: Date},
+    openDate:  {type: Date},
+    closedDate:  {type: Date}
 },{ strict: false, timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } });
 
 
