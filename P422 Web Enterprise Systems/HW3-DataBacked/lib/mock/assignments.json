@@ -1,0 +1,12 @@
+[
+    {
+        "assignmentName": "Test",
+        "className": "Class 1",
+        "description": "Mock assignment.",
+        "points": 100,
+        "fileTypes": ["none","docx","zip","pdf"],
+        "dueDate": "7/22/2008 12:11:04 PM",
+        "openDate": "7/22/2008 12:11:04 PM",
+        "closedDate": "7/22/2008 12:11:04 PM"
+    }
+]
