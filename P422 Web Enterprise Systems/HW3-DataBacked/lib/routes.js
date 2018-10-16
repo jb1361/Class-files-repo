@@ -122,6 +122,14 @@ router.route('/assignments/:className/:assignmentName/')
 			if(err) return res.status(400).json(err);
 			else return res.status(200).json('Assignment Deleted');
 		});
-	});
+	})
+	.put(function (req, res) {
+        var data = req.body;
+        Assignments.update(
+        {$set: data },function(err) {
+            if(err) return res.status(400).json(err);
+            else return res.status(200).json('Assignment Updated');
+		});
+    });
 
 module.exports = router;
