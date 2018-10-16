@@ -2,6 +2,7 @@ var _ = require('lodash');
 var express = require('express');
 var router = express.Router();
 var Users = require('./models/Users');
+var Assignments = require('./models/assignment').Model;
 
 router.route('/users')
 	.get(function(req, res) {
@@ -75,9 +76,42 @@ router.route('/users/:userId')
 			});
 	});
 
-router.route('/v1/assignments/')	
-	.get(function(err, user) {
-		return res.json("test route");
+router.route('/assignments/')
+	.get(function(req, res) {
+		if(req.param('class')) {
+            Assignments.find({className: req.param('class')},function(err, assignments) {
+                if(!err) res.status(200).json(assignments);
+                else res.status(500).json(err);
+            });
+        }
+        else {
+        	Assignments.find({},function(err, assignments) {
+        		if(!err) res.status(200).json(assignments);
+        		else res.status(500).json(err);
+			});
+		}
 	});
-	
+router.route('/assignments/:className/:assignmentName/')
+    .post(function(req, res) {
+		Assignments.create({
+			className: req.params['className'],
+			assignmentName: req.params['assignmentName'],
+            description: "Mock assignment.",
+            points: 100,
+            fileTypes: ["none","docx","zip","pdf"],
+            dueDate: "7/22/2008 12:11:04 PM",
+            openDate: "7/22/2008 12:11:04 PM",
+            closedDate: "7/22/2008 12:11:04 PM",
+		},function (err) {
+            return res.status(500).json(err);
+        });
+		return res.status(200).json('Assignment Created');
+	})
+	.delete(function (req, res) {
+		Assignments.deleteOne({className: req.params['className'], assignmentName: req.params['assignmentName']},function(err) {
+			return res.status(500).json(err);
+		});
+		return res.status(200).json('Assignment Deleted');
+	});
+
 module.exports = router;

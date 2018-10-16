@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-
+var mongoose = require('mongoose');
 app.use(bodyParser.json());
 
 app.use('/v1', require('./lib/routes'));
@@ -23,7 +23,7 @@ function connectToMongo(url, db, cb) {
 	});
 }
 
-connectToMongo('mongodb://localhost:27017', 'test', function(err, client) {
+connectToMongo('mongodb://localhost:27017', 'assignments', function(err, client) {
 	if (err) {
 		console.log(err);
 		return;
