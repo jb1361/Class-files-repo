@@ -1,2 +1,7 @@
-<app-syllabus-info></app-syllabus-info>
-<app-university-info></app-university-info>
+<div class="courses">
+  <div class="course-names" *ngFor="let course of courseNames">
+    <button mat-raised-button [innerHTML]="course" (click)="changeCourse(course)">course</button>
+  </div>
+</div>
+<app-syllabus-info *ngIf="selectedCourse != ''"></app-syllabus-info>
+<app-university-info *ngIf="selectedCourse != ''"></app-university-info>

@@ -4,10 +4,12 @@ import { SyllabusInfoComponent } from './component/syllabus-info/syllabus-info.c
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { UniversityInfoComponent } from './component/university-info/university-info.component';
 import {SyllabusComponent} from './component/syllabus/syllabus.component';
+import {MaterialModule} from '../material/material.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   declarations: [SyllabusComponent, SyllabusInfoComponent, CalendarComponent, UniversityInfoComponent]
 })

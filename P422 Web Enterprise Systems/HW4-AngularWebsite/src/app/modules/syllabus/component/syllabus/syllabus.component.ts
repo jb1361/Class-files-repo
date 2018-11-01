@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Courses} from '../../../../data';
 
 @Component({
   selector: 'app-syllabus',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./syllabus.component.scss']
 })
 export class SyllabusComponent implements OnInit {
-
-  constructor() { }
+  selectedCourse: string;
+  courseNames: string[];
+  @Output() courseChanged: EventEmitter<any> = new EventEmitter<any>();
+  constructor(private courses: Courses) {
+    this.selectedCourse = '';
+    this.courseNames = courses.courseNames;
+  }
 
   ngOnInit() {
+  }
+
+  public changeCourse(course: string) {
+    this.selectedCourse = course;
   }
 
 }

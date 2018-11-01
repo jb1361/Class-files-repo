@@ -5,7 +5,8 @@ import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 import {MaterialModule} from './modules/material/material.module';
 import {SyllabusModule} from './modules/syllabus/syllabus.module';
-import {CourseData} from './data';
+import {CourseData, Courses} from './data';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,11 +14,12 @@ import {CourseData} from './data';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
     MaterialModule,
     SyllabusModule
   ],
-  providers: [CourseData],
+  providers: [CourseData, Courses],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

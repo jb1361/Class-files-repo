@@ -1,6 +1,6 @@
 
 export class Courses {
-  courseNames = ['P422', ''];
+  courseNames = ['P422', 'C343'];
 }
 
 export class CourseData {
