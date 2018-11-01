@@ -1,5 +1,9 @@
 
-export class Data {
+export class Courses {
+  courseNames = ['P422', ''];
+}
+
+export class CourseData {
   title: string;
   section: string;
   description: string;
@@ -9,7 +13,7 @@ export class Data {
   calendar: Calendar[];
   universityInfo: string;
   constructor() {
-    this.title = "Test";
+    this.title = 'Test';
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Data} from "../../../../data";
+import {CourseData} from '../../../../data';
 
 @Component({
   selector: 'app-syllabus-info',
@@ -8,13 +8,13 @@ import {Data} from "../../../../data";
 })
 export class SyllabusInfoComponent implements OnInit {
   title: string;
-  sectionNumber: string
+  sectionNumber: string;
   description: string;
   information: string;
   times: Date;
-  scale: string
+  scale: string;
 
-  constructor(private info: Data) {
+  constructor(private info: CourseData) {
     this.title = info.title;
   }
 

@@ -4,8 +4,8 @@ import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 import {MaterialModule} from './modules/material/material.module';
-import {SyllabusModule} from "./modules/syllabus/syllabus.module";
-import {Data} from "./data";
+import {SyllabusModule} from './modules/syllabus/syllabus.module';
+import {CourseData} from './data';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import {Data} from "./data";
     MaterialModule,
     SyllabusModule
   ],
-  providers: [Data],
+  providers: [CourseData],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
