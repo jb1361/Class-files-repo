@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="courses">
+    <div class="course-names" *ngFor="let course of courseNames">
+      <button mat-raised-button [innerHTML]="course" (click)="changeCourse(course)">course</button>
+    </div>
+  </div>
+  <app-syllabus-info *ngIf="selectedCourse != ''" [courseName] = "selectedCourse"></app-syllabus-info>
+  <app-calendar *ngIf="selectedCourse != ''" [courseName] = "selectedCourse"></app-calendar>
+  <app-university-info *ngIf="selectedCourse != ''" class="university-info"></app-university-info>
+</div>
