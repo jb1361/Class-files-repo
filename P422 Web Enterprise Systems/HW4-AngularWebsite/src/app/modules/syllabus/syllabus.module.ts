@@ -5,11 +5,13 @@ import { CalendarComponent } from './component/calendar/calendar.component';
 import { UniversityInfoComponent } from './component/university-info/university-info.component';
 import {SyllabusComponent} from './component/syllabus/syllabus.component';
 import {MaterialModule} from '../material/material.module';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   declarations: [SyllabusComponent, SyllabusInfoComponent, CalendarComponent, UniversityInfoComponent]
 })

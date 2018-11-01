@@ -1,3 +1,10 @@
-<p>
- {{title}}
-</p>
+<h1>Syllabus Info</h1>
+<div class="syllabus-info">
+  <label [innerHTML]="'Title:' + title" readonly></label>
+  <label [innerHTML]="'Section Number:' + sectionNumber" readonly></label>
+  <label [innerHTML]="'Description:' + description" readonly></label>
+  <label [innerHTML]="'Information:' + information" readonly></label>
+  <label [innerHTML]="'Course Times:' + times" readonly></label>
+  <label [innerHTML]="'Grading scale:' + scale" readonly></label>
+</div>
+

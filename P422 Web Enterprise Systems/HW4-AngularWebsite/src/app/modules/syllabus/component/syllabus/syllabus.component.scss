@@ -4,3 +4,14 @@
 .course-names {
   padding-right: 15px;
 }
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.university-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

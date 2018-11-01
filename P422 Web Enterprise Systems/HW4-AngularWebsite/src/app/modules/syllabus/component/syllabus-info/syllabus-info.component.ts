@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CourseData} from '../../../../data';
 
 @Component({
@@ -7,6 +7,7 @@ import {CourseData} from '../../../../data';
   styleUrls: ['./syllabus-info.component.scss']
 })
 export class SyllabusInfoComponent implements OnInit {
+  @Input() courseName: string;
   title: string;
   sectionNumber: string;
   description: string;
@@ -19,6 +20,9 @@ export class SyllabusInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  public getCourse(course) {
+    console.log(course);
   }
 
 }

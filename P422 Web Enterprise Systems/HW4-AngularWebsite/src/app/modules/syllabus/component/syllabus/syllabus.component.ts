@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Courses} from '../../../../data';
 
 @Component({
@@ -9,7 +9,6 @@ import {Courses} from '../../../../data';
 export class SyllabusComponent implements OnInit {
   selectedCourse: string;
   courseNames: string[];
-  @Output() courseChanged: EventEmitter<any> = new EventEmitter<any>();
   constructor(private courses: Courses) {
     this.selectedCourse = '';
     this.courseNames = courses.courseNames;
@@ -18,6 +17,7 @@ export class SyllabusComponent implements OnInit {
   ngOnInit() {
   }
 
+  // use the event emmiter here and bind it to syllabus info to update course info on that component.adsfdrsgdertgrtyrtyrt6yrty6rt4
   public changeCourse(course: string) {
     this.selectedCourse = course;
   }
