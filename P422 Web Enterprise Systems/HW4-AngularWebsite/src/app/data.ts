@@ -5,11 +5,15 @@ export class Data {
   description: string;
   bookInfo: string;
   meetingTime: Date;
-  gradingScale: number;
-  calendar: Calander[];
+  gradingScale: string;
+  calendar: Calendar[];
   universityInfo: string;
+  constructor() {
+    this.title = "Test";
+  }
+
 }
 
-export class Calander {
+export class Calendar {
 
 }

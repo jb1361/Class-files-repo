@@ -4,6 +4,8 @@ import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 import {MaterialModule} from './modules/material/material.module';
+import {SyllabusModule} from "./modules/syllabus/syllabus.module";
+import {Data} from "./data";
 
 @NgModule({
   declarations: [
@@ -12,9 +14,10 @@ import {MaterialModule} from './modules/material/material.module';
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
-    MaterialModule
+    MaterialModule,
+    SyllabusModule
   ],
-  providers: [],
+  providers: [Data],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

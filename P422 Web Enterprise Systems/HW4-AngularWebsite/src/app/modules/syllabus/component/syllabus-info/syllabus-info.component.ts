@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Data} from "../../../../data";
 
 @Component({
   selector: 'app-syllabus-info',
@@ -6,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./syllabus-info.component.scss']
 })
 export class SyllabusInfoComponent implements OnInit {
+  title: string;
+  sectionNumber: string
+  description: string;
+  information: string;
+  times: Date;
+  scale: string
 
-  constructor() { }
+  constructor(private info: Data) {
+    this.title = info.title;
+  }
 
   ngOnInit() {
   }
