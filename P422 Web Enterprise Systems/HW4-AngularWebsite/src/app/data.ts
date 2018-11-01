@@ -30,24 +30,24 @@ export class Calendar {
 
   public courseCalender = {
     'P422': {
-      '0': {
+      0: {
         date: '11-01-2018',
         description: 'Doing Angular',
         notes: 'a link here'
       },
-      '1': {
+      1: {
         date: '11-04-2018',
         description: 'Doing Angular again',
         notes: 'a link here again'
       }
     },
     'C343': {
-      '0': {
+      0: {
         date: '11-02-2018',
         description: 'Assigning Homework',
         notes: 'a link here'
       },
-      '1': {
+      1: {
         date: '11-05-2018',
         description: 'Assigning ghgomework on top of homework and assigning homework to some guy in the hallway.',
         notes: 'a link here again'

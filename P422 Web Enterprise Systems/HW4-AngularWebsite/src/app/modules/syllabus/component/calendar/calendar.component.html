@@ -1,3 +1,8 @@
-<p>
-  calendar works!
-</p>
+<div class="calendar-container">
+  <h1>Calendar</h1>
+  <div *ngFor="let date of dates">
+    <label [innerHTML]="'Date: ' + date.date + ', '"></label>
+    <label [innerHTML]="'Description: ' + date.description + ', '"></label>
+    <label [innerHTML]="'Link: ' + date.notes + ' '"></label>
+  </div>
+</div>
