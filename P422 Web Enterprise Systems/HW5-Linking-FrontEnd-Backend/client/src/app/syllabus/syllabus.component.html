@@ -1,0 +1,29 @@
+<div *ngIf="selectedCourse">
+
+<h1>{{(selectedCourse | async)?.section}}: {{(selectedCourse | async)?.title}}</h1>
+
+<div><span class="inline-title">Description:</span>  {{(selectedCourse|async)?.description}}</div>
+<div><span class="inline-title">Book Info:</span>    {{(selectedCourse|async)?.bookInfo}}</div>
+<div><span class="inline-title">Meeting Time:</span> {{(selectedCourse|async)?.meetingTime}}</div>
+
+<div class="title">Calendar</div>
+<table>
+	<tr *ngFor="let day of (selectedCourse|async)?.calendar">
+		<td>{{day}}</td>
+	</tr>
+</table>
+
+<div class="title">Grading Scale</div>
+<table>
+	<tr *ngFor="let grade of (selectedCourse|async)?.gradingScale">
+		<td>{{grade}}</td>
+	</tr>
+</table>
+
+<div class="title">University Information</div>
+<p>{{(selectedCourse|async)?.universityInfo}}</p>
+
+</div>
+<div *ngIf="!selectedCourse">
+No course selected.
+</div>
