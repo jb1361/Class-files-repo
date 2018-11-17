@@ -25,7 +25,8 @@ let submissionSchema = mongoose.Schema({
         default: null
     },
     text: {
-        type: String
+        type: String,
+        required: true
     },
     submittedDate: {
         type: String,

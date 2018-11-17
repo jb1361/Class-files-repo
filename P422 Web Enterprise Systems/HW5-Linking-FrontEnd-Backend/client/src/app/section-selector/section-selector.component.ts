@@ -12,11 +12,11 @@ export class SectionSelectorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(`ngInit: ${this.section}`);
+    // console.log(`ngInit: ${this.section}`);
   }
 
   ngOnChanges() {
-    console.log(`ngOnChanges: ${this.section}`);
+    // console.log(`ngOnChanges: ${this.section}`);
     this.sections = [
     {title: 'Syllabus', url: `/courses/${this.section}/syllabus`},
     {title: 'Assignments', url: `/courses/${this.section}/assignments`},

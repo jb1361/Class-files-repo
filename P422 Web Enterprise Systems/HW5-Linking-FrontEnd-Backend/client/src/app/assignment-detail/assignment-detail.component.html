@@ -1,7 +1,11 @@
 <p>
   Assignment name: {{sectionName|async}}: {{assignmentName|async}}
 </p>
-
+<div class="alerts">
+  <label class="alert-success" *ngIf="postSuccess">Assignment Submitted</label>
+  <label class="alert-danger" *ngIf="error">Error Submitting Assignment.</label>
+  <label class="alert-danger" *ngIf="error"> {{errorReason}}</label>
+</div>
 <form (ngSubmit)="onSubmit()" [formGroup]="assForm">
   <div class="form-group">
     <label>Assignment Name</label>

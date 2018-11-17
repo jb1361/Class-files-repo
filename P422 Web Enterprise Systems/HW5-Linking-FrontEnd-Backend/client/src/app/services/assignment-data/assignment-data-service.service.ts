@@ -14,21 +14,21 @@ export class AssignmentDataServiceService {
     return this.http.get<Assignment[]>(this.utility.getRootURL() + '/v1/assignments').toPromise();
   }
   addAssignment(assignment: Assignment) {
-    return this.http.post(this.utility.getRootURL() + '/v1/assignments', assignment);
+    return this.http.post(this.utility.getRootURL() + '/v1/assignments', assignment).toPromise();
   }
   getAssignment(name: String) {
-    return this.http.get<Assignment>(this.utility.getRootURL() + '/v1/assignments/' + name);
+    return this.http.get<Assignment>(this.utility.getRootURL() + '/v1/assignments/' + name).toPromise();
   }
   updateAssignment(name: String, assignment: Assignment) {
-    return this.http.put(this.utility.getRootURL() + '/v1/assignments/' + name + '?section=' + assignment.section, assignment);
+    return this.http.put(this.utility.getRootURL() + '/v1/assignments/' + name + '?section=' + assignment.section, assignment).toPromise();
   }
   getAssignmentGrade(name: String) {
-    return this.http.get(this.utility.getRootURL() + '/v1/assignments/' + name + '/grades');
+    return this.http.get(this.utility.getRootURL() + '/v1/assignments/' + name + '/grades').toPromise();
   }
   addAssignmentGrade(name: String, grade: number) {
-    return this.http.post(this.utility.getRootURL() + '/v1/assignments/' + name + '/grades', grade);
+    return this.http.post(this.utility.getRootURL() + '/v1/assignments/' + name + '/grades', grade).toPromise();
   }
   addSubmission(submission: Submission) {
-    return this.http.post(this.utility.getRootURL() + '/v1/submissions', submission);
+    return this.http.post(this.utility.getRootURL() + '/v1/submissions', submission).toPromise();
   }
 }

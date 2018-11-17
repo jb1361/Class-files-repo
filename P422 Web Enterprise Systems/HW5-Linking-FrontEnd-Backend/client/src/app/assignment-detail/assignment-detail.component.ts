@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import {catchError, switchMap} from 'rxjs/operators';
 import {AssignmentDataServiceService} from '../services/assignment-data/assignment-data-service.service';
 import {Submission} from '../models/Submission';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -16,6 +16,9 @@ export class AssignmentDetailComponent implements OnInit {
   sectionName: Observable<String>;
   assForm: FormGroup;
   submitted = false;
+  postSuccess = false;
+  error = false;
+  errorReason = '';
   constructor(
   private route: ActivatedRoute,
   private assDataService: AssignmentDataServiceService,
@@ -36,16 +39,31 @@ export class AssignmentDetailComponent implements OnInit {
       textArea: ['', Validators.required],
     });
   }
-
   get f() { return this.assForm.controls; }
   onSubmit() {
     this.submitted = true;
     if (this.assForm.invalid) {
-      console.log('invalid form');
       return;
     }
-   // console.log(form.);
-    // let submission = new Submission();
-    // this.assDataService.addSubmission(submission);
+    const data = {
+      'assignment': {
+        'name': this.f.assName.value,
+        'section': this.f.secName.value,
+        'submitter': this.f.name.value,
+      },
+      'text': this.f.textArea.value
+    };
+     const submission = data;
+     this.assDataService.addSubmission(submission).catch((err) => {
+       if (err) {
+         this.error = true;
+         this.errorReason = err.message;
+       }
+     }).then((res) => {
+       if (res) {
+         this.postSuccess = true;
+       }
+     });
+
   }
 }
