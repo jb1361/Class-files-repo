@@ -1,0 +1,9 @@
+<ul class="nav">
+  <li class="nav-item" *ngFor="let course of (courses|async)">
+    <a class="nav-link" [routerLink]="'/courses/'+course.section" routerLinkActive="active">{{course.section}}: {{course.title}}</a>
+  </li>
+</ul>
+
+<div *ngIf="courseSection|async">
+	<app-section-selector [section]="courseSection|async"></app-section-selector>
+</div>
