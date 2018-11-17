@@ -5,10 +5,7 @@ let Submissions = require('./models/submissions');
 
 router.route('/')
 	.get(function(req, res) {
-		var query = Assignments.find({section: req.section});
-		if (req.query && req.query.role) {
-			query = query.byRole(req.query.role);
-		}
+		var query = Assignments.find({});
 		query.exec()
 			.catch(err => {
 				res.status(500);
@@ -21,7 +18,7 @@ router.route('/')
 	})
 	.post(function(req, res) {
 		var newAssignment = new Assignments(req.body);
-		newAssignment.section = req.section;
+		newAssignment.section = req.body.section;
 		newAssignment.save()
 			.catch(err => {
 				res.status(500);
@@ -36,7 +33,7 @@ router.route('/')
 router.route('/:assignmentName')
 	.get(function(req, res) {
 		Assignments.findOne({
-				section: req.section,
+				section: req.body.section,
 				name: req.params.assignmentName
 			}).exec()
 			.catch(err => {
@@ -81,7 +78,7 @@ router.route('/:assignmentName')
 router.route("/:assignmentName/grades")
 	// GET should only be used by teachers
 	.get(function(req, res) {
-		Submissions.byAssignment(req.section, req.params.assignmentName).exec()
+		Submissions.byAssignment(req.body.section, req.params.assignmentName).exec()
 			.catch(err => {
 				res.status(404);
 				res.jsonp(err);
@@ -94,7 +91,7 @@ router.route("/:assignmentName/grades")
 	// POST will be used to submit assignments
 	.post(function(req, res) {
 		var newSubmission = new Submissions(req.body);
-		newSubmission.assignment.section = req.section;
+		newSubmission.assignment.section = req.body.section;
 		newSubmission.assignment.name = req.params.assignmentName;
 		newSubmission.save()
 			.catch(err => {

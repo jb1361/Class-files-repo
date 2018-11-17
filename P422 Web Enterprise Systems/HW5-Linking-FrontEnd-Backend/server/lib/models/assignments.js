@@ -43,7 +43,7 @@ assignmentSchema.query.bySectionAndName = function(name, section) {
 	return this.where({section: section, name: name});
 };
 
-var Assignments = mongoose.model('Assignment', assignmentSchema);
+let Assignments = mongoose.model('Assignment', assignmentSchema);
 
 module.exports = Assignments;
 
