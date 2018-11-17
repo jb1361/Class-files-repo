@@ -1,4 +1,5 @@
 import {Assignment} from './Assignment';
+import {Buffer} from 'buffer';
 
 export class Submission {
   assignment: Assignment;

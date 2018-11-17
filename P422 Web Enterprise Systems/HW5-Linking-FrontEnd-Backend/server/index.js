@@ -6,14 +6,14 @@ let request = require('request');
 let cors = require('cors');
 let path = require('path');
 
-app.use(cors())
+app.use(cors());
 
 app.use(bodyParser.json());
 
 app.use('/v1/users', require('./lib/userRoutes'));
 app.use('/v1/courses', require('./lib/courseRoutes'));
-
-app.use('/', express.static('./frontend/dist/frontend'));
+app.use('/v1/assignments', require('./lib/assignmentRoutes'));
+app.use('/', express.static('./client/dist/frontend'));
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'frontend/dist/frontend/index.html'));
