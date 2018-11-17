@@ -13,16 +13,16 @@ export class AssignmentDetailComponent implements OnInit {
  sectionName: Observable<String>;
 
   constructor(
-	private route: ActivatedRoute,
+  private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-	  this.assignmentName = this.route.paramMap.pipe(
-		switchMap((params: ParamMap) => of(params.get('name')))
-	  );
-	  this.sectionName = this.route.paramMap.pipe(
-		switchMap((params: ParamMap) => of(params.get('section')))
-	  );
+    this.assignmentName = this.route.paramMap.pipe(
+    switchMap((params: ParamMap) => of(params.get('name')))
+    );
+    this.sectionName = this.route.paramMap.pipe(
+    switchMap((params: ParamMap) => of(params.get('section')))
+    );
   }
 
 }

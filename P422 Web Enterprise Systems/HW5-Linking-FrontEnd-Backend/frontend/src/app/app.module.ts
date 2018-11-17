@@ -28,17 +28,16 @@ import { HomepageComponent } from './homepage/homepage.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-	HttpClientModule,
-	NgbModule,
-	FormsModule
+    HttpClientModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-	selectedCourse: string;
-
-	setActive(course: string) {
-		this.selectedCourse = course;
-	}
+  selectedCourse: string;
+  setActive(course: string) {
+    this.selectedCourse = course;
+  }
 }

@@ -13,14 +13,14 @@ export class AssignmentComponent implements OnInit {
   section: Observable<String>;
 
   constructor(
-	private route: ActivatedRoute,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-	  // This code gets the :section parameter out of the route
-	  this.section = this.route.paramMap.pipe(
-		switchMap((params: ParamMap) => of(params.get('section')))
-	  );
+    // This code gets the :section parameter out of the route
+    this.section = this.route.paramMap.pipe(
+    switchMap((params: ParamMap) => of(params.get('section')))
+    );
   }
 
 }

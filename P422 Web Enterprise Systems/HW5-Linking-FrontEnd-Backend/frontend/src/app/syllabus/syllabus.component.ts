@@ -16,15 +16,15 @@ export class SyllabusComponent implements OnInit {
   selectedCourse: Observable<Course>;
 
   constructor(
-	private route: ActivatedRoute,
-	private syllabusDataService: SyllabusDataService
+  private route: ActivatedRoute,
+  private syllabusDataService: SyllabusDataService
   ) { }
 
   ngOnInit() {
-	  // This code gets the :section parameter out of the route
-	  this.selectedCourse = this.route.paramMap.pipe(
-		switchMap((params: ParamMap) => this.syllabusDataService.getCourse(params.get('section')))
-	  );
+    // This code gets the :section parameter out of the route
+    this.selectedCourse = this.route.paramMap.pipe(
+    switchMap((params: ParamMap) => this.syllabusDataService.getCourse(params.get('section')))
+    );
   }
 
 }
