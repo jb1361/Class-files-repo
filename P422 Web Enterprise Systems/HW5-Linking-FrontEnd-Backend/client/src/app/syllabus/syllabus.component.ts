@@ -26,5 +26,4 @@ export class SyllabusComponent implements OnInit {
     switchMap((params: ParamMap) => this.syllabusDataService.getCourse(params.get('section')))
     );
   }
-
 }
