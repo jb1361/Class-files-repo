@@ -1,10 +1,10 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-var mongoose = require('mongoose');
-var request = require('request');
-var cors = require('cors');
-var path = require('path');
+let express = require('express');
+let bodyParser = require('body-parser');
+let app = express();
+let mongoose = require('mongoose');
+let request = require('request');
+let cors = require('cors');
+let path = require('path');
 
 app.use(cors())
 
@@ -20,7 +20,7 @@ app.get('*', (req, res) => {
 });
 
 mongoose.connect('mongodb://localhost/test');
-var db = mongoose.connection;
+let db = mongoose.connection;
 app.locals.mdb = db;
 
 app.listen(8080, function() {

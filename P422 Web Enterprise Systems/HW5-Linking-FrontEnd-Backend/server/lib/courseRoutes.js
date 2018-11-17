@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var Courses = require('./models/Courses');
+let express = require('express');
+let router = express.Router();
+let Courses = require('./models/Courses');
 
 router.param('section', function(req, res, next, value) {
 	req.section = value;

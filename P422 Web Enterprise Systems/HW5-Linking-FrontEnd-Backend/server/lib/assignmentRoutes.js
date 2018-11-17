@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var Assignments = require('./models/assignments');
-var Submissions = require('./models/submissions')
+let express = require('express');
+let router = express.Router();
+let Assignments = require('./models/assignments');
+let Submissions = require('./models/submissions');
 
 router.route('/')
 	.get(function(req, res) {
