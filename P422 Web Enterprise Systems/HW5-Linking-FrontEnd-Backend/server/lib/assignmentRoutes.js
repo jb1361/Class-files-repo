@@ -17,7 +17,6 @@ router.route('/')
 				});
 	})
 	.post(function(req, res) {
-		console.log(req.body);
 		var newAssignment = new Assignments(req.body);
 		newAssignment.section = req.body.section;
 		newAssignment.save()
