@@ -42,6 +42,7 @@ export class AssignmentDetailComponent implements OnInit {
   get f() { return this.assForm.controls; }
   onSubmit() {
     this.error = false;
+    this.postSuccess = false;
     this.submitted = true;
     if (this.assForm.invalid) {
       return;
