@@ -44,7 +44,7 @@ router.route('/')
 router.route('/:assignmentName')
 	.get(function(req, res) {
 		Assignments.findOne({
-				section: req.body.section,
+				section: req.query.section,
 				name: req.params.assignmentName
 			}).exec()
 			.catch(err => {
