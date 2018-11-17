@@ -2,15 +2,28 @@
   Assignment name: {{sectionName|async}}: {{assignmentName|async}}
 </p>
 
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="assForm">
   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" required>
+    <label>Assignment Name</label>
+    <input type="text" class="form-control" formControlName="assName" [ngModel]="(sectionName|async)" readonly>
   </div>
   <div class="form-group">
-    <label for="alterEgo">Alter Ego</label>
-    <input type="text" class="form-control" id="alterEgo">
+    <label>Section</label>
+    <input type="text" class="form-control" formControlName="secName"  [ngModel]="(assignmentName|async)" readonly>
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label>Text Box</label>
+    <textarea type="text" class="form-control text-area" formControlName="textArea" [ngClass]="{ 'is-invalid': submitted && f.textArea.errors }"></textarea>
+      <div *ngIf="submitted && f.textArea.errors" class="invalid-feedback">
+        <div *ngIf="f.textArea.errors.required">Text Area is required</div>
+      </div>
   </div>
   <button type="submit" class="btn btn-success">Submit</button>
 </form>
-

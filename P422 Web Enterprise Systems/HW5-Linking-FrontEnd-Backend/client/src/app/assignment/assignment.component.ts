@@ -27,7 +27,6 @@ export class AssignmentComponent implements OnInit {
   }
   getAssignments() {
     this.assignmentDataService.getAssignments().then((res) => {
-      console.log(res);
       this.assignments = res;
     });
   }

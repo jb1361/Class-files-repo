@@ -17,10 +17,12 @@ let submissionSchema = mongoose.Schema({
         }
     },
     fileName: {
-        type: String
+        type: String,
+        default: 'homework'
     },
     upload: {
-        type: Buffer
+        type: Buffer,
+        default: null
     },
     text: {
         type: String

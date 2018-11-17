@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Assignment} from '../../models/Assignment';
 import {UtilityService} from '../utility/utility.service';
+import {Submission} from '../../models/Submission';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +17,18 @@ export class AssignmentDataServiceService {
     return this.http.post(this.utility.getRootURL() + '/v1/assignments', assignment);
   }
   getAssignment(name: String) {
-    return this.http.get<Assignment>(this.utility.getRootURL() + '/v1/assignments/name');
+    return this.http.get<Assignment>(this.utility.getRootURL() + '/v1/assignments/' + name);
   }
   updateAssignment(name: String, assignment: Assignment) {
-    return this.http.put(this.utility.getRootURL() + '/v1/assignments/name', assignment);
+    return this.http.put(this.utility.getRootURL() + '/v1/assignments/' + name + '?section=' + assignment.section, assignment);
   }
   getAssignmentGrade(name: String) {
-    return this.http.get(this.utility.getRootURL() + '/v1/assignments/name/grades');
+    return this.http.get(this.utility.getRootURL() + '/v1/assignments/' + name + '/grades');
   }
   addAssignmentGrade(name: String, grade: number) {
-    return this.http.post(this.utility.getRootURL() + '/v1/assignments/name/grades', grade);
+    return this.http.post(this.utility.getRootURL() + '/v1/assignments/' + name + '/grades', grade);
+  }
+  addSubmission(submission: Submission) {
+    return this.http.post(this.utility.getRootURL() + '/v1/submissions', submission);
   }
 }
