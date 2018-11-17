@@ -1,6 +1,6 @@
 
 <div *ngFor="let assignment of assignments">
-  <a [routerLink]="'/assignment/'+(assignment.section|async)+'/assignments/homework5'">homework 5</a>
+  <a [routerLink]="'/courses/'+ assignment.section + '/assignments/' + assignment.name">{{assignment.name}}</a>
 </div>
 
 
