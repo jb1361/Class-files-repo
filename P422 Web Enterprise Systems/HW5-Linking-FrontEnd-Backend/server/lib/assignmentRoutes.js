@@ -17,6 +17,7 @@ router.route('/')
 				});
 	})
 	.post(function(req, res) {
+		console.log(req.body);
 		var newAssignment = new Assignments(req.body);
 		newAssignment.section = req.body.section;
 		newAssignment.save()
@@ -28,8 +29,19 @@ router.route('/')
 				res.status(200);
 				res.json(doc);
 			});
-	});
-
+	})
+    .delete(function(req, res) {
+        var query = Assignments.deleteMany({});
+        query.exec()
+            .catch(err => {
+                res.status(500);
+                res.json(err);
+            })
+            .then(docs => {
+                res.status(200);
+                res.json(docs);
+            });
+    });
 router.route('/:assignmentName')
 	.get(function(req, res) {
 		Assignments.findOne({

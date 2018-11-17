@@ -10,13 +10,13 @@ export class AssignmentDataServiceService {
 
   constructor(private http: HttpClient, private utility: UtilityService) { }
   getAssignments() {
-    return this.http.get(this.utility.getRootURL() + '/v1/assignments');
+    return this.http.get<Assignment[]>(this.utility.getRootURL() + '/v1/assignments').toPromise();
   }
   addAssignment(assignment: Assignment) {
     return this.http.post(this.utility.getRootURL() + '/v1/assignments', assignment);
   }
   getAssignment(name: String) {
-    return this.http.get(this.utility.getRootURL() + '/v1/assignments/name');
+    return this.http.get<Assignment>(this.utility.getRootURL() + '/v1/assignments/name');
   }
   updateAssignment(name: String, assignment: Assignment) {
     return this.http.put(this.utility.getRootURL() + '/v1/assignments/name', assignment);

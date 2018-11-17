@@ -8,7 +8,7 @@ let path = require('path');
 
 app.use(cors());
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 app.use('/v1/users', require('./lib/userRoutes'));
 app.use('/v1/courses', require('./lib/courseRoutes'));

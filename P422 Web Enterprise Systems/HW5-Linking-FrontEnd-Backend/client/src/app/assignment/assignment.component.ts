@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import {Assignment} from '../models/Assignment';
+import {AssignmentDataServiceService} from '../services/assignment-data/assignment-data-service.service';
 
 @Component({
   selector: 'app-assignment',
@@ -11,9 +12,10 @@ import { switchMap } from 'rxjs/operators';
 })
 export class AssignmentComponent implements OnInit {
   section: Observable<String>;
-
+  assignments: Assignment[];
   constructor(
     private route: ActivatedRoute,
+    private assignmentDataService: AssignmentDataServiceService
   ) { }
 
   ngOnInit() {
@@ -21,6 +23,13 @@ export class AssignmentComponent implements OnInit {
     this.section = this.route.paramMap.pipe(
     switchMap((params: ParamMap) => of(params.get('section')))
     );
+    this.getAssignments();
+  }
+  getAssignments() {
+    this.assignmentDataService.getAssignments().then((res) => {
+      console.log(res);
+      this.assignments = res;
+    });
   }
 
 }

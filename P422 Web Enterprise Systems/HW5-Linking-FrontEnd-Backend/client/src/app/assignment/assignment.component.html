@@ -1,6 +1,8 @@
-<p>
-  You should have a list of assignments from the backend here.
-</p>
+
+<div *ngFor="let assignment of assignments">
+  <a [routerLink]="'/assignment/'+(assignment.section|async)+'/assignments/homework5'">homework 5</a>
+</div>
+
 
 <p>
   Here's a link to a specific assignment (just to complete the navigation):
