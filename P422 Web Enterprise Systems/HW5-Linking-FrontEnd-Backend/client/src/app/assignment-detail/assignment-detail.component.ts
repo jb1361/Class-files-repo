@@ -41,6 +41,7 @@ export class AssignmentDetailComponent implements OnInit {
   }
   get f() { return this.assForm.controls; }
   onSubmit() {
+    this.error = false;
     this.submitted = true;
     if (this.assForm.invalid) {
       return;
@@ -53,17 +54,15 @@ export class AssignmentDetailComponent implements OnInit {
       },
       'text': this.f.textArea.value
     };
-     const submission = data;
-     this.assDataService.addSubmission(submission).catch((err) => {
-       if (err) {
-         this.error = true;
-         this.errorReason = err.message;
-       }
-     }).then((res) => {
-       if (res) {
-         this.postSuccess = true;
-       }
-     });
-
+    this.assDataService.addSubmission(data).catch((err) => {
+     if (err) {
+       this.error = true;
+       this.errorReason = err.message;
+     }
+    }).then((res) => {
+     if (res) {
+       this.postSuccess = true;
+     }
+    });
   }
 }
