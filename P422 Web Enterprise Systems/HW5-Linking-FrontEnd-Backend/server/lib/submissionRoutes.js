@@ -28,6 +28,18 @@ router.route('/')
                 res.status(200);
                 res.json(docs);
             });
-    });
+    })
+	.delete(function(req, res) {
+		var query = Submissions.deleteMany({});
+		query.exec()
+			.catch(err => {
+				res.status(500);
+				res.json(err);
+			})
+			.then(docs => {
+				res.status(200);
+				res.json(docs);
+			});
+	});
 module.exports = router;
 
