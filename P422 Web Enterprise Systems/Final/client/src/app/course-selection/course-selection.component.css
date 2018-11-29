@@ -1,4 +1,12 @@
 .active {
 	font-weight: bold;
 }
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+}
 
