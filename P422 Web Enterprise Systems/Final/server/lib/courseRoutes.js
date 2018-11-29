@@ -7,8 +7,6 @@ router.param('section', function(req, res, next, value) {
 	next();
 });
 
-router.use('/assignments', require('./assignmentRoutes'));
-
 router.route('/')
 	.get(function(req, res) {
 		var query = Courses.find();

@@ -26,11 +26,6 @@ export class CourseSelectionComponent implements OnInit {
 
   this.router.events.subscribe(routerEvent => {
       if (routerEvent instanceof RoutesRecognized) {
-        // This is ugly, but I was able to reach deep into the router to find our section.
-        // The reason I'm doing this is that we are currently OUTSIDE of the router-outlet
-        // component so the ActiveRoute is not hooked up in this component
-        // I don't expect this to work outside of the current version of Angular
-        // BUG: Also note that this breaks down on PageNotFoundComponent since it doesn't have a parameter
         const section = routerEvent.state.root['_routerState']['_root'].children[0].value.params.section;
         this.courseSection = of(section);
       }

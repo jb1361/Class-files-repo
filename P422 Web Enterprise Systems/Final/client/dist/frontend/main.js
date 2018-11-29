@@ -84,7 +84,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".active {\n\tfont-weight: bold;\n\tfont-color: red;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxrQkFBa0I7Q0FDbEIsZ0JBQWdCO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYWN0aXZlIHtcblx0Zm9udC13ZWlnaHQ6IGJvbGQ7XG5cdGZvbnQtY29sb3I6IHJlZDtcbn1cbiJdfQ== */"
+module.exports = ".active {\r\n\tfont-weight: bold;\r\n\tfont-color: red;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxrQkFBa0I7Q0FDbEIsZ0JBQWdCO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYWN0aXZlIHtcclxuXHRmb250LXdlaWdodDogYm9sZDtcclxuXHRmb250LWNvbG9yOiByZWQ7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -95,7 +95,7 @@ module.exports = ".active {\n\tfont-weight: bold;\n\tfont-color: red;\n}\n\n/*# 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n<h1>Campus</h1>\n\n<app-course-selection></app-course-selection>\n\n<router-outlet></router-outlet>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n<h1>Campus</h1>\r\n<app-homepage></app-homepage>\r\n<router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -201,7 +201,8 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
@@ -221,7 +222,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Fzc2lnbm1lbnQtZGV0YWlsL2Fzc2lnbm1lbnQtZGV0YWlsLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = ".text-area {\r\n  height: 150px;\r\n  margin-bottom: 20px;\r\n}\r\n.alerts {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXNzaWdubWVudC1kZXRhaWwvYXNzaWdubWVudC1kZXRhaWwuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQWM7RUFDZCxvQkFBb0I7Q0FDckI7QUFDRDtFQUNFLGNBQWM7RUFDZCx1QkFBdUI7Q0FDeEIiLCJmaWxlIjoic3JjL2FwcC9hc3NpZ25tZW50LWRldGFpbC9hc3NpZ25tZW50LWRldGFpbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRleHQtYXJlYSB7XHJcbiAgaGVpZ2h0OiAxNTBweDtcclxuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xyXG59XHJcbi5hbGVydHMge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -232,7 +233,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  assignment-detail works!\n</p>\n\n<p>\n  Assignment name: {{sectionName|async}}: {{assignmentName|async}}\n</p>\n\n<p>\n  You should have a submission form for an assignment here.\n</p>\n"
+module.exports = "<h3>\r\n  Assignment name: {{assignmentName|async}}\r\n</h3>\r\n<h3>\r\n  Section: {{sectionName|async}}\r\n</h3>\r\n<div class=\"alerts\">\r\n  <label class=\"alert-success\" *ngIf=\"postSuccess\">Assignment Submitted</label>\r\n  <label class=\"alert-danger\" *ngIf=\"error\">Error Submitting Assignment.</label>\r\n  <label class=\"alert-danger\" *ngIf=\"error\"> {{errorReason}}</label>\r\n</div>\r\n<form (ngSubmit)=\"onSubmit()\" [formGroup]=\"assForm\">\r\n  <div class=\"form-group\">\r\n    <label>Assignment Name</label>\r\n    <input type=\"text\" class=\"form-control\" formControlName=\"assName\" [ngModel]=\"(sectionName|async)\" readonly>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Section</label>\r\n    <input type=\"text\" class=\"form-control\" formControlName=\"secName\"  [ngModel]=\"(assignmentName|async)\" readonly>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Name</label>\r\n    <input type=\"text\" class=\"form-control\" formControlName=\"name\" [ngClass]=\"{ 'is-invalid': submitted && f.name.errors }\">\r\n      <div *ngIf=\"submitted && f.name.errors\" class=\"invalid-feedback\">\r\n        <div *ngIf=\"f.name.errors.required\">Name is required</div>\r\n      </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Text Box</label>\r\n    <textarea type=\"text\" class=\"form-control text-area\" formControlName=\"textArea\" [ngClass]=\"{ 'is-invalid': submitted && f.textArea.errors }\"></textarea>\r\n      <div *ngIf=\"submitted && f.textArea.errors\" class=\"invalid-feedback\">\r\n        <div *ngIf=\"f.textArea.errors.required\">Text Area is required</div>\r\n      </div>\r\n  </div>\r\n  <button type=\"submit\" class=\"btn btn-success\">Submit</button>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -250,6 +251,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _services_assignment_data_assignment_data_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/assignment-data/assignment-data-service.service */ "./src/app/services/assignment-data/assignment-data-service.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -263,13 +266,59 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var AssignmentDetailComponent = /** @class */ (function () {
-    function AssignmentDetailComponent(route) {
+    function AssignmentDetailComponent(route, assDataService, formBuilder) {
         this.route = route;
+        this.assDataService = assDataService;
+        this.formBuilder = formBuilder;
+        this.submitted = false;
+        this.postSuccess = false;
+        this.error = false;
+        this.errorReason = '';
     }
     AssignmentDetailComponent.prototype.ngOnInit = function () {
         this.assignmentName = this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (params) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(params.get('name')); }));
         this.sectionName = this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (params) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(params.get('section')); }));
+        this.assForm = this.formBuilder.group({
+            assName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
+            secName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
+            textArea: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
+        });
+    };
+    Object.defineProperty(AssignmentDetailComponent.prototype, "f", {
+        get: function () { return this.assForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    AssignmentDetailComponent.prototype.onSubmit = function () {
+        var _this = this;
+        this.error = false;
+        this.postSuccess = false;
+        this.submitted = true;
+        if (this.assForm.invalid) {
+            return;
+        }
+        var data = {
+            'assignment': {
+                'name': this.f.assName.value,
+                'section': this.f.secName.value,
+                'submitter': this.f.name.value,
+            },
+            'text': this.f.textArea.value
+        };
+        this.assDataService.addSubmission(data).catch(function (err) {
+            if (err) {
+                _this.error = true;
+                _this.errorReason = err.message;
+            }
+        }).then(function (res) {
+            if (res) {
+                _this.postSuccess = true;
+            }
+        });
     };
     AssignmentDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -277,7 +326,9 @@ var AssignmentDetailComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./assignment-detail.component.html */ "./src/app/assignment-detail/assignment-detail.component.html"),
             styles: [__webpack_require__(/*! ./assignment-detail.component.css */ "./src/app/assignment-detail/assignment-detail.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _services_assignment_data_assignment_data_service_service__WEBPACK_IMPORTED_MODULE_4__["AssignmentDataServiceService"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]])
     ], AssignmentDetailComponent);
     return AssignmentDetailComponent;
 }());
@@ -304,7 +355,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  You should have a list of assignments from the backend here.\n</p>\n\n<p>\n  Here's a link to a specific assignment (just to complete the navigation):\n\n  <a [routerLink]=\"'/courses/'+(section|async)+'/assignments/homework5'\">homework 5</a>\n</p>\n"
+module.exports = "\r\n<div *ngFor=\"let assignment of assignments\">\r\n  <a [routerLink]=\"'/courses/'+ assignment.section + '/assignments/' + assignment.name\">{{assignment.name}}</a>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -322,6 +373,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _services_assignment_data_assignment_data_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/assignment-data/assignment-data-service.service */ "./src/app/services/assignment-data/assignment-data-service.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -335,13 +387,22 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var AssignmentComponent = /** @class */ (function () {
-    function AssignmentComponent(route) {
+    function AssignmentComponent(route, assignmentDataService) {
         this.route = route;
+        this.assignmentDataService = assignmentDataService;
     }
     AssignmentComponent.prototype.ngOnInit = function () {
         // This code gets the :section parameter out of the route
         this.section = this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (params) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(params.get('section')); }));
+        this.getAssignments();
+    };
+    AssignmentComponent.prototype.getAssignments = function () {
+        var _this = this;
+        this.assignmentDataService.getAssignments().then(function (res) {
+            _this.assignments = res;
+        });
     };
     AssignmentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -349,7 +410,8 @@ var AssignmentComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./assignment.component.html */ "./src/app/assignment/assignment.component.html"),
             styles: [__webpack_require__(/*! ./assignment.component.css */ "./src/app/assignment/assignment.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _services_assignment_data_assignment_data_service_service__WEBPACK_IMPORTED_MODULE_4__["AssignmentDataServiceService"]])
     ], AssignmentComponent);
     return AssignmentComponent;
 }());
@@ -365,7 +427,7 @@ var AssignmentComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".active {\n\tfont-weight: bold;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY291cnNlLXNlbGVjdGlvbi9jb3Vyc2Utc2VsZWN0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxrQkFBa0I7Q0FDbEIiLCJmaWxlIjoic3JjL2FwcC9jb3Vyc2Utc2VsZWN0aW9uL2NvdXJzZS1zZWxlY3Rpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hY3RpdmUge1xuXHRmb250LXdlaWdodDogYm9sZDtcbn1cblxuIl19 */"
+module.exports = ".active {\r\n\tfont-weight: bold;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY291cnNlLXNlbGVjdGlvbi9jb3Vyc2Utc2VsZWN0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxrQkFBa0I7Q0FDbEIiLCJmaWxlIjoic3JjL2FwcC9jb3Vyc2Utc2VsZWN0aW9uL2NvdXJzZS1zZWxlY3Rpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hY3RpdmUge1xyXG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcblxyXG4iXX0= */"
 
 /***/ }),
 
@@ -376,7 +438,7 @@ module.exports = ".active {\n\tfont-weight: bold;\n}\n\n\n/*# sourceMappingURL=d
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"nav\">\n  <li class=\"nav-item\" *ngFor=\"let course of (courses|async)\">\n    <a class=\"nav-link\" [routerLink]=\"'/courses/'+course.section\" routerLinkActive=\"active\">{{course.section}}: {{course.title}}</a>\n  </li>\n</ul>\n\n<div *ngIf=\"courseSection|async\">\n\t<app-section-selector [section]=\"courseSection|async\"></app-section-selector>\n</div>\n"
+module.exports = "<ul class=\"nav\">\r\n  <li class=\"nav-item\" *ngFor=\"let course of (courses|async)\">\r\n    <a class=\"nav-link\" [routerLink]=\"'/courses/'+course.section\" routerLinkActive=\"active\">{{course.section}}: {{course.title}}</a>\r\n  </li>\r\n</ul>\r\n\r\n<div *ngIf=\"courseSection|async\">\r\n\t<app-section-selector [section]=\"courseSection|async\"></app-section-selector>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -418,7 +480,8 @@ var CourseSelectionComponent = /** @class */ (function () {
         this.router.events.subscribe(function (routerEvent) {
             if (routerEvent instanceof _angular_router__WEBPACK_IMPORTED_MODULE_2__["RoutesRecognized"]) {
                 // This is ugly, but I was able to reach deep into the router to find our section.
-                // The reason I'm doing this is that we are currently OUTSIDE of the router-outlet component so the ActiveRoute is not hooked up in this component
+                // The reason I'm doing this is that we are currently OUTSIDE of the router-outlet
+                // component so the ActiveRoute is not hooked up in this component
                 // I don't expect this to work outside of the current version of Angular
                 // BUG: Also note that this breaks down on PageNotFoundComponent since it doesn't have a parameter
                 var section = routerEvent.state.root['_routerState']['_root'].children[0].value.params.section;
@@ -460,7 +523,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>Welcome to Campus courseware!</p>\n"
+module.exports = "<p>Welcome to Campus courseware!</p>\r\n<app-assignment></app-assignment>\r\n"
 
 /***/ }),
 
@@ -570,7 +633,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Page not found</h2>\n"
+module.exports = "<h2>Page not found</h2>\r\n"
 
 /***/ }),
 
@@ -622,7 +685,7 @@ var PageNotFoundComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".active {\n\tfont-weight: bold;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2VjdGlvbi1zZWxlY3Rvci9zZWN0aW9uLXNlbGVjdG9yLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxrQkFBa0I7Q0FDbEIiLCJmaWxlIjoic3JjL2FwcC9zZWN0aW9uLXNlbGVjdG9yL3NlY3Rpb24tc2VsZWN0b3IuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hY3RpdmUge1xuXHRmb250LXdlaWdodDogYm9sZDtcbn1cbiJdfQ== */"
+module.exports = ".active {\r\n\tfont-weight: bold;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2VjdGlvbi1zZWxlY3Rvci9zZWN0aW9uLXNlbGVjdG9yLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxrQkFBa0I7Q0FDbEIiLCJmaWxlIjoic3JjL2FwcC9zZWN0aW9uLXNlbGVjdG9yL3NlY3Rpb24tc2VsZWN0b3IuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hY3RpdmUge1xyXG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -633,7 +696,7 @@ module.exports = ".active {\n\tfont-weight: bold;\n}\n\n/*# sourceMappingURL=dat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"nav\">\n  <li class=\"nav-item\" *ngFor=\"let section of sections\">\n    <a class=\"nav-link\" [routerLink]=\"section.url\" routerLinkActive=\"active\">{{section.title}}</a>\n  </li>\n</ul>\n\n"
+module.exports = "<ul class=\"nav\">\r\n  <li class=\"nav-item\" *ngFor=\"let section of sections\">\r\n    <a class=\"nav-link\" [routerLink]=\"section.url\" routerLinkActive=\"active\">{{section.title}}</a>\r\n  </li>\r\n</ul>\r\n\r\n"
 
 /***/ }),
 
@@ -662,14 +725,14 @@ var SectionSelectorComponent = /** @class */ (function () {
     function SectionSelectorComponent() {
     }
     SectionSelectorComponent.prototype.ngOnInit = function () {
-        console.log("ngInit: " + this.section);
+        // console.log(`ngInit: ${this.section}`);
     };
     SectionSelectorComponent.prototype.ngOnChanges = function () {
-        console.log("ngOnChanges: " + this.section);
+        // console.log(`ngOnChanges: ${this.section}`);
         this.sections = [
-            { title: "Syllabus", url: "/courses/" + this.section + "/syllabus" },
-            { title: "Assignments", url: "/courses/" + this.section + "/assignments" },
-            { title: "Quizzes", url: "/courses/" + this.section + "/quizzes" }
+            { title: 'Syllabus', url: "/courses/" + this.section + "/syllabus" },
+            { title: 'Assignments', url: "/courses/" + this.section + "/assignments" },
+            { title: 'Quizzes', url: "/courses/" + this.section + "/quizzes" }
         ];
     };
     __decorate([
@@ -691,6 +754,112 @@ var SectionSelectorComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/assignment-data/assignment-data-service.service.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/app/services/assignment-data/assignment-data-service.service.ts ***!
+  \*****************************************************************************/
+/*! exports provided: AssignmentDataServiceService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AssignmentDataServiceService", function() { return AssignmentDataServiceService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _utility_utility_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility/utility.service */ "./src/app/services/utility/utility.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AssignmentDataServiceService = /** @class */ (function () {
+    function AssignmentDataServiceService(http, utility) {
+        this.http = http;
+        this.utility = utility;
+    }
+    AssignmentDataServiceService.prototype.getAssignments = function () {
+        return this.http.get(this.utility.getRootURL() + '/v1/assignments').toPromise();
+    };
+    AssignmentDataServiceService.prototype.addAssignment = function (assignment) {
+        return this.http.post(this.utility.getRootURL() + '/v1/assignments', assignment).toPromise();
+    };
+    AssignmentDataServiceService.prototype.getAssignment = function (name) {
+        return this.http.get(this.utility.getRootURL() + '/v1/assignments/' + name).toPromise();
+    };
+    AssignmentDataServiceService.prototype.updateAssignment = function (name, assignment) {
+        return this.http.put(this.utility.getRootURL() + '/v1/assignments/' + name + '?section=' + assignment.section, assignment).toPromise();
+    };
+    AssignmentDataServiceService.prototype.getAssignmentGrade = function (name) {
+        return this.http.get(this.utility.getRootURL() + '/v1/assignments/' + name + '/grades').toPromise();
+    };
+    AssignmentDataServiceService.prototype.addAssignmentGrade = function (name, grade) {
+        return this.http.post(this.utility.getRootURL() + '/v1/assignments/' + name + '/grades', grade).toPromise();
+    };
+    AssignmentDataServiceService.prototype.addSubmission = function (submission) {
+        return this.http.post(this.utility.getRootURL() + '/v1/submissions', submission).toPromise();
+    };
+    AssignmentDataServiceService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _utility_utility_service__WEBPACK_IMPORTED_MODULE_2__["UtilityService"]])
+    ], AssignmentDataServiceService);
+    return AssignmentDataServiceService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/utility/utility.service.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/services/utility/utility.service.ts ***!
+  \*****************************************************/
+/*! exports provided: UtilityService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UtilityService", function() { return UtilityService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UtilityService = /** @class */ (function () {
+    function UtilityService() {
+    }
+    UtilityService.prototype.getRootURL = function () {
+        return _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].host + ':' + _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].port;
+    };
+    UtilityService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], UtilityService);
+    return UtilityService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/syllabus/syllabus.component.css":
 /*!*************************************************!*\
   !*** ./src/app/syllabus/syllabus.component.css ***!
@@ -698,7 +867,7 @@ var SectionSelectorComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".inline-title {\n\tfont-weight: bold;\n\tpadding-top: 2em;\n}\n.title {\n\tpadding-top: 2em;\n\tfont-weight: bold;\n\tfont-size: 130%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3lsbGFidXMvc3lsbGFidXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakI7QUFDRDtDQUNDLGlCQUFpQjtDQUNqQixrQkFBa0I7Q0FDbEIsZ0JBQWdCO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvc3lsbGFidXMvc3lsbGFidXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbmxpbmUtdGl0bGUge1xuXHRmb250LXdlaWdodDogYm9sZDtcblx0cGFkZGluZy10b3A6IDJlbTtcbn1cbi50aXRsZSB7XG5cdHBhZGRpbmctdG9wOiAyZW07XG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xuXHRmb250LXNpemU6IDEzMCU7XG59XG4iXX0= */"
+module.exports = ".inline-title {\r\n\tfont-weight: bold;\r\n\tpadding-top: 2em;\r\n}\r\n.title {\r\n\tpadding-top: 2em;\r\n\tfont-weight: bold;\r\n\tfont-size: 130%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3lsbGFidXMvc3lsbGFidXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakI7QUFDRDtDQUNDLGlCQUFpQjtDQUNqQixrQkFBa0I7Q0FDbEIsZ0JBQWdCO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvc3lsbGFidXMvc3lsbGFidXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbmxpbmUtdGl0bGUge1xyXG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xyXG5cdHBhZGRpbmctdG9wOiAyZW07XHJcbn1cclxuLnRpdGxlIHtcclxuXHRwYWRkaW5nLXRvcDogMmVtO1xyXG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xyXG5cdGZvbnQtc2l6ZTogMTMwJTtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -709,7 +878,7 @@ module.exports = ".inline-title {\n\tfont-weight: bold;\n\tpadding-top: 2em;\n}\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"selectedCourse\">\n\n<h1>{{(selectedCourse | async)?.section}}: {{(selectedCourse | async)?.title}}</h1>\n\n<div><span class=\"inline-title\">Description:</span>  {{(selectedCourse|async)?.description}}</div>\n<div><span class=\"inline-title\">Book Info:</span>    {{(selectedCourse|async)?.bookInfo}}</div>\n<div><span class=\"inline-title\">Meeting Time:</span> {{(selectedCourse|async)?.meetingTime}}</div>\n\n<div class=\"title\">Calendar</div>\n<table>\n\t<tr *ngFor=\"let day of (selectedCourse|async)?.calendar\">\n\t\t<td>{{day}}</td>\n\t</tr>\n</table>\n\n<div class=\"title\">Grading Scale</div>\n<table>\n\t<tr *ngFor=\"let grade of (selectedCourse|async)?.gradingScale\">\n\t\t<td>{{grade}}</td>\n\t</tr>\n</table>\n\n<div class=\"title\">University Information</div>\n<p>{{(selectedCourse|async)?.universityInfo}}</p>\n\n</div>\n<div *ngIf=\"!selectedCourse\">\nNo course selected.\n</div>\n"
+module.exports = "<div *ngIf=\"selectedCourse\">\r\n\r\n<h1>{{(selectedCourse | async)?.section}}: {{(selectedCourse | async)?.title}}</h1>\r\n\r\n<div><span class=\"inline-title\">Description:</span>  {{(selectedCourse|async)?.description}}</div>\r\n<div><span class=\"inline-title\">Book Info:</span>    {{(selectedCourse|async)?.bookInfo}}</div>\r\n<div><span class=\"inline-title\">Meeting Time:</span> {{(selectedCourse|async)?.meetingTime}}</div>\r\n\r\n<div class=\"title\">Calendar</div>\r\n<table>\r\n\t<tr *ngFor=\"let day of (selectedCourse|async)?.calendar\">\r\n\t\t<td>{{day}}</td>\r\n\t</tr>\r\n</table>\r\n\r\n<div class=\"title\">Grading Scale</div>\r\n<table>\r\n\t<tr *ngFor=\"let grade of (selectedCourse|async)?.gradingScale\">\r\n\t\t<td>{{grade}}</td>\r\n\t</tr>\r\n</table>\r\n\r\n<div class=\"title\">University Information</div>\r\n<p>{{(selectedCourse|async)?.universityInfo}}</p>\r\n\r\n</div>\r\n<div *ngIf=\"!selectedCourse\">\r\nNo course selected.\r\n</div>\r\n"
 
 /***/ }),
 
@@ -780,7 +949,9 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: false,
+    host: 'http://localhost',
+    port: '8080'
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -827,7 +998,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/cws/src/f18/p422/hw5/frontend/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! E:\Class-files-repo\P422 Web Enterprise Systems\Final\client\src\main.ts */"./src/main.ts");
 
 
 /***/ })
