@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SyllabusDataService } from '../models/syllabus-data.service';
 import { Course } from '../models/Course';
-
-import { Router, RoutesRecognized } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import {CourseDataService} from '../services/course-data/course-data.service';
 
 @Component({
   selector: 'app-course-selection',
@@ -13,22 +9,19 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./course-selection.component.css']
 })
 export class CourseSelectionComponent implements OnInit {
-  courses: Observable<Course[]>;
-  courseSection: Observable<String>;
+  courses: Course[];
+  courseSection: String;
 
   constructor(
-    private router: Router,
-    private syllabusDataService: SyllabusDataService
+    private courseDataService: CourseDataService,
     ) { }
 
   ngOnInit() {
-    this.courses = this.syllabusDataService.getCourses();
-
-  this.router.events.subscribe(routerEvent => {
-      if (routerEvent instanceof RoutesRecognized) {
-        const section = routerEvent.state.root['_routerState']['_root'].children[0].value.params.section;
-        this.courseSection = of(section);
-      }
+    this.getCourses();
+  }
+  getCourses() {
+    this.courseDataService.getCourses().then((res) => {
+      this.courses = res;
     });
   }
 }

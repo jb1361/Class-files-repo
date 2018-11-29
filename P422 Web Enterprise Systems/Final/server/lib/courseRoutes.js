@@ -34,8 +34,19 @@ router.route('/')
 				res.status(200);
 				res.json(doc);
 			});
-	});
-
+	})
+	.delete(function(req, res) {
+		var query = Courses.deleteMany({});
+		query.exec()
+			.catch(err => {
+				res.status(500);
+				res.json(err);
+			})
+			.then(docs => {
+				res.status(200);
+				res.json(docs);
+		});
+  });
 router.route('/:section')
 	.get(function(req, res) {
 		Courses.findOne().bySection(req.params.section).exec()
