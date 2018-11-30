@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SyllabusDataService } from '../models/syllabus-data.service';
-import { Course } from '../models/Course';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import {Course} from '../models/Course';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {CourseDataService} from '../services/course-data/course-data.service';
 
 @Component({
   selector: 'app-syllabus',
@@ -12,18 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./syllabus.component.css']
 })
 export class SyllabusComponent implements OnInit {
-  selectedCourse: Observable<Course>;
-
+  courseTitle: String;
+  selectedCourse: Course;
+  courseSections: String[] = [];
   constructor(
-  private route: ActivatedRoute,
-  private router: Router,
-  private syllabusDataService: SyllabusDataService
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute,
+    private courseDataService: CourseDataService) {
+  }
 
   ngOnInit() {
-    // This code gets the :section parameter out of the route
-    this.selectedCourse = this.route.paramMap.pipe(
-    switchMap((params: ParamMap) => this.syllabusDataService.getCourse(params.get('section')))
-    );
+    this.courseTitle = this.route.snapshot.paramMap.get('course');
+    this.courseDataService.getCourse(this.courseTitle).then( (res) => {
+      this.selectedCourse = res;
+    });
+    this.courseDataService.getCourseSections(this.courseTitle).then( (res) => {
+      res.forEach((val) => {
+        if (this.courseSections.indexOf(val.section)) {
+          this.courseSections.push(val.section);
+        }
+      });
+    });
   }
 }

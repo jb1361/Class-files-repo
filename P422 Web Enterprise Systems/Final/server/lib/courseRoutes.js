@@ -45,15 +45,15 @@ router.route('/')
 				res.json(docs);
 		});
   });
-router.route('/:section')
+router.route('/:title')
 	.get(function(req, res) {
-		Courses.findOne().bySection(req.params.section).exec()
+		Courses.findOne({title: req.params.title}).exec()
 			.catch(err => {
 				res.status(404);
 				res.jsonp(err);
 			})
 			.then(doc => {
-				res.status(201);
+				res.status(200);
 				res.jsonp(doc);
 			})
 	})
@@ -86,6 +86,32 @@ router.route('/:section')
 			.catch(err => res.status(500).json({err: err}))
 			.then(() => res.status(204).send());
 	});
-
+router.route('/:title/sections')
+    .get(function(req, res) {
+      Courses.find({title: req.params.title}).exec()
+          .catch(err => {
+            res.status(404);
+            res.jsonp(err);
+          })
+          .then(doc => {
+            res.status(200);
+            res.jsonp(doc);
+          })
+    })
+	router.route('/:title/:section')
+			.get(function(req, res) {
+				Courses.findOne({
+					title: req.params.title,
+					section: req.params.section
+				}).exec()
+						.catch(err => {
+							res.status(404);
+							res.jsonp(err);
+						})
+						.then(doc => {
+							res.status(205);
+							res.jsonp(doc);
+						})
+			});
 module.exports = router;
 

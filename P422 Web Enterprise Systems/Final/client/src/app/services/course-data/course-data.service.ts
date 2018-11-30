@@ -12,4 +12,10 @@ export class CourseDataService {
   getCourses() {
     return this.http.get<Course[]>(this.utility.getRootURL() + '/v1/courses').toPromise();
   }
+  getCourse(course: String) {
+    return this.http.get<Course>(this.utility.getRootURL() + '/v1/courses/' + course).toPromise();
+  }
+  getCourseSections(course: String) {
+    return this.http.get<Course[]>(this.utility.getRootURL() + '/v1/courses/' + course + '/sections').toPromise();
+  }
 }

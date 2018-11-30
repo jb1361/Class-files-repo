@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Course } from '../models/Course';
 import {CourseDataService} from '../services/course-data/course-data.service';
-import {forEach} from '@angular/router/src/utils/collection';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-course-selection',
@@ -12,15 +12,18 @@ import {forEach} from '@angular/router/src/utils/collection';
 export class CourseSelectionComponent implements OnInit {
   courses: Course[];
   courseTitles: String[] = [];
-  courseSection: String;
   loading: boolean;
   constructor(
+    private router: Router,
     private courseDataService: CourseDataService,
     ) { }
 
   ngOnInit() {
     this.loading = true;
     this.getCourses();
+  }
+  selectCourse(course: string) {
+    this.router.navigateByUrl('courses/' + course + '/syllabus');
   }
   getCourses() {
     this.courseDataService.getCourses().then((res) => {
@@ -35,7 +38,6 @@ export class CourseSelectionComponent implements OnInit {
         this.courseTitles.push(val.title);
       }
     });
-    console.log(this.courseTitles);
     this.loading = false;
   }
 }

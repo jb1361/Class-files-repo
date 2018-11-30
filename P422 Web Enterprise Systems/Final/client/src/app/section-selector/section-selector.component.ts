@@ -6,21 +6,23 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./section-selector.component.css']
 })
 export class SectionSelectorComponent implements OnInit {
+  @Input() course: String;
   @Input() section: String;
-  sections: any;
+  @Input() sections: String[];
 
   constructor() { }
 
   ngOnInit() {
     // console.log(`ngInit: ${this.section}`);
   }
-
+  selectSection(selectedSection: String) {
+    this.section = selectedSection;
+  }
   ngOnChanges() {
     // console.log(`ngOnChanges: ${this.section}`);
-    this.sections = [
-    {title: 'Syllabus', url: `/courses/${this.section}/syllabus`},
-    {title: 'Assignments', url: `/courses/${this.section}/assignments`},
-    {title: 'Quizzes', url: `/courses/${this.section}/quizzes`}
+    this.section = [
+    {title: 'Assignments', url: `/courses/${this.course} + '/' + ${this.section}/assignments`},
+    {title: 'Quizzes', url: `/courses/${this.course} + '/' + ${this.section}/quizzes`}
     ];
   }
 }

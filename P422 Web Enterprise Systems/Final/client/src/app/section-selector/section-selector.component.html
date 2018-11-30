@@ -1,6 +1,6 @@
 <ul class="nav">
   <li class="nav-item" *ngFor="let section of sections">
-    <a class="nav-link" [routerLink]="section.url" routerLinkActive="active">{{section.title}}</a>
+    <button class="nav-link" (click)="selectSection(section)">{{section}}</button>
   </li>
 </ul>
 
