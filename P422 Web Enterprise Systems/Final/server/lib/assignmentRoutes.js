@@ -118,7 +118,6 @@ router.route("/:assignmentName/grades")
 
 router.route('/get-by-section/:section')
     .get(function(req, res) {
-      console.log(req.params.section);
       Assignments.find({
         section: req.params.section
       }).exec()

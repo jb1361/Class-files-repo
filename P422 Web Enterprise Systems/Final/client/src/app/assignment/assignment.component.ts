@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import {Assignment} from '../models/Assignment';
@@ -17,7 +17,8 @@ export class AssignmentComponent implements OnInit {
   courseTitle: string;
   constructor(
     private route: ActivatedRoute,
-    private assignmentDataService: AssignmentDataServiceService
+    private assignmentDataService: AssignmentDataServiceService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +34,9 @@ export class AssignmentComponent implements OnInit {
     this.assignmentDataService.getAssignmentsBySection(this.courseSection).then((res) => {
       this.assignments = res;
     });
+  }
+  gotoSyllabus() {
+    this.router.navigateByUrl('/courses/' + this. courseTitle + '/syllabus');
   }
 
 }

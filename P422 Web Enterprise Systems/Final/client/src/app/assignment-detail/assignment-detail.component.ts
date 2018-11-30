@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {catchError, switchMap} from 'rxjs/operators';
 import {AssignmentDataServiceService} from '../services/assignment-data/assignment-data-service.service';
 import {Submission} from '../models/Submission';
@@ -12,6 +12,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./assignment-detail.component.css']
 })
 export class AssignmentDetailComponent implements OnInit {
+  courseSection: string;
+  courseTitle: string;
   assignmentName: Observable<String>;
   sectionName: Observable<String>;
   assForm: FormGroup;
@@ -22,10 +24,13 @@ export class AssignmentDetailComponent implements OnInit {
   constructor(
   private route: ActivatedRoute,
   private assDataService: AssignmentDataServiceService,
-  private formBuilder: FormBuilder
+  private formBuilder: FormBuilder,
+  private router: Router
   ) { }
 
   ngOnInit() {
+    this.courseSection = this.route.snapshot.paramMap.get('section');
+    this.courseTitle = this.route.snapshot.paramMap.get('course');
     this.assignmentName = this.route.paramMap.pipe(
     switchMap((params: ParamMap) => of(params.get('name')))
     );
@@ -65,5 +70,8 @@ export class AssignmentDetailComponent implements OnInit {
        this.postSuccess = true;
      }
     });
+  }
+  goBack() {
+    this.router.navigateByUrl('/courses/' + this. courseTitle + '/' + this.courseSection + '/assignments');
   }
 }

@@ -1,4 +1,4 @@
-
+<button (click)="gotoSyllabus()">Go Back</button>
 <div *ngFor="let assignment of assignments">
   <a [routerLink]="'/courses/'+ courseTitle + '/' + assignment.section + '/assignments/' + assignment.name">{{assignment.name}}</a>
 </div>
