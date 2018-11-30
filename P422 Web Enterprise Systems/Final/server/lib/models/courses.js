@@ -5,11 +5,12 @@ let courseSchema = mongoose.Schema({
     section: {
         type: String,
         required: true,
+        unique: true,
         index: true,
-        unique: true
     },
     title: {
-        type: String
+      type: String,
+      required: true,
     },
     description: {
         type: String

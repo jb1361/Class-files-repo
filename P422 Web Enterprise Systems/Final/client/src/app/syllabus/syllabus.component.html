@@ -1,3 +1,4 @@
+<button (click)="this.router.navigateByUrl('')">Back to Courses</button>
 <div *ngIf="selectedCourse">
 
 <h1>{{(selectedCourse | async)?.section}}: {{(selectedCourse | async)?.title}}</h1>

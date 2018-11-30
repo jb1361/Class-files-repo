@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { SyllabusDataService } from '../models/syllabus-data.service';
 import { Course } from '../models/Course';
-
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-syllabus',
@@ -17,6 +16,7 @@ export class SyllabusComponent implements OnInit {
 
   constructor(
   private route: ActivatedRoute,
+  private router: Router,
   private syllabusDataService: SyllabusDataService
   ) { }
 
