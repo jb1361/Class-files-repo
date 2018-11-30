@@ -45,22 +45,6 @@ router.route('/')
 				res.json(docs);
 		});
   });
-router.route('/courseSecction')
-	.get(function(req, res) {
-		var query = Courses.find(Courses.title);
-		if (req.query && req.query.role) {
-			query = query.byRole(req.query.role);
-		}
-		query.exec()
-				.catch(err => {
-					res.status(500);
-					res.json(err);
-				})
-				.then(docs => {
-					res.status(200);
-					res.json(docs);
-				});
-	});
 router.route('/:section')
 	.get(function(req, res) {
 		Courses.findOne().bySection(req.params.section).exec()
@@ -69,7 +53,7 @@ router.route('/:section')
 				res.jsonp(err);
 			})
 			.then(doc => {
-				res.status(200);
+				res.status(201);
 				res.jsonp(doc);
 			})
 	})

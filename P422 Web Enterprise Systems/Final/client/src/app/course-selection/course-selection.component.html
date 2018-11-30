@@ -3,7 +3,7 @@
     <h3>Courses</h3>
     <div class="nav-item" *ngFor="let course of courseTitles">
       <label>Course: {{course}}</label>
-      <a [routerLink]="'/courses/'+course">View Course</a>
+      <a [routerLink]="'/courses/'+course+'/syllabus'">View Course</a>
     </div>
   </div>
 </ul>
