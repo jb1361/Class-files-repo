@@ -1,8 +1,10 @@
 <ul class="nav">
-  <h3>Courses</h3>
-  <div class="nav-item" *ngFor="let course of courses">
-    <label>Course: {{course.title}}</label>
-    <a [routerLink]="'/courses/'+course.section">View Course</a>
+  <div *ngIf="!loading">
+    <h3>Courses</h3>
+    <div class="nav-item" *ngFor="let course of courseTitles">
+      <label>Course: {{course}}</label>
+      <a [routerLink]="'/courses/'+course">View Course</a>
+    </div>
   </div>
 </ul>
 
