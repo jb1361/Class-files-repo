@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-section-selector',
@@ -7,22 +8,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SectionSelectorComponent implements OnInit {
   @Input() course: String;
-  @Input() section: String;
   @Input() sections: String[];
+  sectionSelected: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     // console.log(`ngInit: ${this.section}`);
   }
-  selectSection(selectedSection: String) {
-    this.section = selectedSection;
+  selectSection(selectedSection: string) {
+    this.sectionSelected = selectedSection;
   }
-  ngOnChanges() {
-    // console.log(`ngOnChanges: ${this.section}`);
-    this.section = [
-    {title: 'Assignments', url: `/courses/${this.course} + '/' + ${this.section}/assignments`},
-    {title: 'Quizzes', url: `/courses/${this.course} + '/' + ${this.section}/quizzes`}
-    ];
+  gotoAssignments(section) {
+    this.router.navigateByUrl('/courses/' + this.course + '/' + this.sectionSelected + '/assignments');
+  }
+  gotoQuizes(section) {
+    this.router.navigateByUrl('/courses/' + this.course + '/' + this.sectionSelected + 'assignments');
   }
 }

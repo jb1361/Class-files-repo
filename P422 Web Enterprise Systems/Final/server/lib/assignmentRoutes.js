@@ -41,6 +41,7 @@ router.route('/')
                 res.json(docs);
             });
     });
+
 router.route('/:assignmentName')
 	.get(function(req, res) {
 		Assignments.findOne({
@@ -114,6 +115,22 @@ router.route("/:assignmentName/grades")
 				res.json(doc);
 			});
 	});
+
+router.route('/get-by-section/:section')
+    .get(function(req, res) {
+      console.log(req.params.section);
+      Assignments.find({
+        section: req.params.section
+      }).exec()
+          .catch(err => {
+            res.status(404);
+            res.jsonp(err);
+          })
+          .then(doc => {
+            res.status(200);
+            res.jsonp(doc);
+          })
+    });
 
 module.exports = router;
 

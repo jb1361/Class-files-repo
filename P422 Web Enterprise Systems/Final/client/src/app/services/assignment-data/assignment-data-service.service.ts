@@ -13,6 +13,9 @@ export class AssignmentDataServiceService {
   getAssignments() {
     return this.http.get<Assignment[]>(this.utility.getRootURL() + '/v1/assignments').toPromise();
   }
+  getAssignmentsBySection(section: string) {
+    return this.http.get<Assignment[]>(this.utility.getRootURL() + '/v1/assignments/get-by-section/' + section).toPromise();
+  }
   addAssignment(assignment: Assignment) {
     return this.http.post(this.utility.getRootURL() + '/v1/assignments', assignment).toPromise();
   }

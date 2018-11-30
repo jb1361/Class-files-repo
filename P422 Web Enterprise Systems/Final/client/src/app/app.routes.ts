@@ -9,7 +9,7 @@ export const ROUTES: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'courses/:course/syllabus', component: SyllabusComponent },
   { path: 'courses/:course/:section/assignments', component: AssignmentComponent },
-  { path: 'courses/:course/assignments/:name', component: AssignmentDetailComponent },
+  { path: 'courses/:course/:section/assignments/:name', component: AssignmentDetailComponent },
   { path: 'courses/:course', redirectTo: 'courses/:section/syllabus' },
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -13,6 +13,8 @@ import {AssignmentDataServiceService} from '../services/assignment-data/assignme
 export class AssignmentComponent implements OnInit {
   section: Observable<String>;
   assignments: Assignment[];
+  courseSection: string;
+  courseTitle: string;
   constructor(
     private route: ActivatedRoute,
     private assignmentDataService: AssignmentDataServiceService
@@ -23,10 +25,12 @@ export class AssignmentComponent implements OnInit {
     this.section = this.route.paramMap.pipe(
     switchMap((params: ParamMap) => of(params.get('section')))
     );
+    this.courseSection = this.route.snapshot.paramMap.get('section');
+    this.courseTitle = this.route.snapshot.paramMap.get('course');
     this.getAssignments();
   }
   getAssignments() {
-    this.assignmentDataService.getAssignments().then((res) => {
+    this.assignmentDataService.getAssignmentsBySection(this.courseSection).then((res) => {
       this.assignments = res;
     });
   }

@@ -3,4 +3,8 @@
     <button class="nav-link" (click)="selectSection(section)">{{section}}</button>
   </li>
 </ul>
-
+<div class="sections" *ngIf="sectionSelected">
+  <h1>{{sectionSelected}}</h1>
+  <button (click)="gotoAssignments(sectionSelected)">Assigments</button>
+  <button (click)="gotoQuizes(sectionSelected)">Quizes</button>
+</div>
