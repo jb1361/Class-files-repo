@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {QuizDataServiceService} from '../services/quiz-data/quiz-data-service.service';
 
 @Component({
-  selector: 'app-assignment-detail',
+  selector: 'app-quiz-detail',
   templateUrl: './quiz-detail.component.html',
   styleUrls: ['./quiz-detail.component.css']
 })
 export class QuizDetailComponent implements OnInit {
   courseSection: string;
   courseTitle: string;
-  quizName: Observable<String>;
-  sectionName: Observable<String>;
+  quizName: string;
+  quizQuestions: {};
   assForm: FormGroup;
+  loading = true;
   submitted = false;
   postSuccess = false;
   error = false;
@@ -30,18 +29,13 @@ export class QuizDetailComponent implements OnInit {
   ngOnInit() {
     this.courseSection = this.route.snapshot.paramMap.get('section');
     this.courseTitle = this.route.snapshot.paramMap.get('course');
-    this.quizName = this.route.paramMap.pipe(
-    switchMap((params: ParamMap) => of(params.get('name')))
-    );
-    this.sectionName = this.route.paramMap.pipe(
-    switchMap((params: ParamMap) => of(params.get('section')))
-    );
+    this.quizName = this.route.snapshot.paramMap.get('name');
     this.assForm = this.formBuilder.group({
       assName: ['', Validators.required],
       secName: ['', Validators.required],
-      name: ['', Validators.required],
-      textArea: ['', Validators.required],
+      questions: ['', Validators.required],
     });
+    this.getQuestions();
   }
   get f() { return this.assForm.controls; }
   onSubmit() {
@@ -52,11 +46,9 @@ export class QuizDetailComponent implements OnInit {
       return;
     }
     const data = {
-      'assignment': {
-        'name': this.f.assName.value,
-        'section': this.f.secName.value,
-        'grade': this.calculateGrade(),
-      }
+      'name': this.f.assName.value,
+      'section': this.f.secName.value,
+      'grade': this.calculateGrade(),
     };
     this.assDataService.addQuizSubmission(data).catch((err) => {
      if (err) {
@@ -74,5 +66,12 @@ export class QuizDetailComponent implements OnInit {
   }
   goBack() {
     this.router.navigateByUrl('/courses/' + this. courseTitle + '/' + this.courseSection + '/quizes');
+  }
+  getQuestions() {
+    this.assDataService.getQuizByQuizName(this.quizName).then((res) => {
+      this.quizQuestions = res;
+      console.log(this.quizQuestions);
+      this.loading = false;
+    });
   }
 }

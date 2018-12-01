@@ -4,7 +4,7 @@ import {QuizDataServiceService} from '../services/quiz-data/quiz-data-service.se
 import {Quiz} from '../models/Quiz';
 
 @Component({
-  selector: 'app-assignment',
+  selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })

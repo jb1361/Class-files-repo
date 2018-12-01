@@ -22,13 +22,22 @@ let quizSchema = mongoose.Schema({
     index: true
   },
   questions: {
-    type: [{
-      question: String,
-      options: {
-        type: String
-      },
-      answer: Number
-    }],
+    type: {
+      question: {
+        type: {
+          questionName: String,
+          options: {
+            type: {
+              option0: String,
+              option1: String,
+              option2: String,
+              option3: String
+            }
+          },
+          answer: Number
+        }
+      }
+    },
     required: true
   }
 });

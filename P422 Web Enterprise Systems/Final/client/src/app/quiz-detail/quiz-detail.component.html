@@ -1,36 +1,36 @@
 <h3>
-  Assignment name: {{assignmentName|async}}
+  Quiz name: {{quizName}}
 </h3>
 <h3>
-  Section: {{sectionName|async}}
+  Section: {{courseSection}}
 </h3>
 <div class="alerts">
-  <label class="alert-success" *ngIf="postSuccess">Assignment Submitted</label>
-  <label class="alert-danger" *ngIf="error">Error Submitting Assignment.</label>
+  <label class="alert-success" *ngIf="postSuccess">Quiz Submitted</label>
+  <label class="alert-danger" *ngIf="error">Error Submitting Quiz.</label>
   <label class="alert-danger" *ngIf="error"> {{errorReason}}</label>
 </div>
-<form (ngSubmit)="onSubmit()" [formGroup]="assForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="assForm" *ngIf="!loading">
   <div class="form-group">
-    <label>Assignment Name</label>
-    <input type="text" class="form-control" formControlName="assName" [ngModel]="(sectionName|async)" readonly>
+    <label>Quiz Name</label>
+    <input type="text" class="form-control" formControlName="assName" [ngModel]="quizName" readonly>
   </div>
   <div class="form-group">
     <label>Section</label>
-    <input type="text" class="form-control" formControlName="secName"  [ngModel]="(assignmentName|async)" readonly>
+    <input type="text" class="form-control" formControlName="secName"  [ngModel]="courseSection" readonly>
   </div>
+
   <div class="form-group">
-    <label>Name</label>
-    <input type="text" class="form-control" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
-      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-        <div *ngIf="f.name.errors.required">Name is required</div>
+    <label>Questions</label>
+    <div class="question" *ngFor="let quesiton of quizQuestions">
+
+      <div *ngFor="let q of quesiton.options">
+        <input type="radio">
       </div>
-  </div>
-  <div class="form-group">
-    <label>Text Box</label>
-    <textarea type="text" class="form-control text-area" formControlName="textArea" [ngClass]="{ 'is-invalid': submitted && f.textArea.errors }"></textarea>
-      <div *ngIf="submitted && f.textArea.errors" class="invalid-feedback">
-        <div *ngIf="f.textArea.errors.required">Text Area is required</div>
-      </div>
+    </div>
+    <!--<textarea type="text" class="form-control text-area" formControlName="textArea" [ngClass]="{ 'is-invalid': submitted && f.textArea.errors }"></textarea>-->
+      <!--<div *ngIf="submitted && f.textArea.errors" class="invalid-feedback">-->
+        <!--<div *ngIf="f.textArea.errors.required">Text Area is required</div>-->
+      <!--</div>-->
   </div>
   <button type="submit" class="btn btn-success">Submit</button>
   <button (click)="goBack()" class="btn">Exit</button>

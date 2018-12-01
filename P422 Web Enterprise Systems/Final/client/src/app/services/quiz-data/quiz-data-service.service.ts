@@ -13,6 +13,9 @@ export class QuizDataServiceService {
   getQuizesBySection(section: string) {
     return this.http.get<Quiz[]>(this.utility.getRootURL() + '/v1/quizes/get-by-section/' + section).toPromise();
   }
+  getQuizByQuizName(name: string) {
+    return this.http.get<Quiz>(this.utility.getRootURL() + '/v1/quizes/get-by-name/' + name).toPromise();
+  }
   addQuizSubmission(submission: QuizSubmission) {
     return this.http.post(this.utility.getRootURL() + '/v1/quizSubmissions', submission).toPromise();
   }

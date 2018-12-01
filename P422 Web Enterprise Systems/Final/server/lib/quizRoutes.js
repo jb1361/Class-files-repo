@@ -102,5 +102,20 @@ router.route('/get-by-section/:section')
           })
     });
 
+router.route('/get-by-name/:name')
+    .get(function(req, res) {
+      Quiz.find({
+        name: req.params.name
+      }).exec()
+          .catch(err => {
+            res.status(404);
+            res.jsonp(err);
+          })
+          .then(doc => {
+            res.status(200);
+            res.jsonp(doc);
+          })
+    });
+
 module.exports = router;
 
