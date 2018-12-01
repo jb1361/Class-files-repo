@@ -12,7 +12,7 @@ export class QuizDetailComponent implements OnInit {
   courseSection: string;
   courseTitle: string;
   quizName: string;
-  quizQuestions: {};
+  quizQuestions: Array;
   assForm: FormGroup;
   loading = true;
   submitted = false;
@@ -69,8 +69,12 @@ export class QuizDetailComponent implements OnInit {
   }
   getQuestions() {
     this.assDataService.getQuizByQuizName(this.quizName).then((res) => {
-      this.quizQuestions = res;
-      console.log(this.quizQuestions);
+      const questions = [];
+      res[0].questions.forEach( (val) => {
+        questions.push(val);
+      });
+      console.log(questions);
+      this.quizQuestions = questions;
       this.loading = false;
     });
   }

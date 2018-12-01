@@ -22,9 +22,11 @@
   <div class="form-group">
     <label>Questions</label>
     <div class="question" *ngFor="let quesiton of quizQuestions">
-
+      <label>{{question}}</label>
       <div *ngFor="let q of quesiton.options">
-        <input type="radio">
+          <input type="radio" id="{{q}}" name="{{question}}" value="huey"
+                 checked>
+          <label for="{{q}}">{{q}}</label>
       </div>
     </div>
     <!--<textarea type="text" class="form-control text-area" formControlName="textArea" [ngClass]="{ 'is-invalid': submitted && f.textArea.errors }"></textarea>-->

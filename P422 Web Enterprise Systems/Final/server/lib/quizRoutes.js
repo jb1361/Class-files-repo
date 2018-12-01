@@ -113,7 +113,7 @@ router.route('/get-by-name/:name')
           })
           .then(doc => {
             res.status(200);
-            res.jsonp(doc);
+            res.send(doc);
           })
     });
 
