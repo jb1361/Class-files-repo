@@ -9,30 +9,26 @@
   <label class="alert-danger" *ngIf="error">Error Submitting Quiz.</label>
   <label class="alert-danger" *ngIf="error"> {{errorReason}}</label>
 </div>
-<form (ngSubmit)="onSubmit()" [formGroup]="assForm" *ngIf="!loading">
+<form (ngSubmit)="onSubmit()" [formGroup]="quizForm" *ngIf="!loading">
   <div class="form-group">
     <label>Quiz Name</label>
-    <input type="text" class="form-control" formControlName="assName" [ngModel]="quizName" readonly>
+    <input type="text" class="form-control" formControlName="quizName" [ngModel]="quizName" readonly>
   </div>
   <div class="form-group">
     <label>Section</label>
     <input type="text" class="form-control" formControlName="secName"  [ngModel]="courseSection" readonly>
   </div>
 
-  <div class="form-group">
-    <h1>Questions</h1>
-    <div class="question" *ngFor="let question of quizQuestions">
-      <h3>{{question.questionName}}</h3>
-      <div *ngFor="let q of question.options">
-          <input type="radio" id="{{question}}" name="{{question.questionName}}" value="huey">
-          <label for="{{question}}">{{q}}</label>
-      </div>
-    </div>
-    <!--<textarea type="text" class="form-control text-area" formControlName="textArea" [ngClass]="{ 'is-invalid': submitted && f.textArea.errors }"></textarea>-->
-      <!--<div *ngIf="submitted && f.textArea.errors" class="invalid-feedback">-->
-        <!--<div *ngIf="f.textArea.errors.required">Text Area is required</div>-->
+  <!--<div class="form-group">-->
+    <!--<h1>Questions</h1>-->
+    <!--<div class="question" *ngFor="let question of quizQuestions">-->
+      <!--<h3>{{question.questionName}}</h3>-->
+      <!--<div *ngFor="let q of question.options">-->
+          <!--<input type="radio" id="{{question}}" name="{{question.questionName}}" value="huey" formControlName="{{question.questionName}}">-->
+          <!--<label for="{{question}}">{{q}}</label>-->
       <!--</div>-->
-  </div>
+    <!--</div>-->
+  <!--</div>-->
   <button type="submit" class="btn btn-success">Submit</button>
   <button (click)="goBack()" class="btn">Exit</button>
 </form>

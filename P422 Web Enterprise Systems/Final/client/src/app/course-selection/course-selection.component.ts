@@ -34,7 +34,6 @@ export class CourseSelectionComponent implements OnInit {
   filterCourses() {
     this.courses.forEach((val) => {
       if (this.courseTitles.indexOf(val.title)) {
-        console.log(val.title);
         this.courseTitles.push(val.title);
       }
     });
