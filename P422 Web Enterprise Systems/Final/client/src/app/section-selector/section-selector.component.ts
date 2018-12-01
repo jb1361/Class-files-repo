@@ -23,6 +23,6 @@ export class SectionSelectorComponent implements OnInit {
     this.router.navigateByUrl('/courses/' + this.course + '/' + this.sectionSelected + '/assignments');
   }
   gotoQuizes(section) {
-    this.router.navigateByUrl('/courses/' + this.course + '/' + this.sectionSelected + 'assignments');
+    this.router.navigateByUrl('/courses/' + this.course + '/' + this.sectionSelected + '/quizes');
   }
 }

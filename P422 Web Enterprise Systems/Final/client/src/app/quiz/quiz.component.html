@@ -1,0 +1,5 @@
+<button (click)="gotoSyllabus()">Go Back</button>
+<div *ngFor="let quiz of quizes">
+  <a [routerLink]="'/courses/'+ courseTitle + '/' + assignment.section + '/quizes/' + quiz.name">{{quiz.name}}</a>
+</div>
+
