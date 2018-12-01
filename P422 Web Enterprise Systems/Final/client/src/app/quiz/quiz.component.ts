@@ -14,7 +14,7 @@ export class QuizComponent implements OnInit {
   courseTitle: string;
   constructor(
     private route: ActivatedRoute,
-    private assignmentDataService: QuizDataServiceService,
+    private quizDataService: QuizDataServiceService,
     private router: Router
   ) { }
 
@@ -25,12 +25,12 @@ export class QuizComponent implements OnInit {
     this.getQuizes();
   }
   getQuizes() {
-    this.assignmentDataService.getQuizesBySection(this.courseSection).then((res) => {
+    this.quizDataService.getQuizesBySection(this.courseSection).then((res) => {
       this.quizes = res;
     });
   }
   gotoSyllabus() {
-    this.router.navigateByUrl('/courses/' + this. courseTitle + '/syllabus');
+    this.router.navigateByUrl('/courses/' + this.courseTitle + '/syllabus');
   }
 
 }

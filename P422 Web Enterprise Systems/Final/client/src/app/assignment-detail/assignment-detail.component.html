@@ -12,11 +12,11 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="assForm">
   <div class="form-group">
     <label>Assignment Name</label>
-    <input type="text" class="form-control" formControlName="assName" [ngModel]="(sectionName|async)" readonly>
+    <input type="text" class="form-control" formControlName="assName" [ngModel]="(assignmentName|async)" readonly>
   </div>
   <div class="form-group">
     <label>Section</label>
-    <input type="text" class="form-control" formControlName="secName"  [ngModel]="(assignmentName|async)" readonly>
+    <input type="text" class="form-control" formControlName="secName"  [ngModel]="(sectionName|async)" readonly>
   </div>
   <div class="form-group">
     <label>Name</label>
