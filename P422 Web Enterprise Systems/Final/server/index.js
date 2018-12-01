@@ -14,6 +14,7 @@ app.use('/v1/users', require('./lib/userRoutes'));
 app.use('/v1/courses', require('./lib/courseRoutes'));
 app.use('/v1/assignments', require('./lib/assignmentRoutes'));
 app.use('/v1/submissions', require('./lib/submissionRoutes'));
+app.use('/v1/quizes', require('./lib/quizroutes'));
 app.use('/', express.static('./client/dist/frontend'));
 
 app.get('*', (req, res) => {

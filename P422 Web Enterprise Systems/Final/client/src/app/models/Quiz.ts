@@ -2,7 +2,8 @@ export class Quiz {
   name: String;
   section: String;
   questions: {
-    question: string,
-    answer: number
+    question: String,
+    options: String[],
+    answer: Number
   };
 }
