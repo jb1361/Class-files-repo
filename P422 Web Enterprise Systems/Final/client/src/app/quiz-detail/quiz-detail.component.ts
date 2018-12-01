@@ -92,7 +92,7 @@ export class QuizDetailComponent implements OnInit {
       console.log(this.quizForm.controls);
     });
   }
-
+  // @ts-ignore: next line
   createFormControls(questions: Array) {
     this.quizForm = this.formBuilder.group({
       quizName: ['', Validators.required],
