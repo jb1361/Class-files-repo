@@ -74,7 +74,6 @@ export class QuizDetailComponent implements OnInit {
   }
   getErrors(controlName: string) {
     if (this.quizForm.get(controlName).invalid) {
-      console.log('invalid: ' + controlName);
       return true;
     }
     return false;
@@ -89,7 +88,6 @@ export class QuizDetailComponent implements OnInit {
       this.quizQuestions = questions;
       this.loading = false;
       this.createFormControls(questions);
-      console.log(this.quizForm.controls);
     });
   }
   // @ts-ignore: next line
