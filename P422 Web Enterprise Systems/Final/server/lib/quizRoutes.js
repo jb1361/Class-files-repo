@@ -42,11 +42,10 @@ router.route('/')
           });
     });
 
-router.route('/:quizName')
+router.route('/:name')
     .get(function(req, res) {
-      Quiz.findOne({
-        section: req.query.section,
-        name: req.params.quizName
+      Quiz.find({
+        name: req.params.name
       }).exec()
           .catch(err => {
             res.status(404);
@@ -54,7 +53,7 @@ router.route('/:quizName')
           })
           .then(doc => {
             res.status(200);
-            res.jsonp(doc);
+            res.send(doc);
           })
     });
 
@@ -87,7 +86,7 @@ router.route("/:quizName/grades")
           });
     });
 
-router.route('/get-by-section/:section')
+router.route('/:section/quizes')
     .get(function(req, res) {
       Quiz.find({
         section: req.params.section
@@ -102,20 +101,6 @@ router.route('/get-by-section/:section')
           })
     });
 
-router.route('/get-by-name/:name')
-    .get(function(req, res) {
-      Quiz.find({
-        name: req.params.name
-      }).exec()
-          .catch(err => {
-            res.status(404);
-            res.jsonp(err);
-          })
-          .then(doc => {
-            res.status(200);
-            res.send(doc);
-          })
-    });
 
 module.exports = router;
 
