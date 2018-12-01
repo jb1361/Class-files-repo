@@ -15,6 +15,7 @@ import { CourseSelectionComponent } from './course-selection/course-selection.co
 import { SectionSelectorComponent } from './section-selector/section-selector.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {QuizComponent} from './quiz/quiz.component';
+import {QuizDetailComponent} from './quiz-detail/quiz-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {QuizComponent} from './quiz/quiz.component';
     CourseSelectionComponent,
     SectionSelectorComponent,
     HomepageComponent,
-    QuizComponent
+    QuizComponent,
+    QuizDetailComponent
   ],
   imports: [
     BrowserModule,

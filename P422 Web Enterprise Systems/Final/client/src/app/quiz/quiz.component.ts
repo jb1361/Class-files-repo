@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
 import {QuizDataServiceService} from '../services/quiz-data/quiz-data-service.service';
 import {Quiz} from '../models/Quiz';
 
@@ -11,7 +9,6 @@ import {Quiz} from '../models/Quiz';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  section: Observable<String>;
   quizes: Quiz[];
   courseSection: string;
   courseTitle: string;
@@ -23,9 +20,6 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
     // This code gets the :section parameter out of the route
-    this.section = this.route.paramMap.pipe(
-    switchMap((params: ParamMap) => of(params.get('section')))
-    );
     this.courseSection = this.route.snapshot.paramMap.get('section');
     this.courseTitle = this.route.snapshot.paramMap.get('course');
     this.getQuizes();

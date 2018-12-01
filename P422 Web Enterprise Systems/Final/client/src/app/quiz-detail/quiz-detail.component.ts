@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
-import {AssignmentDataServiceService} from '../services/assignment-data/assignment-data-service.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {QuizDataServiceService} from '../services/quiz-data/quiz-data-service.service';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -22,7 +22,7 @@ export class QuizDetailComponent implements OnInit {
   errorReason = '';
   constructor(
   private route: ActivatedRoute,
-  private assDataService: AssignmentDataServiceService,
+  private assDataService: QuizDataServiceService,
   private formBuilder: FormBuilder,
   private router: Router
   ) { }
@@ -55,11 +55,10 @@ export class QuizDetailComponent implements OnInit {
       'assignment': {
         'name': this.f.assName.value,
         'section': this.f.secName.value,
-        'submitter': this.f.name.value,
-      },
-      'text': this.f.textArea.value
+        'grade': this.calculateGrade(),
+      }
     };
-    this.assDataService.addSubmission(data).catch((err) => {
+    this.assDataService.addQuizSubmission(data).catch((err) => {
      if (err) {
        this.error = true;
        this.errorReason = err.message;
@@ -70,7 +69,10 @@ export class QuizDetailComponent implements OnInit {
      }
     });
   }
+  calculateGrade() {
+    return 100;
+  }
   goBack() {
-    this.router.navigateByUrl('/courses/' + this. courseTitle + '/' + this.courseSection + '/assignments');
+    this.router.navigateByUrl('/courses/' + this. courseTitle + '/' + this.courseSection + '/quizes');
   }
 }
