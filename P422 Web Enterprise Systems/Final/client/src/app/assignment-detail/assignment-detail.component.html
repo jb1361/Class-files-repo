@@ -28,7 +28,7 @@
   <div class="form-group">
     <label>Text Box</label>
     <textarea type="text" class="form-control text-area" formControlName="textArea" [ngClass]="{ 'is-invalid': submitted && f.textArea.errors }"></textarea>
-      <div *ngIf="submitted && f.textArea.errors" class="invalid-feedback">
+      <div  class="invalid-feedback">
         <div *ngIf="f.textArea.errors.required">Text Area is required</div>
       </div>
   </div>

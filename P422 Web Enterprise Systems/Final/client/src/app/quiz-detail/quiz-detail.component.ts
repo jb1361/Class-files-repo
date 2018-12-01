@@ -46,6 +46,8 @@ export class QuizDetailComponent implements OnInit {
     if (this.quizForm.invalid) {
       return;
     }
+    // console.log(this.f.questions);
+    // return;
     const data = {
       'name': this.f.quizName.value,
       'section': this.f.secName.value,
@@ -70,7 +72,13 @@ export class QuizDetailComponent implements OnInit {
   goBack() {
     this.router.navigateByUrl('/courses/' + this.courseTitle + '/' + this.courseSection + '/quizes');
   }
-
+  getErrors(controlName: string) {
+    if (this.quizForm.get(controlName).invalid) {
+      console.log('invalid: ' + controlName);
+      return true;
+    }
+    return false;
+  }
   getQuestions() {
     this.quizDataService.getQuizByQuizName(this.quizName).then((res) => {
       const questions = [];

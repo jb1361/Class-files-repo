@@ -1,8 +1,7 @@
-.text-area {
-  height: 150px;
-  margin-bottom: 20px;
-}
 .alerts {
   display: flex;
   flex-direction: column;
+}
+.invalid-feedback {
+  display: flex;
 }
