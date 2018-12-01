@@ -90,7 +90,9 @@ router.route('/:assignmentName')
 router.route("/:assignmentName/grades")
 	// GET should only be used by teachers
 	.get(function(req, res) {
-		Submissions.byAssignment(req.body.section, req.params.assignmentName).exec()
+		Submissions.find({
+			name: req.params.assignmentName
+		}).exec()
 			.catch(err => {
 				res.status(404);
 				res.jsonp(err);
