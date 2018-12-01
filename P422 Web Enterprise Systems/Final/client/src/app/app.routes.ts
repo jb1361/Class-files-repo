@@ -5,6 +5,7 @@ import {AssignmentComponent} from './assignment/assignment.component';
 import {AssignmentDetailComponent} from './assignment-detail/assignment-detail.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {QuizComponent} from './quiz/quiz.component';
+import {QuizDetailComponent} from './quiz-detail/quiz-detail.component';
 
 export const ROUTES: Routes = [
   { path: '', component: HomepageComponent },
@@ -12,5 +13,6 @@ export const ROUTES: Routes = [
   { path: 'courses/:course/:section/assignments', component: AssignmentComponent },
   { path: 'courses/:course/:section/assignments/:name', component: AssignmentDetailComponent },
   { path: 'courses/:course/:section/quizes', component: QuizComponent },
+  { path: 'courses/:course/:section/quizes/:name', component: QuizDetailComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

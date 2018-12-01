@@ -61,7 +61,7 @@ router.route('/:quizName')
 router.route("/:quizName/grades")
 // GET should only be used by teachers
     .get(function(req, res) {
-      quizSubmission.byAssignment(req.body.section, req.params.quizName).exec()
+      quizSubmission.find().exec()
           .catch(err => {
             res.status(404);
             res.jsonp(err);
