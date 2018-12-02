@@ -12,7 +12,7 @@ export class QuizDetailComponent implements OnInit {
   courseSection: string;
   courseTitle: string;
   quizName: string;
-  quizQuestions: {};
+  quizQuestions: any[];
   quizForm: FormGroup;
   loading = true;
   submitted = false;
@@ -46,8 +46,6 @@ export class QuizDetailComponent implements OnInit {
     if (this.quizForm.invalid) {
       return;
     }
-    // console.log(this.f.questions);
-    // return;
     const data = {
       'name': this.f.quizName.value,
       'section': this.f.secName.value,
@@ -66,7 +64,17 @@ export class QuizDetailComponent implements OnInit {
   }
 
   calculateGrade() {
-    return 100;
+    const givenQuestions = [];
+    let correct = 0;
+    this.quizQuestions.forEach(question => {
+      givenQuestions.push([question.questionName, question.answer]);
+    });
+    givenQuestions.forEach( (name) => {
+      if ((name[1]) === (+this.quizForm.get(name[0]).value + 1)) {
+        correct++;
+      }
+    });
+    return (correct / givenQuestions.length) * 100;
   }
 
   goBack() {
@@ -84,10 +92,9 @@ export class QuizDetailComponent implements OnInit {
       res[0].questions.forEach((val) => {
         questions.push(val);
       });
-      console.log(questions);
       this.quizQuestions = questions;
-      this.loading = false;
       this.createFormControls(questions);
+      this.loading = false;
     });
   }
   // @ts-ignore: next line
