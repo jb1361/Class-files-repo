@@ -19,7 +19,8 @@ export class QuizDetailComponent implements OnInit {
   postSuccess = false;
   error = false;
   errorReason = '';
-
+  graded = false;
+  grade = 0;
   constructor(
     private route: ActivatedRoute,
     private quizDataService: QuizDataServiceService,
@@ -51,6 +52,7 @@ export class QuizDetailComponent implements OnInit {
       'section': this.f.secName.value,
       'grade': this.calculateGrade(),
     };
+    this.graded = true;
     this.quizDataService.addQuizSubmission(data).catch((err) => {
       if (err) {
         this.error = true;
@@ -74,6 +76,7 @@ export class QuizDetailComponent implements OnInit {
         correct++;
       }
     });
+    this.grade = (correct / givenQuestions.length) * 100;
     return (correct / givenQuestions.length) * 100;
   }
 

@@ -6,6 +6,7 @@
 </h3>
 <div class="alerts">
   <label class="alert-success" *ngIf="postSuccess">Quiz Submitted</label>
+  <label class="alert-success" *ngIf="graded">Grade: {{grade}}</label>
   <label class="alert-danger" *ngIf="error">Error Submitting Quiz.</label>
   <label class="alert-danger" *ngIf="error"> {{errorReason}}</label>
 </div>
@@ -33,6 +34,6 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="submit" class="btn btn-success" [disabled]="graded">Submit</button>
   <button (click)="goBack()" class="btn">Exit</button>
 </form>
