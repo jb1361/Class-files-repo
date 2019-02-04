@@ -24,4 +24,4 @@ def df(x):
     return math.log2(x)**x + (1/math.log(2))
 
 
-newtons_method(f, df, 10**6, 1e-5)
+newtons_method(f, df, 10, 1e-5)
