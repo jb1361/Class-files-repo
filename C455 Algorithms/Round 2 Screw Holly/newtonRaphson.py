@@ -10,18 +10,18 @@ def newtons_method(f, df, x0, e):
     while delta > e:
         x0 = x0 - f(x0)/df(x0)
         delta = dx(f, x0)
-    print ('Root is at: ', x0)
-    print ('f(x) at root is: ', f(x0))
+        print(delta)
+        print(e)
+    print('Root is at: ', x0)
+    print('f(x) at root is: ', f(x0))
 
 
 def f(x):
-    return x*math.log(x, 2)-5*x**4-4*x**3+3*x**2
+    return x*math.log2(x)
 
 
 def df(x):
-    return 30*x**4-20*x**3-12*x**2+6*x
+    return math.log2(x)**x + (1/math.log(2))
 
 
-x0s = [0, .5, 1]
-for x0 in x0s:
-    newtons_method(f, df, x0, 1e-5)
+newtons_method(f, df, 10**6, 1e-5)
