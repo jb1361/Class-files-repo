@@ -45,14 +45,13 @@ void quickSort(int arr[], int left, int right) {
 }
 int trivialAlgorithm(int x[])
 {
-	std::cout << sizeof x << "\n";
 	for (int i = 0; i < 10; i++) {
-		std::cout << x[i];
+		std::cout << x[i] << '\n';
 	}
 	quickSort(x, 0, 10);
 	std::cout << sizeof x << "\n";
 	std::cout << "Trivial sort\n";
-	for (int i = 0; i < sizeof x; i++) {
+	for (int i = 0; i < 10; i++) {
 		std::cout << x[i] << ' ';
 	}
 	return 0;
@@ -65,7 +64,9 @@ int main() {
 	for (int i = 0; i < size; i++) {
 		x[i] = (rand() % 100);
 	}	
-	std::cout << sizeof x << "\n";
+	for (int i = 0; i < 10; i++) {
+		std::cout << x[i] << '\n';
+	}
 	//heapAlgorithm(x);
 	trivialAlgorithm(x);
 }
