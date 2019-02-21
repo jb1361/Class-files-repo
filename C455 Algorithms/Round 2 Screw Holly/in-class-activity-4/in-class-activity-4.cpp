@@ -37,8 +37,7 @@ int main()
 				iss >> subs;					
 				subs.erase(remove_if(subs.begin(), subs.end(), [](char c) { return !isalpha(c); }), subs.end());
 				if (i <= 1) {
-					fullName = fullName + subs;
-					cout << fullName << endl;					
+					fullName = fullName + subs;						
 				}
 				else {
 					data_name = data_name + subs;
@@ -63,22 +62,30 @@ int main()
 	{
 		string key = names.front();
 		string elem = data.front();
-		cout << key << endl;
 		int hashkey1 = abs(hashCode1(key)) % size;
 		int hashkey2 = abs(hashCode2(key)) % size;
-		cout << "Hashkey1 " << hashkey1 << endl;
-		cout << "Hashkey2 " << hashkey2 << endl;
-		if()
-		hashTable1[hashkey1] = elem;
-		hashTable2[hashkey2] = elem;		
+		if (hashTable1[hashkey1] != "") {
+			collisions1++;
+			hashTable1[hashkey1] = hashTable1[hashkey1] + ", " + elem; //This represents a list for my collision strategy.
+		}
+		else {
+			hashTable1[hashkey1] = elem;
+		}
+		if (hashTable2[hashkey2] != "") {
+			collisions2++;
+			hashTable2[hashkey2] = hashTable2[hashkey2] + ", " + elem; //This represents a list for my collision strategy.	
+		}
+		else {
+			hashTable2[hashkey2] = elem;
+		}
 		names.pop_front();
 		data.pop_front();
 	}
-	for (int i = 0; i < size; i++)
-	{
-		cout << "Hash table 1 at: " << i << " " << hashTable1[i] << endl;
-	}
-
+	cout << "Done Creating hash tables" << endl;
+	cout << endl;
+	cout << "Total number of people: " << size << endl;
+	cout << "Collisions in hash function 1: " << collisions1 << endl;
+	cout << "Collisions in hash function 2: " << collisions2 << endl;
 	delete[] hashTable1;
 	delete[] hashTable2;
 
