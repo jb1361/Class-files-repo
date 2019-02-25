@@ -4,22 +4,79 @@
 #include <ctime>
 #include <cstdlib>
 
+using namespace std;
 
+int trivialAlgorithm(int size, int x[]);
+void quickSort(int arr[], int left, int right);
+void heapify(int arr[], int n, int i);
+void printSortedHeap(int arr[], int n);
+void heapSort(int arr[], int n);
 
-
-
-int heapAlgorithm(int x[])
-{
-	std::vector<int> v(x, x + sizeof x / sizeof x[0]);
-	std::make_heap(v.begin(), v.end());
-
-	std::cout << "\nunsorted:\t";
-	for (const auto &i : v) {
-		std::cout << i << ' ';
+int main() {
+	const int size = 10;
+	int x[size];
+	int y[size];
+	srand((unsigned int)time(NULL));
+	for (int i = 0; i < size; i++) {
+		int val = (rand() % 100);
+		x[i] = val;
+		y[i] = val;
 	}
-	std::cout << '\n';
-	return 0;
+	trivialAlgorithm(size, x);
+	std::cout << "\n============================================\n";
+	cout << "Heap sort before\n";
+	for (int i = 0; i < size; i++) {
+		cout << y[i] << ' ';
+	}
+	cout << "\n";
+	heapSort(y, size);
+	cout << "Heap sort after\n";
+	for (int i = 0; i < size; i++) {
+		cout << y[i] << ' ';
+	}
 }
+
+void heapify(int arr[], int n, int i)
+{	
+	int largest = i; // Initialize largest as root 
+	int l = 2 * i + 1; // left = 2*i + 1 
+	int r = 2 * i + 2; // right = 2*i + 2 
+
+	// If left child is larger than root 
+	if (l < n && arr[l] > arr[largest])
+		largest = l;
+
+	// If right child is larger than largest so far 
+	if (r < n && arr[r] > arr[largest])
+		largest = r;
+
+	// If largest is not root 
+	if (largest != i)
+	{
+		swap(arr[i], arr[largest]);
+
+		// Recursively heapify the affected sub-tree 
+		heapify(arr, n, largest);
+	}
+}
+
+void heapSort(int arr[], int n)
+{
+	// Build heap (rearrange array) 
+	for (int i = n / 2 - 1; i >= 0; i--)
+		heapify(arr, n, i);
+
+	// One by one extract an element from heap 
+	for (int i = n - 1; i >= 0; i--)
+	{
+		// Move current root to end 
+		swap(arr[0], arr[i]);
+
+		// call max heapify on the reduced heap 
+		heapify(arr, i, 0);
+	}
+}
+
 void quickSort(int arr[], int left, int right) {
 	int i = left, j = right;
 	int tmp;
@@ -43,30 +100,17 @@ void quickSort(int arr[], int left, int right) {
 	if (i < right)
 		quickSort(arr, i, right);
 }
-int trivialAlgorithm(int x[])
+
+int trivialAlgorithm(int size, int x[])
 {
-	for (int i = 0; i < 10; i++) {
-		std::cout << x[i] << '\n';
+	cout << "Trivial sort before\n";
+	for (int i = 0; i < size; i++) {
+		cout << x[i] << ' ';
 	}
-	quickSort(x, 0, 10);
-	std::cout << sizeof x << "\n";
-	std::cout << "Trivial sort\n";
-	for (int i = 0; i < 10; i++) {
-		std::cout << x[i] << ' ';
+	quickSort(x, 0, (size-1));
+	cout << "\nTrivial sort after\n";
+	for (int i = 0; i < size; i++) {
+		cout << x[i] << ' ';
 	}
 	return 0;
-}
-
-int main() {
-	const int size = 10;
-	int x[size];
-	srand(time(NULL));
-	for (int i = 0; i < size; i++) {
-		x[i] = (rand() % 100);
-	}	
-	for (int i = 0; i < 10; i++) {
-		std::cout << x[i] << '\n';
-	}
-	//heapAlgorithm(x);
-	trivialAlgorithm(x);
 }
