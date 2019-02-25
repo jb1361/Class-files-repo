@@ -1,10 +1,11 @@
-#include <algorithm>
+﻿#include <algorithm>
 #include <vector>
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-
+#include <chrono> 
 using namespace std;
+using namespace std::chrono;
 
 int trivialAlgorithm(int size, int x[]);
 void quickSort(int arr[], int left, int right);
@@ -13,27 +14,37 @@ void printSortedHeap(int arr[], int n);
 void heapSort(int arr[], int n);
 
 int main() {
-	const int size = 10;
+	const int size = 1000;
 	int x[size];
 	int y[size];
+	
 	srand((unsigned int)time(NULL));
 	for (int i = 0; i < size; i++) {
-		int val = (rand() % 100);
+		int val = (rand() % 1000);
 		x[i] = val;
 		y[i] = val;
 	}
+	auto tStart = high_resolution_clock::now();
 	trivialAlgorithm(size, x);
+	auto tStop = high_resolution_clock::now();
+	auto trivialSortDuration = duration_cast<microseconds>(tStop - tStart);
 	std::cout << "\n============================================\n";
 	cout << "Heap sort before\n";
 	for (int i = 0; i < size; i++) {
 		cout << y[i] << ' ';
 	}
 	cout << "\n";
+	auto hStart = high_resolution_clock::now();
 	heapSort(y, size);
+	auto hStop = high_resolution_clock::now();
+	auto heapSortDuration = duration_cast<microseconds>(hStop - hStart);
 	cout << "Heap sort after\n";
 	for (int i = 0; i < size; i++) {
 		cout << y[i] << ' ';
 	}
+	cout << "\n";
+	cout << "Trivial Sort Running Time: " << trivialSortDuration.count() << " microseconds." << endl;
+	cout << "Heap Sort Running Time: " << heapSortDuration.count() << " microseconds." << endl;
 }
 
 void heapify(int arr[], int n, int i)
@@ -43,11 +54,11 @@ void heapify(int arr[], int n, int i)
 	int r = 2 * i + 2; // right = 2*i + 2 
 
 	// If left child is larger than root 
-	if (l < n && arr[l] > arr[largest])
+	if (l < n && arr[l] < arr[largest])
 		largest = l;
 
 	// If right child is larger than largest so far 
-	if (r < n && arr[r] > arr[largest])
+	if (r < n && arr[r] < arr[largest])
 		largest = r;
 
 	// If largest is not root 
