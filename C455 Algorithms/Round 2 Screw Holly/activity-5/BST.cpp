@@ -34,7 +34,6 @@ public:
 		--updates tree
 		-- ensures: the node z is inserted into tree so that tree maintains
 		--          the search tree property*/
-
 	void treeInsert(T& x, NodeRecord *z)
 	{
 		NodeRecord root = x.root;
