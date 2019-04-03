@@ -260,10 +260,11 @@ void Map3<K, V, KCompare>::removeLargestFromTree (TreeNodeRecord*& p, TreeNodeRe
 		largest = p;
 		removeLargestFromTree(p->rightSubtree, largest);
 	}
-	else if (p->leftSubtree != NULL) {
-		p = p->leftSubtree;
-		largest = p;
-	}
+	//Im not sure why i checked the left at this time, the method required the tree to have the binary search tree property
+	//else if (p->leftSubtree != NULL) {
+	//	p = p->leftSubtree;
+	//	largest = p;
+	//}
 	else {
 		largest = p;
 		delete p;
