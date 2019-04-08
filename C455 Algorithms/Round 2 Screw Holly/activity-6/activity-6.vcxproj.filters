@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Justin\Downloads\RBT.cpp">
+    <ClCompile Include="RBT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
