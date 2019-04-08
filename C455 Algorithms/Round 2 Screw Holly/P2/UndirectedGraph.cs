@@ -11,7 +11,7 @@ namespace P1
         UndirectedGraphAdjList g2 = new UndirectedGraphAdjList();
         UndirectedGraphAdjMatrix g1 = new UndirectedGraphAdjMatrix();
 
-        public class Edge
+        public class Edge<T>
         // Note:
         // This class is finished for you
         // No work required here
@@ -19,31 +19,45 @@ namespace P1
             // Edge is finite set of integer
             //   exemplar e
             //   constraint |e| = 2
-
-            public int v1;
-            public int v2;
+            public T v1 { get; set; }
+            public T v2 { get; set; }
+            //public int v1;
+            //public int v2;
 
             public Edge()
             // updates self
             // ensures self = {0,0}
             {
-                v1 = 0;
-                v2 = 0;
+                v1 = Get(v1, 0);
+                v2 = Get(v1, 0);
             } // Edge
-
+            private T Get(T vertice, int type)
+            {
+                return (T)Convert.ChangeType(vertice, typeof(T));                
+            }
+            private T Get(T vertice, string type)
+            {
+                return (T)Convert.ChangeType(this.v1, typeof(T));
+            }
             public Edge(int v1, int v2)
             // updates self
             // ensures self = {v1,v2}
             {
-                this.v1 = v1;
-                this.v2 = v2;
+                this.v1 = Get(this.v1, v1);
+                this.v2 = Get(this.v2, v2);
             } // Edge
-
+            public Edge(string v1, string v2)
+            // updates self
+            // ensures self = {v1,v2}
+            {
+                this.v1 = Get(this.v1, v1);
+                this.v2 = Get(this.v2, v2);
+            } // Edge
             public void clear()
             // clears self
             {
-                v1 = 0;
-                v2 = 0;
+                v1 = Get(v1, 0);
+                v2 = Get(v1, 0);
             } // clear
             public override string ToString()
             {
@@ -92,10 +106,10 @@ namespace P1
         {
             return g1.IsEdge(v1, v2);
         }
-        public Edge RemoveAnyEdge()
+        public Edge<int> RemoveAnyEdge()
         {
             UndirectedGraphAdjMatrix.Edge e = g1.RemoveAnyEdge();
-            Edge ee = new Edge(e.v1, e.v2);
+            Edge<int> ee = new Edge<int>(e.v1, e.v2);
             return ee;
         }
 

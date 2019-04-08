@@ -29,15 +29,18 @@ namespace P1
             g.AddEdge(3, 7);
             g.AddEdge(5, 5);
             g.AddEdge(5, 6);
-            g.AddEdge(6, 7);
-          
+            //g.AddEdge(6, 7);
+            // V = { A,C,D,E,E,I,L,N,O,O,P,R,T}
+            // E = { (A, C),(A, D),(A, E),(A, I),(A, N),(C, D), ...}
+            // g.AddEdge("A", "C");
+
         } // LoadUpGraphG1
       
         public static void Main(string[] args)
         {
             if (args.Length == 0 || args.Length == 1)
             {
-                // Call recursive operation
+                // Call recursive operation #1 and iterative operation #2 in undirected graph class
             }
             UndirectedGraph g1 = new UndirectedGraph();
 
@@ -157,7 +160,7 @@ namespace P1
            
             for (int k = 0, z = g1.NumberOfEdges(); k < z; k++)
             {
-                UndirectedGraph.Edge e = g1.RemoveAnyEdge();
+                UndirectedGraph.Edge<int> e = g1.RemoveAnyEdge();
                 Console.WriteLine("edge #" + (k + 1) + " removed is: " + e.ToString());
             } // end for
         } // main
