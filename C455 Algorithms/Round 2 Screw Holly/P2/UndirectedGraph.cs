@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace P1
 {
-    class UndirectedGraph
+    class UndirectedGraph<T>
     {
-        UndirectedGraphAdjList g2 = new UndirectedGraphAdjList();
-        UndirectedGraphAdjMatrix g1 = new UndirectedGraphAdjMatrix();
+        UndirectedGraphAdjList<T> g2 = new UndirectedGraphAdjList<T>();
+        UndirectedGraphAdjMatrix<T> g1 = new UndirectedGraphAdjMatrix<T>();
+      
 
         public class Edge<T>
         // Note:
@@ -21,43 +22,35 @@ namespace P1
             //   constraint |e| = 2
             public T v1 { get; set; }
             public T v2 { get; set; }
-            //public int v1;
-            //public int v2;
-
+        
+            private T Get(int vertice)
+            {
+                return (T)Convert.ChangeType(vertice, typeof(T));
+            }
+            private T Get(string vertice)
+            {
+                return (T)Convert.ChangeType(vertice, typeof(T));
+            }        
             public Edge()
             // updates self
             // ensures self = {0,0}
             {
-                v1 = Get(v1, 0);
-                v2 = Get(v1, 0);
+                v1 = Get(0);
+                v2 = Get(0);
             } // Edge
-            private T Get(T vertice, int type)
-            {
-                return (T)Convert.ChangeType(vertice, typeof(T));                
-            }
-            private T Get(T vertice, string type)
-            {
-                return (T)Convert.ChangeType(this.v1, typeof(T));
-            }
-            public Edge(int v1, int v2)
+
+            public Edge(T v1, T v2)
             // updates self
             // ensures self = {v1,v2}
             {
-                this.v1 = Get(this.v1, v1);
-                this.v2 = Get(this.v2, v2);
-            } // Edge
-            public Edge(string v1, string v2)
-            // updates self
-            // ensures self = {v1,v2}
-            {
-                this.v1 = Get(this.v1, v1);
-                this.v2 = Get(this.v2, v2);
+                this.v1 = v1;
+                this.v2 = v2;
             } // Edge
             public void clear()
-            // clears self
+            // clears self        
             {
-                v1 = Get(v1, 0);
-                v2 = Get(v1, 0);
+                v1 = Get(0);
+                v2 = Get(0);
             } // clear
             public override string ToString()
             {
@@ -65,22 +58,22 @@ namespace P1
                 return sb.ToString();
             } // ToString
         } // Edge
-
-        public void SetNumberOfVertices(int n)
-        {
-            g1.SetNumberOfVertices(n);
-            g2.SetNumberOfVertices(n);
+   
+        public void SetVertices(T[] n)
+        {           
+            g1.SetVertices(n);
+            g2.SetVertices(n);
         }
-        public void AddEdge(int x,int y)
+        public void AddEdge(T x,T y)
         {
             g1.AddEdge(x, y);
 
         }
-        public void RemoveEdge(int v1,int v2)
+        public void RemoveEdge(T v1,T v2)
         {
             g1.RemoveEdge(v1, v2);
         }
-        public int RemoveAnyIncidentEdge(int v1)
+        public T RemoveAnyIncidentEdge(T v1)
         {
             return g1.RemoveAnyIncidentEdge(v1);
         }
@@ -98,18 +91,18 @@ namespace P1
         {
             return g1.NumberOfEdges();
         }
-        public int Degree(int v1)
+        public int Degree(T v1)
         {
             return g1.Degree(v1);
         }
-        public bool IsEdge(int v1,int v2)
+        public bool IsEdge(T v1,T v2)
         {
             return g1.IsEdge(v1, v2);
         }
-        public Edge<int> RemoveAnyEdge()
+        public Edge<T> RemoveAnyEdge()
         {
-            UndirectedGraphAdjMatrix.Edge e = g1.RemoveAnyEdge();
-            Edge<int> ee = new Edge<int>(e.v1, e.v2);
+            UndirectedGraphAdjMatrix<T>.Edge<T> e = g1.RemoveAnyEdge();
+            Edge<T> ee = new Edge<T>(e.v1, e.v2);
             return ee;
         }
 
@@ -136,7 +129,6 @@ namespace P1
         public override string ToString()
         {
             return g1.ToString();
-        } // ToString
-
+        } // ToString     
     }
 }
