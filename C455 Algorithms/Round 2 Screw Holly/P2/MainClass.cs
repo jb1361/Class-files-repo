@@ -35,13 +35,99 @@ namespace P1
             // E = { (A, C),(A, D),(A, E),(A, I),(A, N),(C, D), ...}
             string[] sv = new string[13] { "A", "C", "D", "E", "E", "I", "L", "N", "O", "O", "P", "R", "T" };
             g2.SetVertices(sv);
+
+            g2.AddEdge("C", "D");
+            g2.AddEdge("C", "I");
+            g2.AddEdge("C", "A");
+            g2.AddEdge("C", "E");
+            g2.AddEdge("C", "O");
+
+            g2.AddEdge("O", "C");
+            g2.AddEdge("O", "E");
+            g2.AddEdge("O", "D");
+            g2.AddEdge("O", "R");
+            g2.AddEdge("O", "L");
+
+            g2.AddEdge("E", "A");
+            g2.AddEdge("E", "C");
+            g2.AddEdge("E", "O");
+            g2.AddEdge("E", "R");
+            g2.AddEdge("E", "D");
+     
             g2.AddEdge("A", "C");
             g2.AddEdge("A", "D");
             g2.AddEdge("A", "E");
             g2.AddEdge("A", "I");
             g2.AddEdge("A", "N");
-            g2.AddEdge("C", "D");
 
+            g2.AddEdge("R", "O");
+            g2.AddEdge("R", "L");
+            g2.AddEdge("R", "E");
+            g2.AddEdge("R", "D");
+            g2.AddEdge("R", "E");
+
+            g2.AddEdge("I", "C");
+            g2.AddEdge("I", "A");
+            g2.AddEdge("I", "D");
+            g2.AddEdge("I", "N");
+            g2.AddEdge("I", "T");         
+
+            g2.AddEdge("D", "A");
+            g2.AddEdge("D", "C");
+            g2.AddEdge("D", "E");
+            g2.AddEdge("D", "O");
+            g2.AddEdge("D", "R");
+            g2.AddEdge("D", "L");
+            g2.AddEdge("D", "E");
+            g2.AddEdge("D", "P");
+            g2.AddEdge("D", "O");
+            g2.AddEdge("D", "T");
+            g2.AddEdge("D", "N");
+            g2.AddEdge("D", "I");
+
+            g2.AddEdge("L", "O");
+            g2.AddEdge("L", "R");
+            g2.AddEdge("L", "D");
+            g2.AddEdge("L", "E");
+            g2.AddEdge("L", "P");
+
+            g2.AddEdge("N", "I");
+            g2.AddEdge("N", "A");
+            g2.AddEdge("N", "D");
+            g2.AddEdge("N", "O");
+            g2.AddEdge("N", "T");
+
+            g2.AddEdge("E", "D");
+            g2.AddEdge("E", "R");
+            g2.AddEdge("E", "L");
+            g2.AddEdge("E", "P");
+            g2.AddEdge("E", "O");
+
+            g2.AddEdge("O", "T");
+            g2.AddEdge("O", "N");
+            g2.AddEdge("O", "D");
+            g2.AddEdge("O", "E");
+            g2.AddEdge("O", "P");
+
+            g2.AddEdge("T", "I");
+            g2.AddEdge("T", "N");
+            g2.AddEdge("T", "D");
+            g2.AddEdge("T", "O");
+            g2.AddEdge("T", "P");
+
+            g2.AddEdge("P", "T");
+            g2.AddEdge("P", "O");
+            g2.AddEdge("P", "D");
+            g2.AddEdge("P", "E");
+            g2.AddEdge("P", "L");
+
+
+         
+
+           
+
+          
+         
         } // LoadUpGraphG1
 
         public static void Main(string[] args)
@@ -212,7 +298,7 @@ namespace P1
             // ********************
             // call g2's IsEdge
             // ********************
-            v1 = "B";
+            v1 = "C";
             string v2 = "A";
             Console.WriteLine("{" + v1 + "," + v2 + "} is in g2.edges = " + g2.IsEdge(v1, v2));
             // Must output the following:
@@ -222,8 +308,8 @@ namespace P1
             // ********************
             // call g2's IsEdge
             // ********************
-            v1 = "C";
-            v2 = "O";
+            v1 = "D";
+            v2 = "A";
             Console.WriteLine("{" + v1 + "," + v2 + "} is in g2.edges = " + g2.IsEdge(v1, v2));
             // Must output the following:
             // {1,7} is in g2.edges = False
