@@ -1,5 +1,10 @@
 from sys import stdin
 
+#===========================
+#This is really bad, I want to implement a hash map but it I havnt spent too long making it work properly.
+# I think it just makes a size m list with size m elements inside.
+#===========================
+
 words = []
 m = 466511
 dict = [[None]] * m 
