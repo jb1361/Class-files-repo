@@ -1,13 +1,16 @@
 #include <wrapper.h>
 #include <Sequence/Sequence1.hpp>
-#include <UndirectedGraph.h>
+//#include <UndirectedGraph.cpp>
+#include <UndirectedGraphAdjMatrix.cpp>
 
-int main() {
-	UndirectedGraph<class T>* g1 = new UndirectedGraph<T>();
+int main() {	
+	UndirectedGraphAdjMatrix<Integer>* g1 = new UndirectedGraphAdjMatrix<Integer>();
 	//UndirectedGraph* g2 = new UndirectedGraph();
 	
-	//Sequence1<T>* v = new Sequence1<T>();
-	//mainClass->LoadGraphs(g1, g2);
+	Sequence1<Integer>* v = new Sequence1<Integer>();
+	Integer i = 0;
+	v->append(i);
+	wcout << v;
 
 	//void LoadGraphs(UndirectedGraph<Integer> &g, UndirectedGraph<Text> &g2);
 	//void LoadGraphs(UndirectedGraph* g, UndirectedGraph* g2)

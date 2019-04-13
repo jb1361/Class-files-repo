@@ -83,11 +83,5 @@
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\Wrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UndirectedGraphAdjMatrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UndirectedGraph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

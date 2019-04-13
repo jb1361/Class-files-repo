@@ -11,8 +11,10 @@ private:
 	
 	public:
 		Edge() {
-			v1 = 0;
-			v2 = 0;
+			Text* v = new Text();
+			v->add(Integer(0), '0');
+			v1 = *v;
+			v2 = *v;
 		}
 
 		Edge(T v1, T v2) {
@@ -22,8 +24,10 @@ private:
 
 		void clear()			       
 		{
-			v1 = 0;
-			v2 = 0;
+			Text* v = new Text();
+			v->add(Integer(0), '0');
+			v1 = *v;
+			v2 = *v;
 		}
 		template <class T>
 		T Getv1() {
@@ -39,36 +43,36 @@ private:
 		} 
 	};
 
-	Sequence1<Edge<T>> edges;
-	Sequence1<T> vertices;
+	Sequence1<Edge<T>>* edges;
+	Sequence1<T>* vertices;
 public:
-	UndirectedGraphAdjMatrix<T>::UndirectedGraphAdjMatrix()
+	UndirectedGraphAdjMatrix()
 	{
 		vertices = new Sequence1<T>();
 		edges = new Sequence1<Edge<T>>();
 	}
-	UndirectedGraphAdjMatrix<T>::~UndirectedGraphAdjMatrix()
+	~UndirectedGraphAdjMatrix()
 	{
 		vertices.~Sequence1<T>;
 		edges.~Sequence1<T>;
 	}
 
-	void UndirectedGraphAdjMatrix<T>::clear() {
+	void clear() {
 		vertices = new Sequence1<T>();
 		edges.Clear();
 	}
 
-	void UndirectedGraphAdjMatrix<T>::SetVertices(Sequence1<T> nv) {
+	void SetVertices(Sequence1<T> nv) {
 		vertices = new Sequence1<T>();
 		for (int i = 0; i < nv.Length; i++) vertices.add(nv[i]);
 	} 
 
-	void UndirectedGraphAdjMatrix<T>::AddEdge(T v1, T v2) {
+	void AddEdge(T v1, T v2) {
 		Edge<T> newEdge = new Edge<T>(v1, v2);
 		edges.add(newEdge);
 	}
 
-	void UndirectedGraphAdjMatrix<T>::RemoveEdge(T v1, T v2) {
+	void RemoveEdge(T v1, T v2) {
 		Integer index = 0;
 		while (index <= edges.length - 1)
 		{			
@@ -77,37 +81,21 @@ public:
 		}
 	}
 
-	/*template <class T>
-	T UndirectedGraphAdjMatrix<T>::RemoveAnyIncidentEdge(T v1) {
-		Integer index = 0;
-		while (index <= edges.length - 1)
-		{
-			if (edges.entry(index).Getv1 == v1)
-			{
-				Sequence1<T> r = edges.entry(index).Getv2;
-				edges.remove(index);
-				return r;
-			}
-			else index++;
-		}
-		return -1;
-	}*/
-
-	Edge<T> UndirectedGraphAdjMatrix<T>::RemoveAnyEdge() {
+	/*Edge<T> RemoveAnyEdge() {
 		Edge<T> e = new Edge<T>(edges[0].Getv1, edges[0].Getv2);
 		edges.remove(0);
 		return e;
-	}
+	}*/
 
-	Integer UndirectedGraphAdjMatrix<T>::NumberOfVertices() {
+	Integer NumberOfVertices() {
 		return vertices.length;
 	}
 
-	Integer UndirectedGraphAdjMatrix<T>::NumberOfEdges() {
+	Integer NumberOfEdges() {
 		return edges.length;
 	}
 
-	Integer UndirectedGraphAdjMatrix<T>::Degree(T v) {
+	Integer Degree(T v) {
 		Integer deg = 0;
 		Integer index = 0;
 		while (index <= edges.length - 1)
@@ -119,7 +107,7 @@ public:
 		return deg;
 	}
 
-	Boolean UndirectedGraphAdjMatrix<T>::IsEdge(T v1, T v2) {
+	Boolean IsEdge(T v1, T v2) {
 		Integer index = 0;		
 		while (index <= edges.length - 1)
 		{
@@ -131,7 +119,7 @@ public:
 		return false;
 	}
 
-	Text UndirectedGraphAdjMatrix<T>::ToString()
+	Text ToString()
 	{
 		Text out = new Text();
 		out.append('({');
