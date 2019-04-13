@@ -131,6 +131,7 @@
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\IntWrapper.cpp" />
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\LongWrapper.cpp" />
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\Text.cpp" />
+    <ClCompile Include="DFS.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UndirectedGraphAdjList.cpp" />
     <ClCompile Include="UndirectedGraphAdjMatrix.cpp" />
