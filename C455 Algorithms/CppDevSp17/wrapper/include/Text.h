@@ -291,7 +291,7 @@ void toText(T& x, Text& y)
 	std::wostringstream oss;
 
 	oss << x;
-	std::wstring s = oss.str();
+	std::wstring s = (static_cast<std::ostringstream&>(oss)).str();
 	y = s.c_str();
 } // toText
 

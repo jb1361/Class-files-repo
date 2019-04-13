@@ -29,14 +29,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -69,13 +69,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\CppDevSp17\components\include;..\..\CppDevSp17\wrapper\include</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -94,6 +99,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\CppDevSp17\components\include;..\..\CppDevSp17\wrapper\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -115,6 +121,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\CppDevSp17\wrapper\class\BoolWrapper.cpp" />
+    <ClCompile Include="..\..\CppDevSp17\wrapper\class\CharWrapper.cpp" />
+    <ClCompile Include="..\..\CppDevSp17\wrapper\class\FileBase.cpp" />
+    <ClCompile Include="..\..\CppDevSp17\wrapper\class\FloatWrapper.cpp" />
+    <ClCompile Include="..\..\CppDevSp17\wrapper\class\IntWrapper.cpp" />
+    <ClCompile Include="..\..\CppDevSp17\wrapper\class\LongWrapper.cpp" />
+    <ClCompile Include="..\..\CppDevSp17\wrapper\class\Text.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\BoolWrapper.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\CharWrapper.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\File.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\FileBase.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\filechecking.hpp" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\FloatWrapper.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\IntWrapper.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\Keywords.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\LongWrapper.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\Text.h" />
+    <ClInclude Include="..\..\CppDevSp17\wrapper\include\Wrapper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
