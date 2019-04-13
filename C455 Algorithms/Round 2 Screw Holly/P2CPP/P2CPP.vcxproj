@@ -128,7 +128,9 @@
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\IntWrapper.cpp" />
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\LongWrapper.cpp" />
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\Text.cpp" />
+    <ClCompile Include="GraphUtility.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UndirectedGraphAdjMatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\BoolWrapper.h" />
@@ -142,6 +144,7 @@
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\LongWrapper.h" />
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\Text.h" />
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\Wrapper.h" />
+    <ClInclude Include="UndirectedGraphAdjMatrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
