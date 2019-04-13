@@ -1,166 +1,155 @@
 #include <Wrapper.h>
 #include <Sequence/Sequence1.hpp>
-template <class T>
+
 class UndirectedGraphAdjMatrix {
 private:
-	template <class T>
 	class Edge {
-	private:
-		Text v1;
-		Text v2;
-	
 	public:
-		Edge() {
-			Text* v = new Text();
-			v->add(Integer(0), '0');
-			v1 = *v;
-			v2 = *v;
+		Integer* v1 = new Integer();
+		Integer* v2 = new Integer();
+	
+		Edge() { 
+			v1 = new Integer();
+			v2 = new Integer();
 		}
 
-		Edge(T v1, T v2) {
-			this.Getv1 = v1;
-			this.Getv2 = v2;
+		Edge(Integer* V1, Integer* V2) {						
+			v1->transferFrom(*V1);
+			v2->transferFrom(*V2);
 		}
+		//Edge operator = (Edge& rhs)
+		//{
+		//	v1->transferFrom(*rhs.v1);
+		//	v2->transferFrom(*rhs.v2);		
+		//	return self;
+		//}	// operator =
+		void transferFrom(Edge& source)
+		{
+			v1->transferFrom(*source.v1);
+			v2->transferFrom(*source.v2);
+		} // transferFrom
 
 		void clear()			       
 		{
-			Text* v = new Text();
-			v->add(Integer(0), '0');
-			v1 = *v;
-			v2 = *v;
+			v1 = new Integer();
+			v2 = new Integer();
 		}
-		template <class T>
-		T Getv1() {
-			return v1;
-		}
-		template <class T>
-		T Getv2() {
-			return v2;
-		}
+
 		void ToString()
 		{
-			wcout << "{" << v1 << "," << v2 << "}";			
+			wcout << "(" << *v1 << "," << *v2 << ")";			
 		} 
 	};
 
-	Sequence1<T>* edges;
-	Sequence1<T>* vertices;
+	Sequence1<Edge>* edges;
+	Sequence1<Integer>* vertices;
 public:
 	UndirectedGraphAdjMatrix()
 	{
-		vertices = new Sequence1<T>();
-		edges = new Sequence1<Edge<T>>();
-	}
-	~UndirectedGraphAdjMatrix()
-	{
-		vertices->~Sequence1<T>;
-		edges->~Sequence1<T>;
+		vertices = new Sequence1<Integer>();
+		edges = new Sequence1<Edge>();
 	}
 
 	void clear() {
-		vertices = new Sequence1<T>();
-		edges->Clear();
+		vertices = new Sequence1<Integer>();
+		edges->clear();
 	}
 
-	void SetVertices(Sequence1<T> &nv) {
-		vertices = new Sequence1<T>();
-		vertices->transferFrom(nv);
-		//for (int i = 0; i < nv->length; i++) vertices->add(Integer(i), nv->entry(i));
+	void SetVertices(Sequence1<Integer>* nv) {	
+		vertices = new Sequence1<Integer>();
+		vertices->transferFrom(*nv);			
 	} 
 
-	void AddEdge(T v1, T v2) {
-		//Edge<T>* newEdge = new Edge<T>(v1, v2);
-		T* t = new T();
-		t[0] = v1;
-		t[1] = v2;
-		//newEdge->v1 = ToText(v1);
-		edges->add(edges->length(), *t);
+	void AddEdge(Integer* v1, Integer* v2) {
+		Edge* newEdge = new Edge(v1,v2);	
+		edges->add(edges->length(), *newEdge);
 	}
-
-	void RemoveEdge(T v1, T v2) {
-		Integer index = 0;
-		while (index <= edges->length - 1)
-		{			
-			if (edges->entry(index).Getv1 == v1 && edges->entry(index).Getv2 == v2) edges->remove(index);
-			else index++;
-		}
-	}
-
-	/*Edge<T> RemoveAnyEdge() {
-		Edge<T> e = new Edge<T>(edges[0].Getv1, edges[0].Getv2);
-		edges->remove(0);
-		return e;
-	}*/
 
 	Integer NumberOfVertices() {
-		return vertices->length;
+		return vertices->length();
 	}
 
 	Integer NumberOfEdges() {
-		return edges->length;
+		return edges->length();
 	}
 
-	Integer Degree(T v) {
+	/*Integer Degree(Text v) {
 		Integer deg = 0;
 		Integer index = 0;
 		while (index <= edges->length - 1)
 		{
-			Edge<T> edge = edges->entry(index);
-			if (edge.Getv2 == v || edge.Getv1 == v) deg++;
+			Edge* edge = *edges->entry(index);
+			if (edge->v1 == v || edge.Getv1 == v) deg++;
 			index++;
 		}
 		return deg;
-	}
+	}*/
 
-	Boolean IsEdge(T v1, T v2) {
-		Integer index = 0;		
-		while (index <= edges->length - 1)
-		{
-			Edge<T> edge = edges->entry(index);
-			if (edge.Getv1 == v1 && edge.Getv2 == v2) return true;
-			else if (edge.Getv1 == v2 && edge.Getv2 == v1) return true;
-			index++;
-		}
-		return false;
-	}
+	//Boolean IsEdge(Text v1, Text v2) {
+	//	Integer index = 0;		
+	//	while (index <= edges->length - 1)
+	//	{
+	//		Edge edge = edges->entry(index);
+	//		if (edge.Getv1 == v1 && edge.Getv2 == v2) return true;
+	//		else if (edge.Getv1 == v2 && edge.Getv2 == v1) return true;
+	//		index++;
+	//	}
+	//	return false;
+	//}
 
-	Text ToString()
-	{
-		Text* out = new Text();
-		out->add(out->size(), '({');
-		Text* vertText = new Text();
-		Text* edgeText = new Text();
-		Integer index = 0;	
-		while (index <= vertices->length() - 1)
-		{	
-			Edge<T>* vertice = new Edge<T>(edges->entry(index));
-			//vertice = edges->entry(index);
-			if (vertText->size() != 0) {
-				vertText->add(vertText->size(), ',');
-			}
-			vertText.append(vertice);			
-			index++;
-		}
+	void ToString()
+	{	
+		wcout << L"(" << *vertices << L",{";
+		Integer index = 0;
 		while (index <= edges->length() - 1)
 		{
-			Edge<T>* edge = new Edge<T>(edges->entry(index));
-			if (edgeText->size() != 0) {
-				edgeText.append(',');
-			}
-			//Dr. Hollys wrappers do not have any elegant join methods
-			edgeText.append('(');
-			edgeText.append(edge.Getv1);
-			edgeText.append(',');
-			edgeText.append(edge.Getv2);
-			edgeText.append('(');
+			Edge* g = &(edges->entry(index));
+			g->ToString();
+			//wcout << edges->entry(index).ToString() << L"\n";
 			index++;
 		}		
-		out.append(vertText);
-		out.append('},');
-		out.append('{');
-		out.append(edgeText);
-		out.append('})');
-		return *out;
+		wcout << L"})\n";
+
+		/*Integer* out = new Integer();
+		out->add(out->size(), '({');*/
+		//Integer* vertText = new Integer();
+		//Integer* edgeText = new Integer();
+		//Integer index = 0;	
+		//while (index <= vertices->length() - 1)
+		//{	
+		//	if (vertText->size() != 0) {
+		//		vertText->add(vertText->size(), ',');
+		//	}
+		//	vertText->add(vertText->size(), *vertices->entry(index));
+		//	index++;
+		//}
+		//
+		//while (index <= edges->length() - 1)
+		//{
+		//	Integer* v1 = new Integer();
+		//	Integer* v2 = new Integer();
+		//	v1 = edges->entry(index).v1;
+		//	v2 = edges->entry(index).v2;
+		//	if (edgeText->size() != 0) {
+		//		edgeText->add(edgeText->size(),',');
+		//	}
+		//	//Dr. Hollys wrappers do not have any elegant join methods
+		//	edgeText->add(edgeText->size(), '(');
+		//	edgeText->append(*v1);
+		//	edgeText->add(edgeText->size(), ',');
+		//	edgeText->append(*v2);
+		//	edgeText->add(edgeText->size(), '(');
+		//	index++;
+		//}		
+		//out->append(*vertText);
+		//Integer* test = new Integer();
+		//
+		//out->add(out->size(), '},');
+		//out->add(out->size(), '{');
+		////out->append(*edgeText);
+		//out->add(out->size(), '})');
+		//
+		//return out;
 	}
 
 };

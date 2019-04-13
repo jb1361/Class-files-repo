@@ -46,14 +46,14 @@ namespace P4
             wordHunt = new WordHunt();
             graphUtility.LoadGraphData(filename, vertexLabels, ref graphRep);
 
-            //graphUtility.DisplayVertexLabels(vertexLabels);
-            //Console.WriteLine("====================================");
+            graphUtility.DisplayVertexLabels(vertexLabels);
+            Console.WriteLine("====================================");
 
-            //graphUtility.DisplayGraphUsingLabels(vertexLabels, graphRep);
-            //Console.WriteLine("====================================");
+            graphUtility.DisplayGraphUsingLabels(vertexLabels, graphRep);
+            Console.WriteLine("====================================");
 
-            //graphUtility.ToString(graphRep);
-            //Console.WriteLine("====================================");
+            graphUtility.ToString(graphRep);
+            Console.WriteLine("====================================");
             if (operation == 1)
             {
                 //Operation #1
@@ -70,7 +70,7 @@ namespace P4
             }
             else
             {                
-                wordHunt.DFS_WordHunt(graphRep, wordLengthMax, vertexLabels);         
+               // wordHunt.DFS_WordHunt(graphRep, wordLengthMax, vertexLabels);         
             }
         }
         public void Recursive_Matrix_DFS_WordHunt(int[,] graphRep, string V)
