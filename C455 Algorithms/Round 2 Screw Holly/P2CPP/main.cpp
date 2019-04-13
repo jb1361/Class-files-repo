@@ -1,11 +1,9 @@
 #include <wrapper.h>
 #include <Sequence/Sequence1.hpp>
-//#include <UndirectedGraph.cpp>
 #include <UndirectedGraphAdjMatrix.cpp>
 
 int main() {	
 	UndirectedGraphAdjMatrix<Integer>* g1 = new UndirectedGraphAdjMatrix<Integer>();
-	//UndirectedGraph* g2 = new UndirectedGraph();
 	
 	Sequence1<Integer>* v = new Sequence1<Integer>();
 	Integer i = 0;

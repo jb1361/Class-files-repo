@@ -43,64 +43,64 @@ private:
 		} 
 	};
 
-	Sequence1<Edge<T>>* edges;
+	Sequence1<T>* edges;
 	Sequence1<T>* vertices;
 public:
 	UndirectedGraphAdjMatrix()
 	{
 		vertices = new Sequence1<T>();
-		edges = new Sequence1<Edge<T>>();
+		edges = new Sequence1<T>();
 	}
 	~UndirectedGraphAdjMatrix()
 	{
-		vertices.~Sequence1<T>;
-		edges.~Sequence1<T>;
+		vertices->~Sequence1<T>;
+		edges->~Sequence1<T>;
 	}
 
 	void clear() {
 		vertices = new Sequence1<T>();
-		edges.Clear();
+		edges->Clear();
 	}
 
 	void SetVertices(Sequence1<T> nv) {
 		vertices = new Sequence1<T>();
-		for (int i = 0; i < nv.Length; i++) vertices.add(nv[i]);
+		for (int i = 0; i < nv.Length; i++) vertices->add(nv[i]);
 	} 
 
 	void AddEdge(T v1, T v2) {
 		Edge<T> newEdge = new Edge<T>(v1, v2);
-		edges.add(newEdge);
+		edges->add(newEdge);
 	}
 
 	void RemoveEdge(T v1, T v2) {
 		Integer index = 0;
-		while (index <= edges.length - 1)
+		while (index <= edges->length - 1)
 		{			
-			if (edges.entry(index).Getv1 == v1 && edges.entry(index).Getv2 == v2) edges.remove(index);
+			if (edges->entry(index).Getv1 == v1 && edges->entry(index).Getv2 == v2) edges->remove(index);
 			else index++;
 		}
 	}
 
 	/*Edge<T> RemoveAnyEdge() {
 		Edge<T> e = new Edge<T>(edges[0].Getv1, edges[0].Getv2);
-		edges.remove(0);
+		edges->remove(0);
 		return e;
 	}*/
 
 	Integer NumberOfVertices() {
-		return vertices.length;
+		return vertices->length;
 	}
 
 	Integer NumberOfEdges() {
-		return edges.length;
+		return edges->length;
 	}
 
 	Integer Degree(T v) {
 		Integer deg = 0;
 		Integer index = 0;
-		while (index <= edges.length - 1)
+		while (index <= edges->length - 1)
 		{
-			Edge<T> edge = edges.entry(index);
+			Edge<T> edge = edges->entry(index);
 			if (edge.Getv2 == v || edge.Getv1 == v) deg++;
 			index++;
 		}
@@ -109,9 +109,9 @@ public:
 
 	Boolean IsEdge(T v1, T v2) {
 		Integer index = 0;		
-		while (index <= edges.length - 1)
+		while (index <= edges->length - 1)
 		{
-			Edge<T> edge = edges.entry(index);
+			Edge<T> edge = edges->entry(index);
 			if (edge.Getv1 == v1 && edge.Getv2 == v2) return true;
 			else if (edge.Getv1 == v2 && edge.Getv2 == v1) return true;
 			index++;
@@ -126,18 +126,18 @@ public:
 		Text vertText = new Text();
 		Text edgeText = new Text();
 		Integer index = 0;	
-		while (index <= vertices.length - 1)
+		while (index <= vertices->length - 1)
 		{	
-			T vertice = edges.entry(index);
+			T vertice = edges->entry(index);
 			if (vertText.size != 0) {
 				vertText.append(',');
 			}
 			vertText.append(vertice);			
 			index++;
 		}
-		while (index <= edges.length - 1)
+		while (index <= edges->length - 1)
 		{
-			Edge<T> edge = edges.entry(index);
+			Edge<T> edge = edges->entry(index);
 			if (edgeText.size != 0) {
 				edgeText.append(',');
 			}

@@ -45,9 +45,6 @@
     <ClCompile Include="UndirectedGraphAdjMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UndirectedGraph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\BoolWrapper.h">
