@@ -49,7 +49,7 @@ public:
 	UndirectedGraphAdjMatrix()
 	{
 		vertices = new Sequence1<T>();
-		edges = new Sequence1<T>();
+		edges = new Sequence1<Edge<T>>();
 	}
 	~UndirectedGraphAdjMatrix()
 	{
@@ -62,14 +62,19 @@ public:
 		edges->Clear();
 	}
 
-	void SetVertices(Sequence1<T> nv) {
+	void SetVertices(Sequence1<T> &nv) {
 		vertices = new Sequence1<T>();
-		for (int i = 0; i < nv.Length; i++) vertices->add(nv[i]);
+		vertices->transferFrom(nv);
+		//for (int i = 0; i < nv->length; i++) vertices->add(Integer(i), nv->entry(i));
 	} 
 
 	void AddEdge(T v1, T v2) {
-		Edge<T> newEdge = new Edge<T>(v1, v2);
-		edges->add(newEdge);
+		//Edge<T>* newEdge = new Edge<T>(v1, v2);
+		T* t = new T();
+		t[0] = v1;
+		t[1] = v2;
+		//newEdge->v1 = ToText(v1);
+		edges->add(edges->length(), *t);
 	}
 
 	void RemoveEdge(T v1, T v2) {
@@ -121,24 +126,25 @@ public:
 
 	Text ToString()
 	{
-		Text out = new Text();
-		out.append('({');
-		Text vertText = new Text();
-		Text edgeText = new Text();
+		Text* out = new Text();
+		out->add(out->size(), '({');
+		Text* vertText = new Text();
+		Text* edgeText = new Text();
 		Integer index = 0;	
-		while (index <= vertices->length - 1)
+		while (index <= vertices->length() - 1)
 		{	
-			T vertice = edges->entry(index);
-			if (vertText.size != 0) {
-				vertText.append(',');
+			Edge<T>* vertice = new Edge<T>(edges->entry(index));
+			//vertice = edges->entry(index);
+			if (vertText->size() != 0) {
+				vertText->add(vertText->size(), ',');
 			}
 			vertText.append(vertice);			
 			index++;
 		}
-		while (index <= edges->length - 1)
+		while (index <= edges->length() - 1)
 		{
-			Edge<T> edge = edges->entry(index);
-			if (edgeText.size != 0) {
+			Edge<T>* edge = new Edge<T>(edges->entry(index));
+			if (edgeText->size() != 0) {
 				edgeText.append(',');
 			}
 			//Dr. Hollys wrappers do not have any elegant join methods
@@ -154,7 +160,7 @@ public:
 		out.append('{');
 		out.append(edgeText);
 		out.append('})');
-		return out;
+		return *out;
 	}
 
 };
