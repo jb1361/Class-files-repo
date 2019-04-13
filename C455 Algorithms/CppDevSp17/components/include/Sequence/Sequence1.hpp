@@ -60,6 +60,10 @@ public: // Standard Operations
 		//! updates self
 		//! clears sToAppend
 		//! ensures: self = #self * sToAppend
+	void append(Integer sToAppend);
+	//! updates self
+	//! clears sToAppend
+	//! ensures: self = #self * sToAppend
 	void split (Integer pos, Sequence1& receivingS);
 		//! updates self
 		//! restores pos
@@ -241,8 +245,6 @@ void Sequence1<T>::append (Sequence1& sToAppend)
 	lengthOfSeq += sToAppend.lengthOfSeq;
 	sToAppend.lengthOfSeq = 0;
 }	// append
-
-//-----------------------------------------------------------------------
 
 template <class T>
 void Sequence1<T>::split (Integer pos, Sequence1& receivingS)

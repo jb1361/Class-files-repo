@@ -42,10 +42,10 @@
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\Text.cpp">
       <Filter>Source Files\wrapper</Filter>
     </ClCompile>
-    <ClCompile Include="GraphUtility.cpp">
+    <ClCompile Include="UndirectedGraphAdjMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UndirectedGraphAdjMatrix.cpp">
+    <ClCompile Include="UndirectedGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -84,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UndirectedGraphAdjMatrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UndirectedGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -72,13 +72,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\CppDevSp17\components\include;..\..\CppDevSp17\wrapper\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\CppDevSp17\components\include;..\..\CppDevSp17\wrapper\include;..\..\Round 2 Screw Holly\P2CPP</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
     </ClCompile>
@@ -99,7 +102,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\CppDevSp17\components\include;..\..\CppDevSp17\wrapper\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\CppDevSp17\components\include;..\..\CppDevSp17\wrapper\include;..\..\Round 2 Screw Holly\P2CPP</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -128,7 +131,7 @@
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\IntWrapper.cpp" />
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\LongWrapper.cpp" />
     <ClCompile Include="..\..\CppDevSp17\wrapper\class\Text.cpp" />
-    <ClCompile Include="GraphUtility.cpp" />
+    <ClCompile Include="UndirectedGraph.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UndirectedGraphAdjMatrix.cpp" />
   </ItemGroup>
@@ -144,6 +147,7 @@
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\LongWrapper.h" />
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\Text.h" />
     <ClInclude Include="..\..\CppDevSp17\wrapper\include\Wrapper.h" />
+    <ClInclude Include="UndirectedGraph.h" />
     <ClInclude Include="UndirectedGraphAdjMatrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

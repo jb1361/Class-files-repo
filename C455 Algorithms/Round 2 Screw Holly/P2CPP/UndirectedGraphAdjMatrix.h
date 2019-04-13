@@ -1,6 +1,6 @@
 #pragma once
 #include <Sequence/Sequence1.hpp>
-
+#include <Wrapper.h>
 template <class T>
 class UndirectedGraphAdjMatrix {
 
@@ -14,6 +14,8 @@ private:
 		Edge(void);
 		Edge(T v1, T v2);
 		void clear();
+		T Getv1();
+		T Getv2();		
 		void ToString();
 	};
 	Sequence1<T> vertices;
@@ -24,14 +26,14 @@ public:
 	~UndirectedGraphAdjMatrix();
 
 	void clear();
-	void SetVertices(T[] nv);
+	void SetVertices(Sequence1<T> nv);
 	void AddEdge(T v1, T v2);
 	void RemoveEdge(T v1, T v2);
 	T RemoveAnyIncidentEdge(T v1);
 	Edge<T> RemoveAnyEdge();
-	int NumberOfVertices();
-	int NumberOfEdges();
-	int Degree(T v);
-	bool IsEdge(T v1, T v2);
-	string ToString();
+	Integer NumberOfVertices();
+	Integer NumberOfEdges();
+	Integer Degree(T v);
+	Boolean IsEdge(T v1, T v2);
+	Text ToString();
 };
