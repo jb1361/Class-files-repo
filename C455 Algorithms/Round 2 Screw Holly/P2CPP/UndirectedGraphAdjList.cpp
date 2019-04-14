@@ -14,16 +14,12 @@ public:
 
 	UndirectedGraphAdjList(Integer V/*, Text* letters*/)
 	{
-		this->V = V;
-		/*this->letters = letters;
-		wcout << "Graph param Letters:" << *letters[2] << L"\n";
-		wcout << "Graph Letters:" << *this->letters << L"\n";*/
+		this->V = V;		
 		adj = new Sequence1<Integer>[V];
 	}
 
 	void addEdge(Integer v, Integer w)
 	{
-		adj[v].add(adj[v].length(), w);		
-		//wcout << adj->entry(0) << L"\n";
+		adj[v].add(adj[v].length(), w);				
 	}	
 };

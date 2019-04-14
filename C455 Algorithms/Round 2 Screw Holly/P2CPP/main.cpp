@@ -12,10 +12,7 @@ using namespace std;
 Sequence1<Sequence1<Integer>>* edges;
 
 int main(int argc, char *argv[]) {
-
-	//UndirectedGraphAdjMatrix* g1 = new UndirectedGraphAdjMatrix();
 	
-	//Sequence1<Integer>* adj = new Sequence1<Integer>();
 	edges = new Sequence1<Sequence1<Integer>>();
 
 	string input;
@@ -28,13 +25,11 @@ int main(int argc, char *argv[]) {
 	for (int i = 0; i < lettersCount; i++)
 	{
 		getline(cin, input);
-		//cout << "Input: " << input << "\n";
-		wstring widestr = wstring(input.begin(), input.end());
-		//cout << "Wstring: " << *widestr.c_str() << "\n";
-		//cout << "i: " << i << "\n";
+		wstring widestr = wstring(input.begin(), input.end());		
 		vertices[i] = Text(widestr.c_str());
 		
 	}	
+	UndirectedGraphAdjMatrix* g1 = new UndirectedGraphAdjMatrix(lettersCount);
 	UndirectedGraphAdjList* g2 = new UndirectedGraphAdjList(lettersCount);
 
 	string v1;
@@ -56,37 +51,38 @@ int main(int argc, char *argv[]) {
 		getline(cin, v1);
 		getline(cin, v2);
 		
-	}
-	
+	}	
 	for (Integer i = 0; i < edges->length(); i++)
-	{		
-		//wcout << "v1: " << edges->entry(i).entry(0) << L", ";
-		//wcout << "v2: " << edges->entry(i).entry(1) << L"\n";
+	{				
+		g1->addEdge(edges->entry(i).entry(0), edges->entry(i).entry(1));
 		g2->addEdge(edges->entry(i).entry(0), edges->entry(i).entry(1));
 	}
-	//wcout << "Letters: " << *vertices << L"\n";
-	//wcout << "Letters Count: " << lettersCount << L"\n";
-	//wcout << "Edges: " << *edges << L"\n";
-	//wcout << g2->adj[1] << L"\n";
+	
 
-	DFS* dfs = new DFS(lettersCount, g2->adj, vertices);	
-
+	DFS* dfs1;
+	DFS* dfs2;
 	if (argc == 1)
 	{
+		DFS* dfs1 = new DFS(lettersCount, g1->adj, vertices);		
+		DFS* dfs2 = new DFS(lettersCount, g2->adj, vertices);
 		for (int i = 0; i < lettersCount; i++)
 		{
-			dfs->DFSStart(i, 0);
-		}		
+			dfs1->DFSStartMatrix(i, 0);
+		}
+		wcout << "===========================================\n" << "AJACENCY LIST DFS\n" << "=============================\n";
+		for (int i = 0; i < lettersCount; i++)
+		{
+			//dfs2->DFSStart(i, 0);
+		}
 	}
 	else if (argc == 2)
-	{
-		dfs->DFSStart(Integer(stoi(argv[0])), 0);	
+	{		
+		DFS* dfs1 = new DFS(lettersCount, g1->adj, vertices);
+		DFS* dfs2 = new DFS(lettersCount, g2->adj, vertices);
+		dfs1->DFSStartMatrix(Integer(stoi(argv[1])), 0);
+		wcout << "===========================================\n" << "AJACENCY LIST DFS\n" << "=============================\n";
+		dfs2->DFSStartMatrix(Integer(stoi(argv[1])), 0);	
 	}
 
-
-	
-	//g1->SetVertices(v);	
-	//g1->ToString();
-	//system("pause");
 	return 0;
 }

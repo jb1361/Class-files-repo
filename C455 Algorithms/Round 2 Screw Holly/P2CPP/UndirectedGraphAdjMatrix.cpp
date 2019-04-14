@@ -2,34 +2,32 @@
 #include <Sequence/Sequence1.hpp>
 
 class UndirectedGraphAdjMatrix {
-
-
 public:
+	Integer V; // No. of vertices
+	//Text* letters;
+	// Pointer to an array containing
+	// adjacency lists
+	Sequence1<Integer>* adj;
 
-	Sequence1<Integer>* vertices;
-
-	UndirectedGraphAdjMatrix()
+	UndirectedGraphAdjMatrix(Integer V/*, Text* letters*/)
 	{
-		vertices = new Sequence1<Integer>();
-		
-	}
-	
-	/*void addEdge(Integer* v1, Integer* v2) {
-		Edge* newEdge = new Edge(v1,v2);	
-		edges->add(edges->length(), *newEdge);
+		this->V = V;
+
+		this->adj = new Sequence1<Integer>[V];
+		for (Integer i = 0; i < V; i++)
+		{			
+			for (Integer j = 0; j < V; j++)
+			{				
+				Integer zero = Integer(0);
+				adj[i].add(adj[i].length(), zero);			
+			}
+		}	
 	}
 
-	void ToString()
-	{	
-		wcout << L"(" << *vertices << L",{";
-		Integer index = 0;
-		while (index <= edges->length() - 1)
-		{
-			Edge* g = &(edges->entry(index));
-			g->ToString();
-			index++;
-		}		
-		wcout << L"})\n";
-	}*/
+	void addEdge(Integer v, Integer w)
+	{
+		Integer one = Integer(1);	
+		adj[v].entry(w) = one;		
+	}
 
 };
