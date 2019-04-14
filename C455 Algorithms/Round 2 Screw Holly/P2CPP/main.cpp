@@ -59,29 +59,20 @@ int main(int argc, char *argv[]) {
 	}
 	
 
-	DFS* dfs1;
-	DFS* dfs2;
+	DFS* dfs;
+	
 	if (argc == 1)
 	{
-		DFS* dfs1 = new DFS(lettersCount, g1->adj, vertices);		
-		DFS* dfs2 = new DFS(lettersCount, g2->adj, vertices);
+		DFS* dfs = new DFS(lettersCount, g1->adj, vertices);				
 		for (int i = 0; i < lettersCount; i++)
 		{
-			dfs1->DFSStartMatrix(i, 0);
-		}
-		wcout << "===========================================\n" << "AJACENCY LIST DFS\n" << "=============================\n";
-		for (int i = 0; i < lettersCount; i++)
-		{
-			//dfs2->DFSStart(i, 0);
-		}
+			dfs->DFSStartMatrix(i, 0);
+		}			
 	}
 	else if (argc == 2)
-	{		
-		DFS* dfs1 = new DFS(lettersCount, g1->adj, vertices);
-		DFS* dfs2 = new DFS(lettersCount, g2->adj, vertices);
-		dfs1->DFSStartMatrix(Integer(stoi(argv[1])), 0);
-		wcout << "===========================================\n" << "AJACENCY LIST DFS\n" << "=============================\n";
-		dfs2->DFSStartMatrix(Integer(stoi(argv[1])), 0);	
+	{			
+		DFS* dfs = new DFS(lettersCount, g2->adj, vertices);			
+		dfs->DFSStart(Integer(stoi(argv[1])), 0);
 	}
 
 	return 0;
