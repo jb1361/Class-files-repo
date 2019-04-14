@@ -21,16 +21,21 @@ int main(int argc, char *argv[]) {
 	string input;
 	getline(cin, input);
 	int lettersCount = stoi(input);
-	Text* lettersList = new Text[lettersCount];
+	Text* vertices = new Text[lettersCount];
 
-	UndirectedGraphAdjList* g2 = new UndirectedGraphAdjList(lettersCount, lettersList);
+	
 
 	for (int i = 0; i < lettersCount; i++)
 	{
 		getline(cin, input);
+		//cout << "Input: " << input << "\n";
 		wstring widestr = wstring(input.begin(), input.end());
-		lettersList[i] = Text(widestr.c_str());
-	}
+		//cout << "Wstring: " << *widestr.c_str() << "\n";
+		//cout << "i: " << i << "\n";
+		vertices[i] = Text(widestr.c_str());
+		
+	}	
+	UndirectedGraphAdjList* g2 = new UndirectedGraphAdjList(lettersCount);
 
 	string v1;
 	string v2;
@@ -55,37 +60,31 @@ int main(int argc, char *argv[]) {
 	
 	for (Integer i = 0; i < edges->length(); i++)
 	{		
-		
+		//wcout << "v1: " << edges->entry(i).entry(0) << L", ";
+		//wcout << "v2: " << edges->entry(i).entry(1) << L"\n";
 		g2->addEdge(edges->entry(i).entry(0), edges->entry(i).entry(1));
 	}
-	wcout << "Letters: " << *lettersList << L"\n";
-	wcout << "Letters Count: " << lettersCount << L"\n";
-	wcout << "Edges: " << *edges << L"\n";
-	wcout << *g2->adj << L"\n";
+	//wcout << "Letters: " << *vertices << L"\n";
+	//wcout << "Letters Count: " << lettersCount << L"\n";
+	//wcout << "Edges: " << *edges << L"\n";
+	//wcout << g2->adj[1] << L"\n";
 
-	DFS* dfs = new DFS();
-	cout << "Starting DFS Search\n";
-	for (int i = 0; i < lettersCount; i++)
-	{
-		//dfs->DFSStart(&(g2->adj), i, 0, &lettersList);
-	}
-	cout << "Test";
+	DFS* dfs = new DFS(lettersCount, g2->adj, vertices);	
 
 	if (argc == 1)
 	{
-
-		// run Operations #1 & #2
+		for (int i = 0; i < lettersCount; i++)
+		{
+			dfs->DFSStart(i, 0);
+		}		
 	}
 	else if (argc == 2)
 	{
-		//  run Operations #3 & #4
+		dfs->DFSStart(Integer(stoi(argv[0])), 0);	
 	}
 
 
-	//for (int i = 0; i < letters; i++)
-	//{
-		//dfs->DFSStart(i);
-	//}
+	
 	//g1->SetVertices(v);	
 	//g1->ToString();
 	//system("pause");

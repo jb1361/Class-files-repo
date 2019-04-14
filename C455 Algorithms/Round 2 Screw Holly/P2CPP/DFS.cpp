@@ -6,31 +6,40 @@
 class DFS
 {
 public:
+	Integer V;
+	Sequence1<Integer>* adj;
+	Text* letters;
 
-	void DFSVisit(Sequence1<Integer> adj[], Integer v, Integer d, Text* wordSoFar, Text* letters[])
-	{
-
-		wordSoFar->append(*letters[(int)v]);
+	DFS(Integer V, Sequence1<Integer>* adj, Text* letters) {
+		this->V = V;
+		this->letters = letters;
+		this->adj = new Sequence1<Integer>[V];
+		this->adj = adj;
+	}
+	void DFSVisit(Integer v, Integer d, Text* wordSoFar)
+	{	
+		wordSoFar->append(this->letters[(int)v]);
 		d++;
-		if (d >= 6) {
+		if (d >= 6) {			
 			wcout << *wordSoFar << L"\n";
+			return;
 		}
 
 		for (int i = 0; i < adj[v].length(); i++) {
 			Text* tempText = new Text();
-			tempText->append(*tempText);
-			DFSVisit(adj, adj[v].entry(i), d, tempText, letters);
+			tempText->append(*wordSoFar);
+			DFSVisit(adj[v].entry(i), d, tempText);
 			delete tempText;
 		}
 	}
 	// DFS traversal of the vertices reachable from v.
 	// It uses recursive DFSUtil()
-	void DFSStart(Sequence1<Integer>* adj[], Integer v, Integer d, Text* letters[])
+	void DFSStart(Integer v, Integer d)
 	{
 		// Call the recursive helper function
 		// to prInteger DFS traversal
 		Text* output = new Text();
-		DFSVisit(*adj, v, 0, output, letters);
+		DFSVisit( v, 0, output);		
 		delete output;
 	}
 };

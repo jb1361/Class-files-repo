@@ -7,15 +7,17 @@ class UndirectedGraphAdjList
 {
 public:
 	Integer V; // No. of vertices
-	Text* letters;
+	//Text* letters;
 	// Pointer to an array containing
 	// adjacency lists
 	Sequence1<Integer> *adj;
 
-	UndirectedGraphAdjList(Integer V, Text* letters)
+	UndirectedGraphAdjList(Integer V/*, Text* letters*/)
 	{
 		this->V = V;
-		this->letters = letters;
+		/*this->letters = letters;
+		wcout << "Graph param Letters:" << *letters[2] << L"\n";
+		wcout << "Graph Letters:" << *this->letters << L"\n";*/
 		adj = new Sequence1<Integer>[V];
 	}
 
