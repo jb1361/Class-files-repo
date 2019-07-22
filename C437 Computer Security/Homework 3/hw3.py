@@ -6,7 +6,7 @@ from Crypto import Random
 import math
 import ast
 
-sqrts = []
+public_keys = {}
 
 sample_public = open("./challenge/sample/public.pem").read()
 sample_private = open("./challenge/sample/private.pem").read()
@@ -19,6 +19,8 @@ sample_d = sample_private_key.d
 sample_e = sample_private_key.e
 sample_u = sample_private_key.u
 
+public_keys['sample'] = sample_public_key
+
 print("sample n: " + str(sample_n))
 print("sample p: " + str(sample_p))
 print("sample q: " + str(sample_q))
@@ -29,50 +31,36 @@ print("sample e: " + str(sample_e))
 
 sample_encrypted_message = open("./challenge/sample/message.bin", "rb").read()
 
-def decrypt_message(encrypted_message):
+
+def decrypt_message(encrypted_message, private_key):
     dsize = SHA.digest_size
     sentinel = Random.new().read(1024 + dsize)  # Let's assume that average data length is 15
-    cipher = PKCS1_v1_5.new(sample_private_key)
-    decrypted_message = cipher.decrypt(encrypted_message, sentinel)
+    cipher = PKCS1_v1_5.new(private_key)
+    #decrypted_message = cipher.decrypt(encrypted_message, sentinel)
     return cipher.decrypt(encrypted_message, sentinel)
 
-decrypted_message = decrypt_message(sample_encrypted_message)
+
+decrypted_message = decrypt_message(sample_encrypted_message, sample_private_key)
+
 
 print('Encrypted Sample Message : {}'.format(sample_encrypted_message))
 print('Decrypted Sample Message : {}'.format(decrypted_message))
 print("")
-# https://crypto.stackexchange.com/questions/13113/how-can-i-find-the-prime-numbers-used-in-rsa
-# Go look at this
-def crack_key(n, prime_number, number_two):
-    for g in range(1, 9):
-        print(g, GCD(n, pow(g, ((sample_d * sample_e - 1) / 2 ** 2), n) - 1))
-
-    return
 
 for i in range(1, 100):
-    pem1 = open("./challenge/" + str(i) + ".pem").read()
-    # message = open("./challenge/" + str(i) + ".bin", "rb").read()
-    # try:
-    #     print(decrypt_message(message))
-    # except Exception:
-    #     continue
+    name = str(i) + ".pem"
+    pem1 = open("./challenge/" + name).read()
+    public_key = RSA.importKey(pem1)
+    public_keys[name] = public_key
 
-    key = RSA.importKey(pem1)
-    n = key.n
-
-    test_q = n / sample_p
-    test_p = n / sample_q
-    if(int(str(int(test_q))[0]) > 5):
-        print(crack_key(n, sample_p, int(test_q)))
-    if (int(str(int(test_p))[0]) > 5):
-        print(crack_key(n, sample_q, int(test_p)))
-
-    # n_sqrt = int(math.sqrt(n))
-    # for i in range(n_sqrt, sample_p, -2):
-    #     if(n%i == 0):
-    #         print("Found a match: " + str(i))
-    #         break
-    #     print (i, n % i)
-
-
-
+print(public_keys)
+for n_one in public_keys:
+    for n_two in public_keys:
+        if n_one != n_two:
+            cd = GCD(public_keys[n_one].n, public_keys[n_two].n)
+            if cd > 1:
+                n = public_keys[n_one].n
+                p = cd
+                q = n/p
+                e = public_keys[n_one].e
+                print("GCD for {} and {}: {}".format(n_one, n_two, cd))
