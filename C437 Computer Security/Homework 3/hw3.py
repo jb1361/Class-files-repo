@@ -29,38 +29,64 @@ print("sample u: " + str(sample_u))
 print("sample e: " + str(sample_e))
 
 
-sample_encrypted_message = open("./challenge/sample/message.bin", "rb").read()
-
-
 def decrypt_message(encrypted_message, private_key):
     dsize = SHA.digest_size
-    sentinel = Random.new().read(1024 + dsize)  # Let's assume that average data length is 15
+    sentinel = Random.new().read(15 + dsize)  # Let's assume that average data length is 15
     cipher = PKCS1_v1_5.new(private_key)
     #decrypted_message = cipher.decrypt(encrypted_message, sentinel)
     return cipher.decrypt(encrypted_message, sentinel)
 
 
-decrypted_message = decrypt_message(sample_encrypted_message, sample_private_key)
+# modinv and egcd functions obtained from stackoverflow link.
+# https://stackoverflow.com/questions/4798654/modular-multiplicative-inverse-function-in-python
+def egcd(a, b):
+    if a == 0:
+        return (b, 0, 1)
+    else:
+        g, y, x = egcd(b % a, a)
+        return (g, x - (b // a) * y, y)
 
+
+def modinv(a, m):
+    g, x, y = egcd(a, m)
+    if g != 1:
+        raise Exception('modular inverse does not exist')
+    else:
+        return x % m
+
+
+
+def get_public_keys():
+    for i in range(1, 100):
+        name = str(i) + ".pem"
+        pem1 = open("./challenge/" + name).read()
+        public_key = RSA.importKey(pem1)
+        public_keys[name] = public_key
+
+
+def find_weak_keys():
+    for n_one in public_keys:
+        for n_two in public_keys:
+            if n_one != n_two:
+                cd = GCD(public_keys[n_one].n, public_keys[n_two].n)
+                if cd > 1:
+                    print("GCD for {} and {}: {}".format(n_one, n_two, cd))
+                    n = public_keys[n_one].n
+                    p = cd
+                    q = n / p
+                    e = public_keys[n_one].e
+
+
+sample_encrypted_message = open("./challenge/sample/message.bin", "rb").read()
+decrypted_message = decrypt_message(sample_encrypted_message, sample_private_key)
 
 print('Encrypted Sample Message : {}'.format(sample_encrypted_message))
 print('Decrypted Sample Message : {}'.format(decrypted_message))
 print("")
 
-for i in range(1, 100):
-    name = str(i) + ".pem"
-    pem1 = open("./challenge/" + name).read()
-    public_key = RSA.importKey(pem1)
-    public_keys[name] = public_key
-
+get_public_keys()
+print("Public Keys")
 print(public_keys)
-for n_one in public_keys:
-    for n_two in public_keys:
-        if n_one != n_two:
-            cd = GCD(public_keys[n_one].n, public_keys[n_two].n)
-            if cd > 1:
-                n = public_keys[n_one].n
-                p = cd
-                q = n/p
-                e = public_keys[n_one].e
-                print("GCD for {} and {}: {}".format(n_one, n_two, cd))
+print("")
+print("Finding weak keys")
+find_weak_keys()
