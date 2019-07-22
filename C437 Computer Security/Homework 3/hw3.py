@@ -1,40 +1,25 @@
 from Crypto.PublicKey import RSA
-from Crypto.Cipher import AES, PKCS1_OAEP, PKCS1_v1_5
-from Crypto.Util.number import GCD
+from Crypto.Cipher import PKCS1_v1_5
 from Crypto.Hash import SHA
 from Crypto import Random
 import math
-import ast
 
 public_keys = {}
-
-sample_public = open("./challenge/sample/public.pem").read()
-sample_private = open("./challenge/sample/private.pem").read()
-sample_public_key = RSA.importKey(sample_public)
-sample_private_key = RSA.importKey(sample_private)
-sample_n = sample_private_key.n
-sample_p = sample_private_key.p
-sample_q = sample_private_key.q
-sample_d = sample_private_key.d
-sample_e = sample_private_key.e
-sample_u = sample_private_key.u
-
-public_keys['sample'] = sample_public_key
-
-print("sample n: " + str(sample_n))
-print("sample p: " + str(sample_p))
-print("sample q: " + str(sample_q))
-print("sample d: " + str(sample_d))
-print("sample u: " + str(sample_u))
-print("sample e: " + str(sample_e))
+weak_cracked_keys = {}
 
 
 def decrypt_message(encrypted_message, private_key):
     dsize = SHA.digest_size
     sentinel = Random.new().read(15 + dsize)  # Let's assume that average data length is 15
     cipher = PKCS1_v1_5.new(private_key)
-    #decrypted_message = cipher.decrypt(encrypted_message, sentinel)
-    return cipher.decrypt(encrypted_message, sentinel)
+    return cipher.decrypt(encrypted_message, sentinel).decode("utf-8")
+
+
+def decrypt_key_messages():
+    print(weak_cracked_keys)
+    for name in weak_cracked_keys:
+        encrypted_message = open("./challenge/" + name + ".bin", "rb").read()
+        print(name + ": " + decrypt_message(encrypted_message, weak_cracked_keys[name]))
 
 
 # modinv and egcd functions obtained from stackoverflow link.
@@ -55,38 +40,58 @@ def modinv(a, m):
         return x % m
 
 
+def generate_private_key(name, n, p, q, e):
+    d = modinv(e, n-(p+q-1))
+    key = RSA.construct((n, e, d, p, q))
+    weak_cracked_keys[name] = key
+
 
 def get_public_keys():
     for i in range(1, 100):
-        name = str(i) + ".pem"
-        pem1 = open("./challenge/" + name).read()
+        pem1 = open("./challenge/" + str(i) + ".pem").read()
         public_key = RSA.importKey(pem1)
-        public_keys[name] = public_key
+        public_keys[str(i)] = public_key
 
 
 def find_weak_keys():
     for n_one in public_keys:
         for n_two in public_keys:
             if n_one != n_two:
-                cd = GCD(public_keys[n_one].n, public_keys[n_two].n)
+                cd = math.gcd(public_keys[n_one].n, public_keys[n_two].n)
                 if cd > 1:
                     print("GCD for {} and {}: {}".format(n_one, n_two, cd))
                     n = public_keys[n_one].n
-                    p = cd
-                    q = n / p
                     e = public_keys[n_one].e
+                    p = cd
+                    q = n//p
+                    generate_private_key(n_one, n, p, q, e)
 
 
-sample_encrypted_message = open("./challenge/sample/message.bin", "rb").read()
-decrypted_message = decrypt_message(sample_encrypted_message, sample_private_key)
+def main():
+    sample_public = open("./challenge/sample/public.pem").read()
+    sample_private = open("./challenge/sample/private.pem").read()
 
-print('Encrypted Sample Message : {}'.format(sample_encrypted_message))
-print('Decrypted Sample Message : {}'.format(decrypted_message))
-print("")
+    sample_public_key = RSA.importKey(sample_public)
+    sample_private_key = RSA.importKey(sample_private)
 
-get_public_keys()
-print("Public Keys")
-print(public_keys)
-print("")
-print("Finding weak keys")
-find_weak_keys()
+    public_keys['sample'] = sample_public_key
+
+    sample_encrypted_message = open("./challenge/sample/message.bin", "rb").read()
+    decrypted_message = decrypt_message(sample_encrypted_message, sample_private_key)
+
+    print('Encrypted Sample Message : {}'.format(sample_encrypted_message))
+    print('Decrypted Sample Message : {}'.format(decrypted_message))
+    print("")
+
+    get_public_keys()
+
+    print("Public Keys")
+    print(public_keys)
+    print("")
+
+    print("Finding weak keys")
+    find_weak_keys()
+    decrypt_key_messages()
+
+
+main()
