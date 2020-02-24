@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\example.txt" />
+    <Content Include="data\malformed.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
