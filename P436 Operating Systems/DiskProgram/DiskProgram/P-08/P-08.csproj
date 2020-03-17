@@ -1,9 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>P_08</RootNamespace>
-        <OutputType>Exe</OutputType>
-    </PropertyGroup>
-
-</Project>
