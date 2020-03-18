@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Disk_Program.Models;
 
-namespace P_08
+namespace Disk_Program
 {
     public class DiskParser
     {
         private List<string> VolumeData;
         private List<DiskFile> DiskFiles;
+        private bool ReadingFromFile { get; set; } = false;
         public bool DataRead { get; set; }
-        public void ReadVolumeFromFile(string filePath)
+        public bool ReadVolumeFromFile(string filePath)
         {
+            ReadingFromFile = true;
             VolumeData = new List<string>();
             DiskFiles = new List<DiskFile>();
             try
             {
-                string[] lines = System.IO.File.ReadAllLines(filePath);
+                string[] lines = File.ReadAllLines(filePath);
 
                 foreach (var line in lines)
                 {
@@ -26,9 +31,11 @@ namespace P_08
             }
             catch (Exception e)
             {
-                Console.WriteLine("File Does Not Exist.");
+                Console.WriteLine("File Does Not Exist");
+                return false;
             }
             ReadFiles();
+            return true;
         }
 
         public void ReadDiskFromStandardInput()
@@ -164,7 +171,7 @@ namespace P_08
         }
         
         
-        public void PrintFileList() => DiskFiles.ForEach(f => Console.WriteLine(f.FileName));
+        public List<string> GetFileList() => DiskFiles.Select(f => f.FileName).ToList();
         public void PrintFileContents(string fileName)
         {
             bool fileFound = false;

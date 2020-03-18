@@ -1,4 +1,4 @@
-﻿namespace P_08
+﻿namespace Disk_Program.Models
 {
     public class DiskFile
     {

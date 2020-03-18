@@ -4,6 +4,11 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>DiskProgram</RootNamespace>
         <OutputType>Exe</OutputType>
+        <AssemblyVersion>1.2.0</AssemblyVersion>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20158.1" />
+    </ItemGroup>
 
 </Project>
