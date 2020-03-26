@@ -9,7 +9,7 @@ namespace Disk_Program
 {
     public class DiskParser
     {
-        private List<string> VolumeData;
+        public List<string> VolumeData;
         private List<DiskFile> DiskFiles;
         private bool ReadingFromFile { get; set; } = false;
         public bool DataRead { get; set; }

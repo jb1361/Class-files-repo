@@ -23,16 +23,18 @@ namespace Disk_Program
             Option dirOption = new Option<bool>(new [] { "-dir", "--dir" }, "Prints all file on disk");
             rootCommand.AddOption(dirOption);
             
+            Option usageOption = new Option<bool>(new [] { "-du", "--du" }, "Shows disk usage information");
+            rootCommand.AddOption(usageOption);
             
             rootCommand.Handler =
-                CommandHandler.Create<string, bool, bool>(HandleArguments);
+                CommandHandler.Create<string, bool, bool, bool>(HandleArguments);
             
             if (args.Length == 0)
                 args = new [] {"--help"};
             return await rootCommand.InvokeAsync(args);
         }
 
-        private static void HandleArguments(string f, bool version, bool dir)
+        private static void HandleArguments(string f, bool version, bool dir, bool du)
         {
             DiskProgram program = new DiskProgram();
             if (version) PrintVersion();
@@ -44,7 +46,12 @@ namespace Disk_Program
             if (dir && program.ContinueRunning)
             {
                 program.PrintFiles();
-            }    
+            }
+
+            if (du)
+            {
+                
+            }
         
         }
         
