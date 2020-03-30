@@ -40,12 +40,28 @@ namespace Disk_Program
                 _parser.ReadDiskFromStandardInput();
             }
 
-            var totalSpace = _parser.VolumeData.Count * _parser.VolumeData[0].Length;
-            var usedSpace = 0;
-            _parser.VolumeData.ForEach(v =>
+            var totalClusters = _parser.VolumeData.Count - 2;
+            var usedClusters = 1;
+            var badClusters = 0;
+            var i = 0;
+            foreach (var volume in _parser.VolumeData)
             {
-                v.
-            });
+                if (i >= 3)
+                {
+                    var data = volume.Substring(0, 2);
+                    if (data != "00")
+                    {
+                        usedClusters++;
+                    }
+                }
+                i++;
+            }
+            Console.WriteLine("Disk usage::");
+            Console.WriteLine($"Used {usedClusters} {(totalClusters/usedClusters) * 100} ");
+            Console.WriteLine($"Avail {totalClusters - usedClusters}");
+            Console.WriteLine($"Bad {badClusters}");
+            Console.WriteLine($"Total Clusters: {totalClusters}");
+            Console.WriteLine($"Total used: {usedClusters}");
         }
         
         public void CreateDisk(string name, int size, int length)

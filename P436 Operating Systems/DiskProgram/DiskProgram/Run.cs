@@ -50,7 +50,7 @@ namespace Disk_Program
 
             if (du)
             {
-                
+                program.PrintDiskUsage();
             }
         
         }
