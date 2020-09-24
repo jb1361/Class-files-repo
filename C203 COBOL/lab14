@@ -1,0 +1,41 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID.    L_14.
+ENVIRONMENT DIVISION.
+INPUT-OUTPUT SECTION.                
+FILE-CONTROL.
+    SELECT in-file ASSIGN "L14.in"   
+        organization line sequential.
+
+DATA DIVISION.
+
+FILE SECTION.
+    FD  in-file.
+    01  in-line.      
+		02 line-number	PIC 9(3).
+ 		02 line-name PIC A(17).
+		02 line-name-number PIC 9(3).
+
+WORKING-STORAGE SECTION.
+        01 smallest-name PIC A(17).
+        01 smallest-number PIC 9(3) VALUES 999.
+
+PROCEDURE DIVISION.
+    open input in-file
+    PERFORM FOREVER
+        READ in-file
+             AT END
+             EXIT PERFORM
+             END-READ
+
+		IF line-name-number in in-line < smallest-number THEN
+			MOVE line-name to smallest-name
+			MOVE line-name-number to smallest-number
+		END-IF
+
+		display in-line
+	END-PERFORM
+	display ""
+	display "Smallest Number: " smallest-name smallest-number
+	CLOSE in-file
+    stop run
+    .

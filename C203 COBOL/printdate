@@ -1,0 +1,18 @@
+IDENTIFICATION DIVISION.                          
+PROGRAM-ID.    DATETIME.                          
+ENVIRONMENT DIVISION.                            
+DATA DIVISION.                                    
+WORKING-STORAGE SECTION.                          
+                                                  
+01 CURRENT-DATE        PIC 9(06).                
+01 CURRENT-TIME        PIC 9(08).                
+                                                  
+PROCEDURE DIVISION.                              
+                                                  
+    ACCEPT CURRENT-DATE FROM DATE.
+    ACCEPT CURRENT-TIME FROM TIME.                
+                                                  
+    DISPLAY 'THE DATE TODAY IS :' CURRENT-DATE.    
+    DISPLAY 'THE TIME NOW   IS :' CURRENT-TIME.    
+    DISPLAY 'Justin Butler'.                                              
+    STOP RUN. 

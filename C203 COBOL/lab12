@@ -1,0 +1,23 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID.    L_12.
+ENVIRONMENT DIVISION.
+INPUT-OUTPUT SECTION.                
+
+DATA DIVISION.
+
+WORKING-STORAGE SECTION.
+	01 header.
+		02 h-customer PIC A(8).
+		02 h-name PIC A(4).
+		02 h-class PIC A(4).
+		02 h-credit	PIC A(6).
+		02 h-hours	PIC A(5).
+		02 h-grade 	PIC A(4).
+
+	01 u-header PIC A(47) VALUES "CUSTOMERbNAMEbbbbCLASSbbbbCREDITbHOURSbbbbGRADE".
+
+PROCEDURE DIVISION.
+	INSPECT u-header REPLACING ALL 'b' BY ' '.
+	display u-header.
+    stop run
+    .
