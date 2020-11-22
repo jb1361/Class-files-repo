@@ -1,0 +1,39 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID.    L_16.
+ENVIRONMENT DIVISION.
+INPUT-OUTPUT SECTION.                
+FILE-CONTROL.
+    SELECT in-file ASSIGN "lab16.in"   
+        organization line sequential.
+
+DATA DIVISION.
+
+
+FILE SECTION.
+    FD  in-file.
+    01  in-line.      
+		02 item-id	PIC 9(2).
+ 		02 item-desc PIC 9(19).
+		02 item-price PIC 99V99.
+
+WORKING-STORAGE SECTION.
+        01 markup-margin PIC 99V99 COMP-3.
+        01 final-price PIC 99V99 COMP-3.
+
+
+PROCEDURE DIVISION.
+    open input in-file
+    PERFORM FOREVER
+        READ in-file
+             AT END
+             EXIT PERFORM
+             END-READ
+		
+
+		COMPUTE markup-margin = 1 / .70
+		COMPUTE final-price = markup-margin * item-price 
+		display item-desc "$" final-price
+	END-PERFORM
+	CLOSE in-file
+    stop run
+    .
