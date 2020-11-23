@@ -1,0 +1,23 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. LAB29.
+ENVIRONMENT DIVISION.
+CONFIGURATION SECTION.
+
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 wsFaren PIC 9(3).
+01 wsCelc PIC  -9(3).99.
+01 wsCount PIC 9(2) VALUE 0. 
+
+PROCEDURE DIVISION.
+POne.
+DISPLAY '|  F  |    C    |'.
+DISPLAY '_________________'.
+PERFORM PTwo 16 TIMES.
+STOP RUN.
+
+PTwo.
+COMPUTE wsFaren = wsCount * 10.
+COMPUTE wsCelc = (5 / 9) * (wsFaren - 32).
+DISPLAY '| 'wsFaren' | 'wsCelc' | '.
+ADD 1 to wsCount.
